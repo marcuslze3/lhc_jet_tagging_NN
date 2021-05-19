@@ -32,10 +32,6 @@ scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
 
-"""
-x_train = np.expand_dims(
-    x_train, axis=2
-)"""
 x_train = x_train.reshape(x_train.shape[0], 16, 1)
 x_test = x_test.reshape(x_test.shape[0], 16, 1)
 
@@ -44,8 +40,44 @@ np.save('x_train.npy', x_train)
 np.save('x_test.npy', x_test)
 np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
-np.save('classes.npy', le.classes_)
+np.save('classes.npy', le.classes_)\
 
+# AutoKeras model code
+input_node = ak.Input()
+norm_node = ak.Normalization()(input_node)
+
+
+conv1 = ak.ConvBlock()(norm_node)
+conv2 = ak.ConvBlock()(conv1)
+conv3 = ak.ConvBlock()(conv2)
+conv4 = ak.ConvBlock()(conv3)
+recc1 = ak.RNNBlock(layer_type='lstm')(conv4)
+dense1 = ak.DenseBlock()(recc1)
+dense2 = ak.DenseBlock()(dense1)
+dense3 = ak.DenseBlock()(dense2)
+
+dense4 = ak.DenseBlock()(norm_node)
+dense5 = ak.DenseBlock()(dense4)
+dense6 = ak.DenseBlock()(dense5)
+dense7 = ak.DenseBlock()(dense6)
+output_node = ak.ClassificationHead(num_classes=5,)(dense7)
+
+auto_model = ak.AutoModel(inputs=input_node, outputs=output_node,
+                          overwrite=True, max_trials=1)
+
+auto_model.fit(x_train, y_train, epochs=5)
+
+y_pred = auto_model.predict(x_test)
+print(auto_model.evaluate(x_test, y_test))
+
+
+model = auto_model.export_model()
+
+model.summary()
+
+# Commented out code which was used to try GridSearchCV
+
+"""
 def build_clf(batch_size, filter1, filter2, dense1, optimizer):
     adam = Adam(lr=0.0001)
 
@@ -59,14 +91,14 @@ def build_clf(batch_size, filter1, filter2, dense1, optimizer):
     model.add(layers.Conv1D(32, (3), name='conv2', activation='relu', padding='same'))
     # model.add(layers.MaxPooling1D((2), name='maxpool2'))
     model.add(layers.Dropout(0.2))
-    """
+
     model.add(layers.Conv1D(16, (3), name='conv3', activation='relu', padding='same'))
     model.add(layers.MaxPooling1D((2), name='maxpool3'))
     model.add(layers.Dropout(0.2))
 
     model.add(layers.Conv1D(8, (3), name='conv4', activation='relu', padding='same'))
     model.add(layers.MaxPooling1D((1), name='maxpool4'))
-    model.add(layers.Dropout(0.4))"""
+    model.add(layers.Dropout(0.4))
 
     # dense layers
     model.add(layers.Flatten())
@@ -91,38 +123,3 @@ gs = gs.fit(x_train, y_train)
 best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 """
-input_node = ak.Input()
-norm_node = ak.Normalization()(input_node)
-
-
-conv1 = ak.ConvBlock()(norm_node)
-conv2 = ak.ConvBlock()(conv1)
-conv3 = ak.ConvBlock()(conv2)
-conv4 = ak.ConvBlock()(conv3)
-recc1 = ak.RNNBlock()(conv4)
-dense1 = ak.DenseBlock()(recc1)
-dense2 = ak.DenseBlock()(dense1)
-dense3 = ak.DenseBlock()(dense2)
-
-dense4 = ak.DenseBlock()(norm_node)
-dense5 = ak.DenseBlock()(dense4)
-dense6 = ak.DenseBlock()(dense5)
-dense7 = ak.DenseBlock()(dense6)
-output_node = ak.ClassificationHead(num_classes=5,)(dense7)
-
-auto_model = ak.AutoModel(inputs=input_node, outputs=output_node,
-                          overwrite=True, max_trials=1)
-
-
-
-auto_model.fit(x_train, y_train, epochs=5)
-
-y_pred = auto_model.predict(x_test)
-print(auto_model.evaluate(x_test, y_test))
-
-
-model = auto_model.export_model()
-"""
-model.summary()
-
-
