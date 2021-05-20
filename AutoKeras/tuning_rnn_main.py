@@ -32,8 +32,8 @@ scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
 
-x_train = x_train.reshape(x_train.shape[0], 16, 1)
-x_test = x_test.reshape(x_test.shape[0], 16, 1)
+#x_train = x_train.reshape(x_train.shape[0], 16, 1)
+#x_test = x_test.reshape(x_test.shape[0], 16, 1)
 
 # save our values
 np.save('x_train.npy', x_train)
@@ -42,6 +42,15 @@ np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)\
 
+# AutoKeras model code
+clf = ak.StructuredDataClassifier(
+    overwrite=True
+)  # It tries 3 different models.
+clf.fit(x_train, y_train, batch_size=512, validation_split=0.15)
+
+print(clf.evaluate(x_test, y_test))
+
+"""
 # AutoKeras model code
 input_node = ak.Input()
 norm_node = ak.Normalization()(input_node)
@@ -76,7 +85,7 @@ model = auto_model.export_model()
 model.summary()
 
 # Commented out code which was used to try GridSearchCV
-
+"""
 """
 def build_clf(batch_size, filter1, filter2, dense1, optimizer):
     adam = Adam(lr=0.0001)
