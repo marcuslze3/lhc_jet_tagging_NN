@@ -5,6 +5,9 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dropout, Dense
 from tensorflow.keras.optimizers import Adam
+from keras.wrappers.scikit_learn import KerasClassifier
+from tensorflow.keras.utils import to_categorical
+from sklearn.model_selection import GridSearchCV
 import plotting
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
@@ -15,17 +18,21 @@ import numpy as np
 data = fetch_openml('hls4ml_lhc_jets_hlf')
 x_data, y_data = data['data'], data['target']
 
-
  # ======================= PREPROCESSING ==============================
 # encode data using one-hot, i.e turn 1 column of categorical labels into
 # 5 columns of dummy varaiables
 # also split data into 80-20 train test split
 le = LabelEncoder()
-y_data = le.fit_transform(y_data)
-y_data = to_categorical(y_data, 5)
+y_data_one_hot = le.fit_transform(y_data)
+y_data_one_hot = to_categorical(y_data_one_hot, 5)
+x_train, x_test, y_train_one_hot, y_test_one_hot = train_test_split(x_data,
+                                                                    y_data_one_hot,
+                                                                    test_size=0.2,
+                                                                    random_state=42)
+
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data,
-                                                    test_size=0.2,
-                                                    random_state=42)
+                                           test_size=0.2,
+                                           random_state=42)
 
 
 # normalize our data (using standard normal distribution - Gaussian)
@@ -44,17 +51,62 @@ np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
 
+
+def build_clf(batch_size, dropout, lstm1_units, fc1_neurons, fc2_neurons):
+    adam = Adam(learning_rate=0.0001)
+
+    model = Sequential()
+
+    # LSTM layers
+    model.add(LSTM(lstm1_units, input_shape=(16, 1), name='lstm1'))
+
+    # dense layers
+    model.add(Dropout(dropout))
+    model.add(Dense(fc1_neurons, activation='relu', name='fc1'))
+    model.add(Dropout(dropout))
+    model.add(Dense(fc2_neurons, activation='relu', name='fc2'))
+    model.add(Dropout(dropout))
+    model.add(Dense(5, activation='softmax', name='output'))
+
+    model.compile(optimizer=adam,
+                  loss=['sparse_categorical_crossentropy'],
+                  metrics=['accuracy'])
+    return model
+
+model=KerasClassifier(build_fn=build_clf)
+
+params = {'batch_size': [512],
+          'lstm1_units': [16,32,64,128,256],
+          'fc1_neurons': [16,32,64,128,256],
+          'fc2_neurons': [16,32,64,128,256],
+          'dropout': [0.1, 0.2, 0.4],
+          'epochs': [30]
+          }
+
+gs=GridSearchCV(estimator=model,
+                param_grid=params,
+                cv=3,
+                scoring='accuracy',
+                verbose=10)
+
+gs = gs.fit(x_train, y_train)
+best_parameters = gs.best_params_
+best_accuracy = gs.best_score_
+print(best_parameters)
+print(best_accuracy)
+
 # =========================== CONSTRUCT MODEL ==============================
+"""
 model = Sequential()
 
 # current best config = 2 recurrent layers both 40 nodes, dense 12 nodes, epochs 30
 
 # recurrent layers
-"""
+
 model.add(LSTM(128, return_sequences=True, input_shape=(16, 1), name='rnn1'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
 model.add(Dropout(0.2))
-"""
+
 model.add(LSTM(128, input_shape=(16, 1), name='rnn2'))
 model.add(Dropout(0.2))
 
@@ -92,17 +144,8 @@ if train:
 else:
     from tensorflow.keras.models import load_model
     model = load_model('model_1/KERAS_check_best_model.h5')
-
+"""
 
 # ============================== PLOTTING =====================================
 
-y_keras = model.predict(x_test)
-print("Test Accuracy: {}".format(
-       accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1))))
-"""
-plt.figure(figsize=(9, 9))
-_ = plotting.makeRoc(y_test, y_keras, le.classes_)
-
-plt.show()
-"""
 

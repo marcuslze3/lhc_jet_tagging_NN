@@ -89,7 +89,8 @@ train = True
 
 if train:
     adam = Adam(lr=0.001)
-    model.compile(optimizer=adam, loss=['categorical_crossentropy'], metrics=['accuracy'])
+    model.compile(optimizer=adam, loss=['categorical_crossentropy'],
+                  metrics=['categorical_accuracy'])
     callbacks = all_callbacks(outputDir = 'model_1')
     """
     callbacks = all_callbacks(stop_patience = 1000,
@@ -112,10 +113,10 @@ y_keras = model.predict(x_test)
 
 print("Test Accuracy: {}".format(
        accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1))))
-#plt.figure(figsize=(9, 9))
-#_ = plotting.makeRoc(y_test, y_keras, le.classes_)
+plt.figure(figsize=(9, 9))
+_ = plotting.makeRoc(y_test, y_keras, le.classes_)
 
-#plt.show()
+plt.show()
 
 
 

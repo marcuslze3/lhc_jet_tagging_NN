@@ -5,6 +5,9 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 from tensorflow.keras.optimizers import Adam
+from keras.wrappers.scikit_learn import KerasClassifier
+from tensorflow.keras.utils import to_categorical
+from sklearn.model_selection import GridSearchCV
 import plotting
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
@@ -20,11 +23,16 @@ x_data, y_data = data['data'], data['target']
 # 5 columns of dummy varaiables
 # also split data into 80-20 train test split
 le = LabelEncoder()
-y_data = le.fit_transform(y_data)
-y_data = to_categorical(y_data, 5)
+y_data_one_hot = le.fit_transform(y_data)
+y_data_one_hot = to_categorical(y_data_one_hot, 5)
+x_train, x_test, y_train_one_hot, y_test_one_hot = train_test_split(x_data,
+                                                                    y_data_one_hot,
+                                                                    test_size=0.2,
+                                                                    random_state=42)
+
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data,
-                                                    test_size=0.2,
-                                                    random_state=42)
+                                           test_size=0.2,
+                                           random_state=42)
 
 
 # normalize our data (using standard normal distribution - Gaussian)
@@ -45,33 +53,105 @@ np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
 
+def build_clf_layers(batch_size, batch_norm, layer_size,
+                     dropout, conv_layers, lstm_layers, fc_layers):
+    adam = Adam(learning_rate=0.0001)
 
+    model = Sequential()
+
+    # Conv layers
+    model.add(layers.Conv1D(layer_size, (4), name='conv1',
+                            activation='relu', input_shape=(16, 1)))
+    # add conv hidden layers
+    for i in range(conv_layers):
+        # Add one hidden layer
+        model.add(layers.Conv1D(layer_size, (4), activation='relu'))
+        if batch_norm:
+            model.add(layers.BatchNormalization())
+        model.add(layers.Dropout(dropout))
+
+    # LSTM layers
+    for i in range(lstm_layers-1):
+        model.add(layers.LSTM(layer_size,  return_sequences=True,
+                               name='lstm1'))
+        if batch_norm:
+            model.add(layers.BatchNormalization())
+        model.add(layers.Dropout(dropout))
+
+    model.add(layers.LSTM(layer_size))
+    if batch_norm:
+        model.add(layers.BatchNormalization())
+    model.add(layers.Dropout(dropout))
+
+    # Dense layers
+    for i in range(fc_layers):
+        model.add(layers.Dense(layer_size, activation='relu'))
+        model.add(layers.Dropout(dropout))
+
+    model.add(layers.Dense(5, activation='softmax', name='output'))
+
+    model.compile(optimizer=adam,
+                  loss=['sparse_categorical_crossentropy'],
+                  metrics=['accuracy'])
+
+    return model
+
+model=KerasClassifier(build_fn=build_clf_layers)
+
+params_layers = {'batch_size': [512],
+                 'layer_size': [16,32,64,128],
+                 'conv_layers': [2,3,5,7],
+                 'lstm_layers': [2,3,5,7],
+                 'fc_layers': [2,3,5,7],
+                 'dropout': [0.1, 0.2, 0.4],
+                 'batch_norm': [0, 1],
+                 'epochs': [30]
+                }
+
+
+gs=GridSearchCV(estimator=model,
+                param_grid=params_layers,
+                cv=3,
+                scoring='accuracy',
+                verbose=10)
+
+gs = gs.fit(x_train, y_train)
+best_parameters = gs.best_params_
+best_accuracy = gs.best_score_
+print(best_parameters)
+print(best_accuracy)
+
+
+"""
 # =========================== CONSTRUCT MODEL ==============================
 model = Sequential()
 
 # convolutional layers
-model.add(layers.Conv1D(128, (2), name='conv1', padding='same',
+model.add(layers.Conv1D(64, (4), name='conv1', padding='same',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
 #model.add(layers.MaxPooling1D((2), name='maxpool1'))
 
-model.add(layers.Conv1D(64, (2), name='conv2', padding='same',
+model.add(layers.Conv1D(32, (4), name='conv2', padding='same',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
+
 #model.add(layers.MaxPooling1D((2), name='maxpool2'))
 
-model.add(layers.Conv1D(32, (2), name='conv3', padding='same',
+model.add(layers.Conv1D(16, (2), name='conv3', padding='same',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
 #model.add(layers.MaxPooling1D((2), name='maxpool3'))
 
-"""
+
 model.add(layers.Conv1D(8, (2), name='conv4', padding='same',
                         activation='relu', input_shape=(16, 1)))
-model.add(layers.BatchNormalization())"""
+model.add(layers.BatchNormalization())
 #model.add(layers.MaxPooling1D((2), name='maxpool4'))
 
 model.add(layers.LSTM(64, return_sequences=True, name='rnn1'))
+
+model.add(layers.LSTM(32,  name='rnn2'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
 model.add(layers.Dropout(0.1))
 
@@ -79,10 +159,6 @@ model.add(layers.Dropout(0.1))
 # dense layers
 model.add(layers.Flatten())
 model.add(layers.Dense(256, activation='relu', name='fc1'))
-model.add(layers.Dropout(0.1))
-model.add(layers.Dense(256, activation='relu', name='fc2'))
-model.add(layers.Dropout(0.1))
-model.add(layers.Dense(128, activation='relu', name='fc3'))
 model.add(layers.Dropout(0.1))
 model.add(layers.Dense(128, activation='relu', name='fc4'))
 model.add(layers.Dropout(0.1))
@@ -123,5 +199,5 @@ print("Test Accuracy: {}".format(
 plt.figure(figsize=(9, 9))
 _ = plotting.makeRoc(y_test, y_keras, le.classes_)
 
-plt.show()
-
+#plt.show()
+"""

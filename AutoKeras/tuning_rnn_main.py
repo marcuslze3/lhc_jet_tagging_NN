@@ -21,11 +21,17 @@ x_data, y_data = data['data'], data['target']
 # 5 columns of dummy varaiables
 # also split data into 80-20 train test split
 le = LabelEncoder()
-y_data = le.fit_transform(y_data)
-y_data = to_categorical(y_data, 5)
+y_data_one_hot = le.fit_transform(y_data)
+y_data_one_hot = to_categorical(y_data_one_hot, 5)
+x_train, x_test, y_train_one_hot, y_test_one_hot = train_test_split(x_data,
+                                                                    y_data_one_hot,
+                                                                    test_size=0.2,
+                                                                    random_state=42)
+
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data,
-                                                    test_size=0.2,
-                                                    random_state=42)
+                                           test_size=0.2,
+                                           random_state=42)
+
 
 # normalize our data (using standard normal distribution - Gaussian)
 scaler = StandardScaler()
@@ -40,15 +46,16 @@ np.save('x_train.npy', x_train)
 np.save('x_test.npy', x_test)
 np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
-np.save('classes.npy', le.classes_)\
+np.save('classes.npy', le.classes_)
 
-# AutoKeras model code
+# AutoKeras model code, tries 100 different models
 clf = ak.StructuredDataClassifier(
     overwrite=True
-)  # It tries 3 different models.
-clf.fit(x_train, y_train, batch_size=512, validation_split=0.15)
+)
+# tries 1000 epochs, does early stopping if no improvement after 30 epochs
+clf.fit(x_train, y_train_one_hot, batch_size=512, validation_split=0.15)
 
-print(clf.evaluate(x_test, y_test))
+print(clf.evaluate(x_test, y_test_one_hot))
 
 """
 # AutoKeras model code
@@ -85,8 +92,9 @@ model = auto_model.export_model()
 model.summary()
 
 # Commented out code which was used to try GridSearchCV
-"""
-"""
+
+
+
 def build_clf(batch_size, filter1, filter2, dense1, optimizer):
     adam = Adam(lr=0.0001)
 
@@ -124,11 +132,15 @@ params = {'batch_size': [512,1024],
           'filter1': [128,64,32],
           'filter2': [64,32,16],
           'dense1': [128,64,32],
-          'optimizer': ['adam', 'rmsprop']
+          'optimizer': ['adam', 'rmsprop'],
+          'epochs': [30]
           }
 
-gs=GridSearchCV(estimator=model, param_grid=params, cv=3, scoring = 'accuracy')
-gs = gs.fit(x_train, y_train)
+gs=GridSearchCV(estimator=model,
+                param_grid=params,
+                cv=3,
+                scoring='accuracy',
+                verbose=10)
+gs = gs.fit(x_train, y_train_one_hot)
 best_parameters = gs.best_params_
-best_accuracy = gs.best_score_
-"""
+best_accuracy = gs.best_score_"""
