@@ -8,6 +8,7 @@ from tensorflow.keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV
+import pandas as pd
 import plotting
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
@@ -54,26 +55,25 @@ np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
 
 def build_clf_layers(batch_size, batch_norm, layer_size,
-                     dropout, conv_layers, lstm_layers, fc_layers):
+                     dropout, n_layers):
     adam = Adam(learning_rate=0.0001)
 
     model = Sequential()
 
     # Conv layers
     model.add(layers.Conv1D(layer_size, (4), name='conv1',
-                            activation='relu', input_shape=(16, 1)))
+                            activation='relu', input_shape=(16, 1), padding='same'))
     # add conv hidden layers
-    for i in range(conv_layers):
+    for i in range(n_layers):
         # Add one hidden layer
-        model.add(layers.Conv1D(layer_size, (4), activation='relu'))
+        model.add(layers.Conv1D(layer_size, (4), activation='relu', padding='same'))
         if batch_norm:
             model.add(layers.BatchNormalization())
         model.add(layers.Dropout(dropout))
 
     # LSTM layers
-    for i in range(lstm_layers-1):
-        model.add(layers.LSTM(layer_size,  return_sequences=True,
-                               name='lstm1'))
+    for i in range(n_layers-1):
+        model.add(layers.LSTM(layer_size,  return_sequences=True))
         if batch_norm:
             model.add(layers.BatchNormalization())
         model.add(layers.Dropout(dropout))
@@ -84,7 +84,7 @@ def build_clf_layers(batch_size, batch_norm, layer_size,
     model.add(layers.Dropout(dropout))
 
     # Dense layers
-    for i in range(fc_layers):
+    for i in range(n_layers):
         model.add(layers.Dense(layer_size, activation='relu'))
         model.add(layers.Dropout(dropout))
 
@@ -99,23 +99,26 @@ def build_clf_layers(batch_size, batch_norm, layer_size,
 model=KerasClassifier(build_fn=build_clf_layers)
 
 params_layers = {'batch_size': [512],
-                 'layer_size': [16,32,64,128],
-                 'conv_layers': [2,3,5,7],
-                 'lstm_layers': [2,3,5,7],
-                 'fc_layers': [2,3,5,7],
-                 'dropout': [0.1, 0.2, 0.4],
+                 'layer_size': [32,64,128],
+                 'n_layers': [2,3,5,7],
+                 'dropout': [0.2, 0.4],
                  'batch_norm': [0, 1],
-                 'epochs': [30]
+                 'epochs': [20]
                 }
 
 
 gs=GridSearchCV(estimator=model,
                 param_grid=params_layers,
                 cv=3,
-                scoring='accuracy',
-                verbose=10)
+                scoring=['f1_macro', 'accuracy', 'roc_auc_ovr'],
+                verbose=10,
+                refit='accuracy')
 
 gs = gs.fit(x_train, y_train)
+
+results_df = pd.DataFrame(gs.cv_results_)
+results_df.to_csv('results1.csv')
+
 best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 print(best_parameters)

@@ -3,11 +3,12 @@ from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dropout, Dense
+from tensorflow.keras.layers import LSTM, Dropout, Dense, BatchNormalization
 from tensorflow.keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV
+import pandas as pd
 import plotting
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
@@ -73,7 +74,38 @@ def build_clf(batch_size, dropout, lstm1_units, fc1_neurons, fc2_neurons):
                   metrics=['accuracy'])
     return model
 
-model=KerasClassifier(build_fn=build_clf)
+def build_clf_layers(batch_size, batch_norm, layer_size,
+                     dropout, n_layers):
+    adam = Adam(learning_rate=0.0001)
+
+    model = Sequential()
+
+    # LSTM layers
+    for i in range(n_layers-1):
+        model.add(LSTM(layer_size,  return_sequences=True))
+        if batch_norm:
+            model.add(BatchNormalization())
+        model.add(Dropout(dropout))
+
+    model.add(LSTM(layer_size))
+    if batch_norm:
+        model.add(BatchNormalization())
+    model.add(Dropout(dropout))
+
+    # Dense layers
+    for i in range(n_layers):
+        model.add(Dense(layer_size, activation='relu'))
+        model.add(Dropout(dropout))
+
+    model.add(Dense(5, activation='softmax', name='output'))
+
+    model.compile(optimizer=adam,
+                  loss=['sparse_categorical_crossentropy'],
+                  metrics=['accuracy'])
+
+    return model
+
+model=KerasClassifier(build_fn=build_clf_layers())
 
 params = {'batch_size': [512],
           'lstm1_units': [16,32,64,128,256],
@@ -83,13 +115,25 @@ params = {'batch_size': [512],
           'epochs': [30]
           }
 
+params_layers = {'batch_size': [512],
+                 'layer_size': [32,64,128],
+                 'n_layers': [2,3,5,7],
+                 'dropout': [0.2, 0.4],
+                 'batch_norm': [0, 1],
+                 'epochs': [20]
+                }
+
 gs=GridSearchCV(estimator=model,
-                param_grid=params,
+                param_grid=params_layers,
                 cv=3,
                 scoring='accuracy',
                 verbose=10)
 
 gs = gs.fit(x_train, y_train)
+
+results_df = pd.DataFrame(gs.cv_results_)
+results_df.to_csv('results.csv')
+
 best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 print(best_parameters)

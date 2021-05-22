@@ -8,11 +8,7 @@ from tensorflow.keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV
-import plotting
-import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score
-from tensorflow.keras.regularizers import l1
-from callbacks import all_callbacks
+import pandas as pd
 import numpy as np
 
 data = fetch_openml('hls4ml_lhc_jets_hlf')
@@ -91,25 +87,30 @@ def build_clf(batch_size, batch_norm, dropout, conv1_filters,
 
 # number of layers can be tuned using GridSearchCV, but all layers are fixed size
 def build_clf_layers(batch_size, batch_norm, layer_size,
-                     dropout, conv_layers, fc_layers):
+                     dropout, n_layers):
     adam = Adam(learning_rate=0.0001)
 
     model = Sequential()
 
     model.add(layers.Conv1D(layer_size, (4), name='conv1',
-                            activation='relu', input_shape=(16, 1)))
+                            activation='relu', input_shape=(16, 1), padding='same'))
 
     # add conv hidden layers
-    for i in range(conv_layers):
+    for i in range(n_layers-2):
         # Add one hidden layer
-        model.add(layers.Conv1D(layer_size, (4), activation='relu'))
+        model.add(layers.Conv1D(layer_size, (4), activation='relu', padding='same'))
         if batch_norm:
             model.add(layers.BatchNormalization())
         model.add(layers.Dropout(dropout))
 
+    model.add(layers.Conv1D(layer_size, (4), activation='relu'))
+    if batch_norm:
+        model.add(layers.BatchNormalization())
+    model.add(layers.Dropout(dropout))
+
     model.add(layers.Flatten())
     # add fc dense hidden layers
-    for i in range(fc_layers):
+    for i in range(n_layers):
         model.add(layers.Dense(layer_size, activation='relu'))
         model.add(layers.Dropout(dropout))
 
@@ -137,9 +138,8 @@ params = {'batch_size': [512],
 
 params_layers = {'batch_size': [512],
                  'layer_size': [16,32,64,128],
-                 'conv_layers': [2,3,5,7],
-                 'fc_layers': [2,3,5,7],
-                 'dropout': [0.1, 0.2, 0.4],
+                 'n_layers': [2,3,5,7],
+                 'dropout': [0.2, 0.4],
                  'batch_norm': [0, 1],
                  'epochs': [30]
                 }
@@ -151,6 +151,10 @@ gs=GridSearchCV(estimator=model,
                 verbose=10)
 
 gs = gs.fit(x_train, y_train)
+
+results_df = pd.DataFrame(gs.cv_results_)
+results_df.to_csv('results.csv')
+
 best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 print(best_parameters)
