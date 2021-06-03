@@ -11,7 +11,7 @@ from sklearn.model_selection import GridSearchCV
 import pandas as pd
 import plotting
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from tensorflow.keras.regularizers import l1
 from callbacks import all_callbacks
 import numpy as np
@@ -54,6 +54,7 @@ np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
 
+"""
 def build_clf_layers(batch_size, batch_norm, layer_size,
                      dropout, n_layers):
     adam = Adam(learning_rate=0.0001)
@@ -130,29 +131,19 @@ print(best_accuracy)
 model = Sequential()
 
 # convolutional layers
-model.add(layers.Conv1D(64, (4), name='conv1', padding='same',
+model.add(layers.Conv1D(32, (4), name='conv1', padding='same',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
-#model.add(layers.MaxPooling1D((2), name='maxpool1'))
+model.add(layers.MaxPooling1D((2), name='maxpool1'))
 
 model.add(layers.Conv1D(32, (4), name='conv2', padding='same',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
 
-#model.add(layers.MaxPooling1D((2), name='maxpool2'))
-
-model.add(layers.Conv1D(16, (2), name='conv3', padding='same',
-                        activation='relu', input_shape=(16, 1)))
-model.add(layers.BatchNormalization())
-#model.add(layers.MaxPooling1D((2), name='maxpool3'))
+model.add(layers.MaxPooling1D((2), name='maxpool2'))
 
 
-model.add(layers.Conv1D(8, (2), name='conv4', padding='same',
-                        activation='relu', input_shape=(16, 1)))
-model.add(layers.BatchNormalization())
-#model.add(layers.MaxPooling1D((2), name='maxpool4'))
-
-model.add(layers.LSTM(64, return_sequences=True, name='rnn1'))
+#model.add(layers.LSTM(64, return_sequences=True, name='rnn1'))
 
 model.add(layers.LSTM(32,  name='rnn2'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
@@ -161,15 +152,13 @@ model.add(layers.Dropout(0.1))
 
 # dense layers
 model.add(layers.Flatten())
-model.add(layers.Dense(256, activation='relu', name='fc1'))
-model.add(layers.Dropout(0.1))
-model.add(layers.Dense(128, activation='relu', name='fc4'))
-model.add(layers.Dropout(0.1))
+#model.add(layers.Dense(256, activation='relu', name='fc1'))
+#model.add(layers.Dropout(0.1))
+#model.add(layers.Dense(128, activation='relu', name='fc4'))
+#model.add(layers.Dropout(0.1))
 model.add(layers.Dense(64, activation='relu', name='fc5'))
 model.add(layers.Dropout(0.1))
-model.add(layers.Dense(32, activation='relu', name='fc6'))
-model.add(layers.Dropout(0.1))
-model.add(layers.Dense(16, activation='relu', name='fc7'))
+model.add(layers.Dense(64, activation='relu', name='fc6'))
 
 
 model.add(layers.Dense(5, activation='softmax', name='output'))
@@ -179,7 +168,7 @@ model.add(layers.Dense(5, activation='softmax', name='output'))
 train = True
 
 if train:
-    adam = Adam(lr=0.00001)
+    adam = Adam(lr=0.0001)
     model.compile(optimizer=adam, loss=['categorical_crossentropy'], metrics=['accuracy'])
     callbacks = all_callbacks(stop_patience = 1000,
                               lr_factor = 0.5,
@@ -188,7 +177,7 @@ if train:
                               lr_cooldown = 2,
                               lr_minimum = 0.0000001,
                               outputDir = 'model_1')
-    model.fit(x_train, y_train, batch_size=1024,
+    model.fit(x_train, y_train_one_hot, batch_size=1024,
               epochs=30, validation_split=0.2, shuffle=True,
               callbacks = callbacks.callbacks)
 else:
@@ -198,9 +187,14 @@ else:
 # ============================== PLOTTING =====================================
 y_keras = model.predict(x_test)
 print("Test Accuracy: {}".format(
-       accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1))))
-plt.figure(figsize=(9, 9))
-_ = plotting.makeRoc(y_test, y_keras, le.classes_)
+       accuracy_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1))))
+print("F1 Score")
+print(f1_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1),
+               average='macro'))
+print(roc_auc_score(y_test_one_hot, y_keras,
+                    average='macro', multi_class='ovr'))
+#plt.figure(figsize=(9, 9))
+#_ = plotting.makeRoc(y_test, y_keras, le.classes_)
 
 #plt.show()
-"""
+

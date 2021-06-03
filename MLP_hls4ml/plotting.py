@@ -40,7 +40,9 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
 
 
+
 def plotRoc(fpr, tpr, auc, labels, linestyle, legend=True):
+
     for i, label in enumerate(labels):
         plt.plot(tpr[label], fpr[label], label='%s tagger, AUC = %.1f%%' % (
         label.replace('j_', ''), auc[label] * 100.), linestyle=linestyle)
@@ -52,6 +54,29 @@ def plotRoc(fpr, tpr, auc, labels, linestyle, legend=True):
     if legend: plt.legend(loc='upper left')
     plt.figtext(0.25, 0.90, 'hls4ml', fontweight='bold', wrap=True,
                 horizontalalignment='right', fontsize=14)
+
+
+def plotRoc1(fpr, tpr, auc, labels, linestyle, legend=True):
+    models = ["LSTM", "CNN", "DNN", "CNN/LSTM/DNN"]
+    label_names = ["Gluon", "Quark", "Top Quark", "W Boson", "Z Boson"]
+
+
+
+    for i, label in enumerate(labels):
+        plt.figure(i)
+        for j, model in enumerate(models):
+            modelNames = ["DNN", "CNN", "LSTM", "CNN/LSTM/DNN"]
+            plt.plot(tpr[j][label], fpr[j][label], label='%s tagger, AUC = %.1f%%' % (
+            modelNames[j], auc[j][label] * 100.), linestyle=linestyle)
+        plt.semilogy()
+        plt.title("%s" %(label_names[i]))
+        plt.xlabel("TPR")
+        plt.ylabel("FPR")
+        plt.ylim(0.001, 1)
+        plt.grid(True)
+        if legend: plt.legend(loc='upper left')
+        plt.figtext(0.25, 0.90, 'hls4ml', fontweight='bold', wrap=True,
+                    horizontalalignment='right', fontsize=14)
 
 
 def rocData(y, predict_test, labels):
@@ -77,6 +102,27 @@ def makeRoc(y, predict_test, labels, linestyle='-', legend=True):
 
     fpr, tpr, auc1 = rocData(y, predict_test, labels)
     plotRoc(fpr, tpr, auc1, labels, linestyle, legend=legend)
+    return predict_test
+
+def makeRoc1(y, predict_test, labels, linestyle='-', legend=True):
+    if 'j_index' in labels: labels.remove('j_index')
+
+    fpr, tpr, auc1 = rocData(y, predict_test[0], labels)
+    fpr1, tpr1, auc1_1 = rocData(y, predict_test[1], labels)
+    fpr2, tpr2, auc1_2 = rocData(y, predict_test[2], labels)
+    fpr3, tpr3, auc1_3 = rocData(y, predict_test[3], labels)
+
+    fpr_array, tpr_array, auc_array = [], [], []
+    fpr_array.append(fpr), fpr_array.append(fpr1), fpr_array.append(fpr2),
+    fpr_array.append(fpr3)
+
+    tpr_array.append(tpr), tpr_array.append(tpr1), tpr_array.append(tpr2),
+    tpr_array.append(tpr3)
+
+    auc_array.append(auc1), auc_array.append(auc1_1), auc_array.append(auc1_2),
+    auc_array.append(auc1_3)
+
+    plotRoc1(fpr_array, tpr_array, auc_array, labels, linestyle, legend=legend)
     return predict_test
 
 

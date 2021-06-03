@@ -88,7 +88,7 @@ params = {'batch_size': [512],
           'fc1_neurons': [128,64,32],
           'fc2_neurons': [128,64,32],
           'fc3_neurons': [64,32,16],
-          'epochs': [30]
+          'epochs': [20]
           }
 
 params_layers = {
@@ -96,13 +96,13 @@ params_layers = {
           'layer_size': [128,64,32,16],
           'n_layers': [2,3,5,7],
           'dropout': [0.2, 0.4],
-          'epochs': [30] }
+          'epochs': [20] }
 
 
 gs=GridSearchCV(estimator=model,
                 param_grid=params_layers,
                 cv=3,
-                scoring=['f1_macro', 'accuracy'],
+                scoring=['f1_macro', 'accuracy', 'roc_auc_ovr'],
                 verbose=10,
                 refit='accuracy')
 

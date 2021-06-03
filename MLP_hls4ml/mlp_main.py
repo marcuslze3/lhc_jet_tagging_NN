@@ -10,7 +10,7 @@ from tensorflow.keras.initializers import GlorotNormal
 import autokeras as ak
 
 from callbacks import all_callbacks
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 import matplotlib.pyplot as plt
 import plotting
 import numpy as np
@@ -58,6 +58,9 @@ model.add(layers.Dropout(0.2))
 
 model.add(layers.Dense(256, activation='relu', name='fc2', kernel_initializer=GlorotNormal()))
 model.add(layers.Dropout(0.2))
+
+#model.add(layers.Dense(64, activation='relu', name='fc3', kernel_initializer=GlorotNormal()))
+#model.add(layers.Dropout(0.2))
 """
 model.add(layers.Dense(64, activation='relu', name='fc3'))
 model.add(layers.Dropout(0.2))
@@ -92,15 +95,15 @@ if train:
     model.compile(optimizer=adam, loss=['categorical_crossentropy'],
                   metrics=['categorical_accuracy'])
     callbacks = all_callbacks(outputDir = 'model_1')
-    """
+
     callbacks = all_callbacks(stop_patience = 1000,
                               lr_factor = 0.5,
                               lr_patience = 10,
                               lr_epsilon=0.0001,
                               lr_cooldown = 2,
                               lr_minimum = 0.0000001,
-                              outputDir = 'model_1')"""
-    model.fit(x_train, y_train, batch_size=1024,
+                              outputDir = 'model_1')
+    model.fit(x_train, y_train, batch_size=512,
                 epochs=30, validation_split=0.25, shuffle=True,
                 callbacks = callbacks.callbacks)
 else:
@@ -113,6 +116,11 @@ y_keras = model.predict(x_test)
 
 print("Test Accuracy: {}".format(
        accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1))))
+print("F1 Score:")
+print(f1_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1), average = "macro"))
+print("ROCScore:")
+print(roc_auc_score(y_test, y_keras,
+                    average='macro', multi_class='ovr'))
 plt.figure(figsize=(9, 9))
 _ = plotting.makeRoc(y_test, y_keras, le.classes_)
 

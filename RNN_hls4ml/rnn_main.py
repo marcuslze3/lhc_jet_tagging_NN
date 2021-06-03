@@ -1,9 +1,10 @@
+
 from tensorflow.keras.utils import to_categorical
 from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dropout, Dense, BatchNormalization
+from tensorflow.keras.layers import LSTM, Dropout, Dense, BatchNormalization, Flatten
 from tensorflow.keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
@@ -11,7 +12,7 @@ from sklearn.model_selection import GridSearchCV
 import pandas as pd
 import plotting
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from callbacks import all_callbacks
 import numpy as np
 
@@ -52,7 +53,7 @@ np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
 
-
+"""
 def build_clf(batch_size, dropout, lstm1_units, fc1_neurons, fc2_neurons):
     adam = Adam(learning_rate=0.0001)
 
@@ -105,7 +106,7 @@ def build_clf_layers(batch_size, batch_norm, layer_size,
 
     return model
 
-model=KerasClassifier(build_fn=build_clf_layers())
+model=KerasClassifier(build_fn=build_clf_layers)
 
 params = {'batch_size': [512],
           'lstm1_units': [16,32,64,128,256],
@@ -126,8 +127,10 @@ params_layers = {'batch_size': [512],
 gs=GridSearchCV(estimator=model,
                 param_grid=params_layers,
                 cv=3,
-                scoring='accuracy',
-                verbose=10)
+                scoring=['f1_macro', 'accuracy', 'roc_auc_ovr'],
+                verbose=10,
+                refit='accuracy'
+                )
 
 gs = gs.fit(x_train, y_train)
 
@@ -138,35 +141,32 @@ best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 print(best_parameters)
 print(best_accuracy)
-
-# =========================== CONSTRUCT MODEL ==============================
 """
+# =========================== CONSTRUCT MODEL ==============================
+
 model = Sequential()
 
 # current best config = 2 recurrent layers both 40 nodes, dense 12 nodes, epochs 30
 
 # recurrent layers
 
-model.add(LSTM(128, return_sequences=True, input_shape=(16, 1), name='rnn1'))
+model.add(LSTM(32, return_sequences=True, input_shape=(16, 1), name='rnn1'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
 model.add(Dropout(0.2))
 
-model.add(LSTM(128, input_shape=(16, 1), name='rnn2'))
-model.add(Dropout(0.2))
-
-
 # dense layers
-model.add(Dense(256, activation='relu', name='fc1'))
-model.add(Dense(256, activation='relu', name='fc2'))
-model.add(Dense(128, activation='relu', name='fc3'))
-model.add(Dense(64, activation='relu', name='fc4'))
-model.add(Dense(32, activation='relu', name='fc5'))
-model.add(Dense(16, activation='relu', name='fc6'))
+model.add(Flatten())
+model.add(Dense(64, activation='relu', name='fc1'))
+model.add(Dense(64, activation='relu', name='fc2'))
+model.add(Dense(32, activation='relu', name='fc3'))
+#model.add(Dense(32, activation='relu', name='fc4'))
+#model.add(Dense(32, activation='relu', name='fc5'))
+#model.add(Dense(16, activation='relu', name='fc6'))
 model.add(Dense(5, activation='softmax', name='output'))
 
 
 # ============================= TRAIN MODEL ================================
-train = True
+train = False
 
 print(x_train.shape)
 print(y_train.shape)
@@ -182,13 +182,20 @@ if train:
                               lr_cooldown = 2,
                               lr_minimum = 0.0000001,
                               outputDir = 'model_1')
-    model.fit(x_train, y_train, batch_size=1024,
+    model.fit(x_train, y_train_one_hot, batch_size=1024,
               epochs=30, validation_split=0.2, shuffle=True,
               callbacks=callbacks.callbacks)
 else:
     from tensorflow.keras.models import load_model
     model = load_model('model_1/KERAS_check_best_model.h5')
-"""
+y_keras = model.predict(x_test)
+print("Test Accuracy: {}".format(
+       accuracy_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1))))
+print("F1 Score")
+print(f1_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1),
+               average='macro'))
+print(roc_auc_score(y_test_one_hot, y_keras,
+                    average='macro', multi_class='ovr'))
 
 # ============================== PLOTTING =====================================
 

@@ -7,6 +7,10 @@ from tensorflow.keras import layers
 from tensorflow.keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
+from callbacks import all_callbacks
+import plotting
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
+import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
 import numpy as np
@@ -46,7 +50,7 @@ np.save('x_test.npy', x_test)
 np.save('y_train.npy', y_train)
 np.save('y_test.npy', y_test)
 np.save('classes.npy', le.classes_)
-
+"""
 # layers can have different sizes but I have to manually change number of layers
 def build_clf(batch_size, batch_norm, dropout, conv1_filters,
               conv2_filters, fc1_neurons, fc2_neurons, fc3_neurons):
@@ -141,14 +145,15 @@ params_layers = {'batch_size': [512],
                  'n_layers': [2,3,5,7],
                  'dropout': [0.2, 0.4],
                  'batch_norm': [0, 1],
-                 'epochs': [30]
+                 'epochs': [20]
                 }
 
 gs=GridSearchCV(estimator=model,
                 param_grid=params_layers,
                 cv=3,
-                scoring='accuracy',
-                verbose=10)
+                scoring=['accuracy', 'f1_macro', 'roc_auc_ovr'],
+                verbose=10,
+                refit='accuracy')
 
 gs = gs.fit(x_train, y_train)
 
@@ -159,28 +164,28 @@ best_parameters = gs.best_params_
 best_accuracy = gs.best_score_
 print(best_parameters)
 print(best_accuracy)
-
-
-
 """
+
+
+
 # =========================== CONSTRUCT MODEL ==============================
 model = Sequential()
 
 # best config = conv1 64 nodes, dense fc1 32 nodes
 
 # convolutional layers
-model.add(layers.Conv1D(128, (4), name='conv1',
+model.add(layers.Conv1D(32, (4), name='conv1',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
 #model.add(layers.MaxPooling1D((2), name='maxpool1', strides=2))
 model.add(layers.Dropout(0.2))
 
-model.add(layers.Conv1D(64, (4), name='conv2',
+model.add(layers.Conv1D(32, (4), name='conv2',
                         activation='relu', input_shape=(16, 1)))
 model.add(layers.BatchNormalization())
 #model.add(layers.MaxPooling1D((2), name='maxpool1', strides=2))
 model.add(layers.Dropout(0.2))
-
+"""
 
 model.add(layers.Conv1D(64, (3), name='conv2', activation='relu', padding='same'))
 #model.add(layers.MaxPooling1D((2), name='maxpool2'))
@@ -199,15 +204,15 @@ model.add(layers.Dropout(0.2))
 model.add(layers.Conv1D(8, (3), name='conv4', activation='relu', padding='same'))
 model.add(layers.MaxPooling1D((1), name='maxpool4'))
 model.add(layers.Dropout(0.4))
-
+"""
 # dense layers
 model.add(layers.Flatten())
-model.add(layers.Dense(256, activation='relu', name='fc1'))
+model.add(layers.Dense(64, activation='relu', name='fc1'))
 model.add(layers.Dropout(0.2))
 
-model.add(layers.Dense(256, activation='relu', name='fc2'))
+model.add(layers.Dense(64, activation='relu', name='fc2'))
 model.add(layers.Dropout(0.2))
-
+"""
 model.add(layers.Dense(128, activation='relu', name='fc3'))
 model.add(layers.Dropout(0.2))
 
@@ -219,8 +224,8 @@ model.add(layers.Dropout(0.2))
 
 model.add(layers.Dense(32, activation='relu', name='fc6'))
 model.add(layers.Dropout(0.2))
-
-model.add(layers.Dense(16, activation='relu', name='fc7'))
+"""
+model.add(layers.Dense(64, activation='relu', name='fc7'))
 model.add(layers.Dropout(0.2))
 
 
@@ -229,7 +234,7 @@ model.add(layers.Dense(5, activation='softmax', name='output'))
 
 
 # ============================= TRAIN MODEL ================================
-train = True
+train = False
 
 if train:
     adam = Adam(lr=0.0001)
@@ -241,7 +246,7 @@ if train:
                               lr_cooldown = 2,
                               lr_minimum = 0.0000001,
                               outputDir = 'model_1')
-    model.fit(x_train, y_train, batch_size=1024,
+    model.fit(x_train, y_train_one_hot, batch_size=1024,
               epochs=30, validation_split=0.1, shuffle=True,
               callbacks = callbacks.callbacks)
 else:
@@ -251,9 +256,14 @@ else:
 # ============================== PLOTTING =====================================
 y_keras = model.predict(x_test)
 print("Test Accuracy: {}".format(
-       accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_keras, axis=1))))
+       accuracy_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1))))
+print("F1 Score")
+print(f1_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1),
+               average='macro'))
+print(roc_auc_score(y_test_one_hot, y_keras,
+                    average='macro', multi_class='ovr'))
 plt.figure(figsize=(9, 9))
-_ = plotting.makeRoc(y_test, y_keras, le.classes_)
+_ = plotting.makeRoc(y_test_one_hot, y_keras, le.classes_)
 
 #plt.show()
-"""
+
