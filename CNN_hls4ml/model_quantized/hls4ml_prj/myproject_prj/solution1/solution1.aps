@@ -2,6 +2,7 @@
     <config>
         <config_array_partition maximum_size="4096"/>
         <config_compile name_max_length="60"/>
+        <schedule model="myproject"/>
     </config>
     <name>
         <value string="solution1"/>

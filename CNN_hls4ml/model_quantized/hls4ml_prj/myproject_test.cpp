@@ -74,9 +74,9 @@ int main(int argc, char **argv)
       }
 
       //hls-fpga-machine-learning insert data
-      input_t conv1_input[N_INPUT_1_1*N_INPUT_2_1];
+      hls::stream<input_t> conv1_input("conv1_input");
       nnet::copy_data<float, input_t, 0, N_INPUT_1_1*N_INPUT_2_1>(in, conv1_input);
-      result_t layer16_out[N_LAYER_14];
+      hls::stream<result_t> layer16_out("layer16_out");
 
       //hls-fpga-machine-learning insert top-level-function
       unsigned short size_in1,size_out1;
@@ -104,9 +104,9 @@ int main(int argc, char **argv)
   } else {
     std::cout << "INFO: Unable to open input/predictions file, using default input." << std::endl;
     //hls-fpga-machine-learning insert zero
-    input_t conv1_input[N_INPUT_1_1*N_INPUT_2_1];
+    hls::stream<input_t> conv1_input("conv1_input");
     nnet::fill_zero<input_t, N_INPUT_1_1*N_INPUT_2_1>(conv1_input);
-    result_t layer16_out[N_LAYER_14];
+    hls::stream<result_t> layer16_out("layer16_out");
 
     //hls-fpga-machine-learning insert top-level-function
     unsigned short size_in1,size_out1;

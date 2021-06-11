@@ -53,10 +53,10 @@ void myproject_float(
     unsigned short &const_size_out_1
 ) {
     
-    input_t conv1_input_ap[N_INPUT_1_1*N_INPUT_2_1];
+    hls::stream<input_t> conv1_input_ap("conv1_input");
     nnet::convert_data<float, input_t, N_INPUT_1_1*N_INPUT_2_1>(conv1_input, conv1_input_ap);
 
-    result_t layer16_out_ap[N_LAYER_14];
+    hls::stream<result_t> layer16_out_ap("layer16_out");
 
     myproject(conv1_input_ap, layer16_out_ap, const_size_in_1, const_size_out_1);
 
@@ -69,10 +69,10 @@ void myproject_double(
     unsigned short &const_size_in_1,
     unsigned short &const_size_out_1
 ) {
-    input_t conv1_input_ap[N_INPUT_1_1*N_INPUT_2_1];
+    hls::stream<input_t> conv1_input_ap("conv1_input");
     nnet::convert_data<double, input_t, N_INPUT_1_1*N_INPUT_2_1>(conv1_input, conv1_input_ap);
 
-    result_t layer16_out_ap[N_LAYER_14];
+    hls::stream<result_t> layer16_out_ap("layer16_out");
 
     myproject(conv1_input_ap, layer16_out_ap, const_size_in_1, const_size_out_1);
 

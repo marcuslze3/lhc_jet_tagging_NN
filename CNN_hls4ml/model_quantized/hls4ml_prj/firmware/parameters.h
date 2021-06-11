@@ -30,7 +30,7 @@
 // conv1
 struct config2_mult : nnet::dense_config {
     static const unsigned n_in = 4;
-    static const unsigned n_out = 8;
+    static const unsigned n_out = 12;
     static const unsigned reuse_factor = 1;
     static const unsigned strategy = nnet::latency;
     typedef ap_fixed<16,6> accum_t;
@@ -52,31 +52,31 @@ struct config2 : nnet::conv1d_config {
     static const unsigned dilation = 1;
     static const unsigned out_width = N_OUTPUTS_2;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 24;
+    static const unsigned n_zeros = 36;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::latency;
-    static const unsigned min_width = N_INPUT_1_1;
+    static const unsigned min_width = 7;
     static const ap_uint<filt_width> pixels[min_width];
     typedef ap_fixed<16,6> accum_t;
     typedef bias2_t bias_t;
     typedef weight2_t weight_t;
     typedef config2_mult mult_config;
 };
-const ap_uint<config2::filt_width> config2::pixels[] = {0};
+const ap_uint<config2::filt_width> config2::pixels[] = {1,3,7,15,14,12,8};
 
 // relu1
 struct relu_config4 : nnet::activ_config {
     static const unsigned n_in = N_OUTPUTS_2*N_FILT_2;
     static const unsigned table_size = 1024;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned reuse_factor = 1;
     typedef ap_fixed<18,8> table_t;
 };
 
 // conv2
 struct config5_mult : nnet::dense_config {
-    static const unsigned n_in = 32;
-    static const unsigned n_out = 8;
+    static const unsigned n_in = 48;
+    static const unsigned n_out = 12;
     static const unsigned reuse_factor = 1;
     static const unsigned strategy = nnet::latency;
     typedef ap_fixed<16,6> accum_t;
@@ -87,8 +87,8 @@ struct config5_mult : nnet::dense_config {
 };
 
 struct config5 : nnet::conv1d_config {
-    static const unsigned pad_left = 1;
-    static const unsigned pad_right = 2;
+    static const unsigned pad_left = 0;
+    static const unsigned pad_right = 0;
     static const unsigned in_width = 13;
     static const unsigned n_chan = N_FILT_2;
     static const unsigned filt_width = 4;
@@ -98,23 +98,23 @@ struct config5 : nnet::conv1d_config {
     static const unsigned dilation = 1;
     static const unsigned out_width = N_OUTPUTS_5;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 193;
+    static const unsigned n_zeros = 438;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::latency;
-    static const unsigned min_width = N_OUTPUTS_2;
+    static const unsigned min_width = 7;
     static const ap_uint<filt_width> pixels[min_width];
     typedef ap_fixed<16,6> accum_t;
     typedef bias5_t bias_t;
     typedef weight5_t weight_t;
     typedef config5_mult mult_config;
 };
-const ap_uint<config5::filt_width> config5::pixels[] = {0};
+const ap_uint<config5::filt_width> config5::pixels[] = {1,3,7,15,14,12,8};
 
 // relu2
 struct relu_config7 : nnet::activ_config {
     static const unsigned n_in = N_OUTPUTS_5*N_FILT_5;
     static const unsigned table_size = 1024;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned reuse_factor = 1;
     typedef ap_fixed<18,8> table_t;
 };
@@ -123,11 +123,11 @@ struct relu_config7 : nnet::activ_config {
 struct config8 : nnet::dense_config {
     static const unsigned n_in = N_OUTPUTS_5*N_FILT_5;
     static const unsigned n_out = N_LAYER_8;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 2546;
-    static const unsigned n_nonzeros = 782;
+    static const unsigned n_zeros = 2944;
+    static const unsigned n_nonzeros = 896;
     static const bool store_weights_in_bram = false;
     typedef ap_fixed<16,6> accum_t;
     typedef bias8_t bias_t;
@@ -141,7 +141,7 @@ struct config8 : nnet::dense_config {
 struct relu_config10 : nnet::activ_config {
     static const unsigned n_in = N_LAYER_8;
     static const unsigned table_size = 1024;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned reuse_factor = 1;
     typedef ap_fixed<18,8> table_t;
 };
@@ -150,11 +150,11 @@ struct relu_config10 : nnet::activ_config {
 struct config11 : nnet::dense_config {
     static const unsigned n_in = N_LAYER_8;
     static const unsigned n_out = N_LAYER_11;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 778;
-    static const unsigned n_nonzeros = 246;
+    static const unsigned n_zeros = 769;
+    static const unsigned n_nonzeros = 255;
     static const bool store_weights_in_bram = false;
     typedef ap_fixed<16,6> accum_t;
     typedef bias11_t bias_t;
@@ -168,7 +168,7 @@ struct config11 : nnet::dense_config {
 struct relu_config13 : nnet::activ_config {
     static const unsigned n_in = N_LAYER_11;
     static const unsigned table_size = 1024;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned reuse_factor = 1;
     typedef ap_fixed<18,8> table_t;
 };
@@ -177,7 +177,7 @@ struct relu_config13 : nnet::activ_config {
 struct config14 : nnet::dense_config {
     static const unsigned n_in = N_LAYER_11;
     static const unsigned n_out = N_LAYER_14;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
     static const unsigned n_zeros = 120;
@@ -195,7 +195,7 @@ struct config14 : nnet::dense_config {
 struct softmax_config16 : nnet::activ_config {
     static const unsigned n_in = N_LAYER_14;
     static const unsigned table_size = 1024;
-    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned io_type = nnet::io_stream;
     static const unsigned reuse_factor = 1;
     static const nnet::softmax_implementation implementation = nnet::softmax_implementation::latency;
     typedef ap_fixed<18,8> exp_table_t;

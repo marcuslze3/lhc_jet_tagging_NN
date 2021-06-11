@@ -56,9 +56,9 @@ HLSConfig:
     Precision: ap_fixed<16,6>
     ReuseFactor: 2
     Strategy: Latency
-IOType: io_parallel
+IOType: io_stream
 KerasModel: !keras_model 'model_quantized/hls4ml_prj/keras_model.h5'
 OutputDir: model_quantized/hls4ml_prj
 ProjectName: myproject
-Stamp: 302E569e
+Stamp: fEaEa39a
 XilinxPart: xcu250-figd2104-2L-e

@@ -65,15 +65,16 @@ np.save('classes.npy', le.classes_)
 
 model = Sequential()
 
-model.add(QConv1D(8, input_shape=(16,1), kernel_size=(4), name='conv1',
+model.add(QConv1D(12, input_shape=(16,1), kernel_size=(4), name='conv1',
                  kernel_quantizer=quantized_bits(6,0,alpha=1), bias_quantizer=quantized_bits(6,0,alpha=1),
                  kernel_initializer='lecun_uniform', kernel_regularizer=l1(0.0001)))
 model.add(QActivation(activation=quantized_relu(6), name='relu1'))
 
-model.add(QConv1D(8, name='conv2', kernel_size=(4),
+# add padding back
+model.add(QConv1D(12, name='conv2', kernel_size=(4),
                  kernel_quantizer=quantized_bits(6,0,alpha=1), bias_quantizer=quantized_bits(6,0,alpha=1),
-                 kernel_initializer='lecun_uniform', kernel_regularizer=l1(0.0001),
-                 padding='same'))
+                 kernel_initializer='lecun_uniform', kernel_regularizer=l1(0.0001)
+                 ))
 model.add(QActivation(activation=quantized_relu(6), name='relu2'))
 
 model.add(layers.Flatten())
@@ -104,7 +105,7 @@ model = prune.prune_low_magnitude(model, **pruning_params)
 
 tfmot.sparsity.keras.strip_pruning(model)
 # ============================= TRAIN MODEL ================================
-train = True
+train = False
 if train:
     adam = Adam(lr=0.0001)
     model.compile(optimizer=adam, loss=['categorical_crossentropy'], metrics=['accuracy'])
@@ -169,7 +170,8 @@ print("-----------------------------------")
 hls_model = hls4ml.converters.convert_from_keras_model(model,
                                                        hls_config=config,
                                                        output_dir='model_quantized/hls4ml_prj',
-                                                       fpga_part='xcu250-figd2104-2L-e')
+                                                       fpga_part='xcu250-figd2104-2L-e',
+                                                       io_type='io_stream')
 hls_model.compile()
 
 print("predicting...")
