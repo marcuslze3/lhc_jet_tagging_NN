@@ -65,13 +65,13 @@ np.save('classes.npy', le.classes_)
 
 model = Sequential()
 
-model.add(QConv1D(12, input_shape=(16,1), kernel_size=(4), name='conv1',
+model.add(QConv1D(8, input_shape=(16,1), kernel_size=(4), name='conv1',
                  kernel_quantizer=quantized_bits(6,0,alpha=1), bias_quantizer=quantized_bits(6,0,alpha=1),
                  kernel_initializer='lecun_uniform', kernel_regularizer=l1(0.0001)))
 model.add(QActivation(activation=quantized_relu(6), name='relu1'))
 
 # add padding back
-model.add(QConv1D(12, name='conv2', kernel_size=(4),
+model.add(QConv1D(8, name='conv2', kernel_size=(4),
                  kernel_quantizer=quantized_bits(6,0,alpha=1), bias_quantizer=quantized_bits(6,0,alpha=1),
                  kernel_initializer='lecun_uniform', kernel_regularizer=l1(0.0001)
                  ))

@@ -11,6 +11,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
 import plotting
+import hls4ml
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from callbacks import all_callbacks
@@ -197,6 +198,5 @@ print(f1_score(np.argmax(y_test_one_hot, axis=1), np.argmax(y_keras, axis=1),
 print(roc_auc_score(y_test_one_hot, y_keras,
                     average='macro', multi_class='ovr'))
 
-# ============================== PLOTTING =====================================
 
 
