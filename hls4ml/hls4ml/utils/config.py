@@ -99,13 +99,14 @@ def config_from_keras_model(model, granularity='model', default_precision='ap_fi
     conv_layers = ['Conv1D', 'Conv2D', 'BinaryConv2D']
     pooling_layers = ['MaxPooling1D', 'MaxPooling2D', 'GlobalMaxPooling1D', 'GlobalMaxPooling2D', 'AveragePooling1D', 'AveragePooling2D', 'GlobalAveragePooling1D', 'GlobalAveragePooling2D']
     norm_layers = ['BatchNormalization']
+    recc_layers = ['LSTM']
     activation_layers = ['Activation', 'LeakyReLU', 'ThresholdedReLU', 'ELU', 'PReLU', 'Softmax', 'ReLU']
     merge_layers = ['Add', 'Subtract', 'Multiply', 'Average', 'Maximum', 'Minimum', 'Concatenate', 'Dot']
     qkeras_layers = ['QDense', 'QActivation', 'QConv1D', 'QConv2D', 'QBatchNormalization', 'QConv2DBatchnorm']
     #Define layers to skip for conversion to HLS
     skip_layers = ['Dropout', 'Flatten']
     #All supported layers
-    supported_layers = core_layers + dense_layers + conv_layers + pooling_layers + norm_layers + activation_layers + merge_layers + qkeras_layers + skip_layers
+    supported_layers = core_layers + dense_layers + conv_layers + recc_layers + pooling_layers + norm_layers + activation_layers + merge_layers + qkeras_layers + skip_layers
 
     keras_layer_config = None
     if model_arch['class_name'] == 'Sequential':
