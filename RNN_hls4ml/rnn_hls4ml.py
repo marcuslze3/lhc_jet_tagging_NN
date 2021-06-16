@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dropout, Dense, BatchNormalization, Flatten
 from tensorflow.keras.optimizers import Adam
-from keras.wrappers.scikit_learn import KerasClassifier
+from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
