@@ -1,4 +1,3 @@
-
 from tensorflow.keras.utils import to_categorical
 from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
@@ -48,12 +47,12 @@ model = Sequential()
 
 # recurrent layers
 
-model.add(LSTM(8, return_sequences=True, input_shape=(16, 1), name='rnn1'))
+model.add(LSTM(32, return_sequences=False, input_shape=(16, 1), name='rnn1'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
 model.add(Dropout(0.2))
 
 # dense layers
-model.add(Flatten())
+#model.add(Flatten())
 #model.add(Dense(64, activation='relu', name='fc1'))
 model.add(Dense(32, activation='relu', name='fc2'))
 model.add(Dense(32, activation='relu', name='fc3'))
@@ -106,4 +105,5 @@ print("hls4ml Accuracy: {}".format(accuracy_score(np.argmax(y_test, axis=1), np.
 
 hls_model.build(csim=False)
 
-hls4ml.report.read_vivado_report('rnn_model/hls4ml_prj')
+hls4ml.report.read_vivado_report('rnn_model/hls4ml_prj_2')
+
