@@ -1,0 +1,163 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'tanh_ap_fixed_ap_fixed_16_6_5_3_0_tanh_config2_s'" level="0">
+<item name = "Date">Fri Jun 18 14:14:38 2021
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">myproject_prj</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcu250-figd2104-2L-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.968 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 542, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">2, -, 0, 0, -</column>
+<column name="Multiplexer">-, -, -, -, -</column>
+<column name="Register">-, -, 2, -, -</column>
+<specialColumn name="Available SLR">1344, 3072, 864000, 432000, 320</specialColumn>
+<specialColumn name="Utilization SLR (%)">~0, 0, ~0, ~0, 0</specialColumn>
+<specialColumn name="Available">5376, 12288, 3456000, 1728000, 1280</specialColumn>
+<specialColumn name="Utilization (%)">~0, 0, ~0, ~0, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="tanh_table7_U">tanh_ap_fixed_ap_fixed_16_6_5_3_0_tanh_config2_s_tanh_tabcud, 2, 0, 0, 0, 1024, 11, 1, 11264</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="add_ln472_128_fu_221_p2">+, 0, 0, 13, 10, 13</column>
+<column name="add_ln472_129_fu_354_p2">+, 0, 0, 13, 10, 13</column>
+<column name="add_ln472_130_fu_487_p2">+, 0, 0, 13, 10, 13</column>
+<column name="add_ln472_131_fu_620_p2">+, 0, 0, 13, 10, 13</column>
+<column name="add_ln472_64_fu_348_p2">+, 0, 0, 14, 10, 14</column>
+<column name="add_ln472_65_fu_481_p2">+, 0, 0, 14, 10, 14</column>
+<column name="add_ln472_66_fu_614_p2">+, 0, 0, 14, 10, 14</column>
+<column name="add_ln472_fu_215_p2">+, 0, 0, 14, 10, 14</column>
+<column name="add_ln700_64_fu_322_p2">+, 0, 0, 14, 1, 14</column>
+<column name="add_ln700_65_fu_455_p2">+, 0, 0, 14, 1, 14</column>
+<column name="add_ln700_66_fu_588_p2">+, 0, 0, 14, 1, 14</column>
+<column name="add_ln700_fu_189_p2">+, 0, 0, 14, 1, 14</column>
+<column name="ap_block_pp0_stage0_11001">and, 0, 0, 2, 1, 1</column>
+<column name="icmp_ln475_64_fu_390_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln475_65_fu_523_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln475_66_fu_656_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln475_fu_257_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln850_64_fu_298_p2">icmp, 0, 0, 20, 26, 4</column>
+<column name="icmp_ln850_65_fu_431_p2">icmp, 0, 0, 20, 26, 4</column>
+<column name="icmp_ln850_66_fu_564_p2">icmp, 0, 0, 20, 26, 4</column>
+<column name="icmp_ln850_fu_165_p2">icmp, 0, 0, 20, 26, 4</column>
+<column name="icmp_ln851_1_fu_316_p2">icmp, 0, 0, 13, 10, 1</column>
+<column name="icmp_ln851_2_fu_449_p2">icmp, 0, 0, 13, 10, 1</column>
+<column name="icmp_ln851_3_fu_582_p2">icmp, 0, 0, 13, 10, 1</column>
+<column name="icmp_ln851_fu_183_p2">icmp, 0, 0, 13, 10, 1</column>
+<column name="ap_block_pp0_stage0_subdone">or, 0, 0, 2, 1, 1</column>
+<column name="select_ln474_1_fu_368_p3">select, 0, 0, 13, 1, 1</column>
+<column name="select_ln474_2_fu_501_p3">select, 0, 0, 13, 1, 1</column>
+<column name="select_ln474_3_fu_634_p3">select, 0, 0, 13, 1, 1</column>
+<column name="select_ln474_fu_235_p3">select, 0, 0, 13, 1, 1</column>
+<column name="select_ln475_1_fu_396_p3">select, 0, 0, 10, 1, 2</column>
+<column name="select_ln475_2_fu_529_p3">select, 0, 0, 10, 1, 2</column>
+<column name="select_ln475_3_fu_662_p3">select, 0, 0, 10, 1, 2</column>
+<column name="select_ln475_fu_263_p3">select, 0, 0, 10, 1, 2</column>
+<column name="select_ln850_64_fu_336_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln850_65_fu_469_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln850_66_fu_602_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln850_fu_203_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln851_1_fu_328_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln851_2_fu_461_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln851_3_fu_594_p3">select, 0, 0, 14, 1, 14</column>
+<column name="select_ln851_fu_195_p3">select, 0, 0, 14, 1, 14</column>
+<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_ce">in, 1, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_return_0">out, 16, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_return_1">out, 16, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_return_2">out, 16, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="ap_return_3">out, 16, ap_ctrl_hs, tanh&lt;ap_fixed,ap_fixed&lt;16,6,5,3,0&gt;,tanh_config2&gt;, return value</column>
+<column name="data_0_V_read">in, 16, ap_none, data_0_V_read, scalar</column>
+<column name="data_1_V_read">in, 16, ap_none, data_1_V_read, scalar</column>
+<column name="data_2_V_read">in, 16, ap_none, data_2_V_read, scalar</column>
+<column name="data_3_V_read">in, 16, ap_none, data_3_V_read, scalar</column>
+</table>
+</item>
+</section>
+</profile>

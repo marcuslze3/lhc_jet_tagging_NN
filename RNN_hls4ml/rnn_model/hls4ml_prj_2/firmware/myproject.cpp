@@ -41,11 +41,11 @@ void myproject(
     static bool loaded_weights = false;
     if (!loaded_weights) {
         //hls-fpga-machine-learning insert load weights
-        nnet::load_weights_from_txt<rnn1_default_t, 32>(w2, "w2.txt");
-        nnet::load_weights_from_txt<rnn1_default_t, 32>(b2, "b2.txt");
-        nnet::load_weights_from_txt<rnn1_default_t, 256>(wr2, "wr2.txt");
-        nnet::load_weights_from_txt<rnn1_default_t, 32>(br2, "br2.txt");
-        nnet::load_weights_from_txt<fc2_weight_t, 4096>(w4, "w4.txt");
+        nnet::load_weights_from_txt<rnn1_default_t, 16>(w2, "w2.txt");
+        nnet::load_weights_from_txt<rnn1_default_t, 16>(b2, "b2.txt");
+        nnet::load_weights_from_txt<rnn1_default_t, 64>(wr2, "wr2.txt");
+        nnet::load_weights_from_txt<rnn1_default_t, 16>(br2, "br2.txt");
+        nnet::load_weights_from_txt<fc2_weight_t, 2048>(w4, "w4.txt");
         nnet::load_weights_from_txt<fc2_bias_t, 32>(b4, "b4.txt");
         nnet::load_weights_from_txt<fc3_weight_t, 1024>(w6, "w6.txt");
         nnet::load_weights_from_txt<fc3_bias_t, 32>(b6, "b6.txt");

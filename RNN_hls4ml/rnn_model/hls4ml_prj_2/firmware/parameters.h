@@ -34,7 +34,7 @@ struct config2_1 : nnet::dense_config {
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
     static const unsigned n_zeros = 0;
-    static const unsigned n_nonzeros = 32;
+    static const unsigned n_nonzeros = 16;
     static const bool store_weights_in_bram = false;
     typedef ap_fixed<16,6> accum_t;
     typedef rnn1_default_t bias_t;
@@ -51,7 +51,7 @@ struct config2_2 : nnet::dense_config {
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
     static const unsigned n_zeros = 0;
-    static const unsigned n_nonzeros = 256;
+    static const unsigned n_nonzeros = 64;
     static const bool store_weights_in_bram = false;
     typedef ap_fixed<16,6> accum_t;
     typedef rnn1_default_t bias_t;
@@ -116,7 +116,7 @@ struct config4 : nnet::dense_config {
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
     static const unsigned n_zeros = 0;
-    static const unsigned n_nonzeros = 4096;
+    static const unsigned n_nonzeros = 2048;
     static const bool store_weights_in_bram = false;
     typedef ap_fixed<16,6> accum_t;
     typedef fc2_bias_t bias_t;

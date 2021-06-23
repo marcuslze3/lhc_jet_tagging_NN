@@ -53,5 +53,5 @@ IOType: io_parallel
 KerasModel: !keras_model 'rnn_model/hls4ml_prj_2/keras_model.h5'
 OutputDir: rnn_model/hls4ml_prj_2
 ProjectName: myproject
-Stamp: 9cDC8F6d
+Stamp: 59c6a43c
 XilinxPart: xcu250-figd2104-2L-e

@@ -9,7 +9,7 @@
 #define N_INPUT_1_1 16
 #define N_INPUT_2_1 1
 #define N_SEQUENCE_OUT_2 16
-#define N_LAYER_2 8
+#define N_LAYER_2 4
 #define N_LAYER_4 32
 #define N_LAYER_6 32
 #define N_LAYER_8 5

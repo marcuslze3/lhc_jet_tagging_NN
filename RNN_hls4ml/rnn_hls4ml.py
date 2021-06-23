@@ -48,7 +48,7 @@ model = Sequential()
 
 # recurrent layers
 
-model.add(LSTM(8, return_sequences=True, input_shape=(16, 1), name='rnn1'))
+model.add(LSTM(4, return_sequences=True, input_shape=(16, 1), name='rnn1'))
 #model.add(LSTM(12, return_sequences=True, name='rnn1'))
 model.add(Dropout(0.2))
 
@@ -106,4 +106,4 @@ print("hls4ml Accuracy: {}".format(accuracy_score(np.argmax(y_test, axis=1), np.
 
 hls_model.build(csim=False)
 
-hls4ml.report.read_vivado_report('rnn_model/hls4ml_prj')
+hls4ml.report.read_vivado_report('rnn_model/hls4ml_prj_2')
