@@ -43,7 +43,7 @@
 
 void myproject(
     input_t jedi_input[N_INPUT_1_1*N_INPUT_1_2],
-    result_t layer9_out[N_LAYER_8],
+    result_t layer19_out[N_OUTPUT_3],
     unsigned short &const_size_in_1,
     unsigned short &const_size_out_1
 ) {
@@ -200,10 +200,8 @@ void myproject(
 
     layer18_t layer18_out[N_OUTPUT_3];
     #pragma HLS ARRAY_PARTITION variable=layer18_out complete dim=0
-    nnet::dense<layer17_t, layer18_t, config18>(layer17_out, layer18_out, w18, b118); // output
+    nnet::dense<layer17_t, layer18_t, config18>(layer17_out, layer18_out, w18, b18); // output
 
-    layer19_t layer19_out[N_OUTPUT_3];
-    #pragma HLS ARRAY_PARTITION variable=layer19_out complete dim=0
     nnet::softmax<layer18_t, result_t, softmax_config19>(layer18_out, layer19_out); // output_softmax
 
 }
