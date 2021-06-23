@@ -109,11 +109,11 @@ void myproject(
     #pragma HLS ARRAY_PARTITION variable=jedi2_out complete dim=0
     nnet::jedi_multiply<input_t, jedi2_t, jedi_config2>(jedi1_input, r_r, jedi2_out); // I x R_r
 
-    layer4_t layer4_out[P*N_o];
+    jedi4_t jedi4_out[P*N_o];
     #pragma HLS ARRAY_PARTITION variable=jedi4_out complete dim=0
     nnet::jedi_multiply<input_t, jedi4_t, jedi_config4>(jedi1_input, r_s, jedi4_out); // I x R_s
 
-    layer6_t layer6_out[2*P*N_o];
+    jedi6_t jedi6_out[2*P*N_o];
     #pragma HLS ARRAY_PARTITION variable=jedi6_out complete dim=0
     nnet::jedi_concat<input_t, jedi6_t, jedi_config6>(r_r, r_s, jedi6_out, w2, b2); // concatenate
 
@@ -181,9 +181,30 @@ void myproject(
     nnet::softmax<layer12_t, layer13_t, softmax_config13>(layer12_out, layer13_out); // output_softmax
 
 
-
     //  ============ Dense MLP layers: for transforming O into Output (N = 5) =========
+    layer14_t layer14_out[N_LAYER_12];
+    #pragma HLS ARRAY_PARTITION variable=layer14_out complete dim=0
+    nnet::dense<layer13_t, layer14_t, config14>(layer13_out, layer14_out, w14, b14); // fc1
 
+    layer15_t layer15_out[N_LAYER_12];
+    #pragma HLS ARRAY_PARTITION variable=layer15_out complete dim=0
+    nnet::relu<layer14_t, layer15_t, relu_config15>(layer14_out, layer15_out); // fc1_relu
+
+    layer16_t layer16_out[N_LAYER_14];
+    #pragma HLS ARRAY_PARTITION variable=layer16_out complete dim=0
+    nnet::dense<layer15_t, layer16_t, config16>(layer15_out, layer16_out, w16, b16); // fc2
+
+    layer17_t layer17_out[N_LAYER_14];
+    #pragma HLS ARRAY_PARTITION variable=layer17_out complete dim=0
+    nnet::relu<layer16_t, layer17_t, relu_config17>(layer16_out, layer17_out); // fc2_relu
+
+    layer18_t layer18_out[N_OUTPUT_3];
+    #pragma HLS ARRAY_PARTITION variable=layer18_out complete dim=0
+    nnet::dense<layer17_t, layer18_t, config18>(layer17_out, layer18_out, w18, b118); // output
+
+    layer19_t layer19_out[N_OUTPUT_3];
+    #pragma HLS ARRAY_PARTITION variable=layer19_out complete dim=0
+    nnet::softmax<layer18_t, result_t, softmax_config19>(layer18_out, layer19_out); // output_softmax
 
 }
 
