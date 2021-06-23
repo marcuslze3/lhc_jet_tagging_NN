@@ -18,14 +18,27 @@
 //
 #include <iostream>
 
+#include "myproject.h"
+#include "parameters.h"
+
 // put these parameters into parameters.h/defines.h later
 //hls-fpga-machine-learning insert numbers
-#define N_INPUT_1_1 P;
-#define N_INPUT_1_2 No
-#define N_LAYER_2 64
-#define N_LAYER_4 32
-#define N_LAYER_6 32
-#define N_LAYER_8 5
+#define P = 16
+#define N_o = 100
+#define N_e = N_o * (N_o - 1)
+#define D_e = 10
+#define D_o = 10
+#define N_INPUT_1_1 P
+#define N_INPUT_1_2 N_o
+#define N_LAYER_2 30
+#define N_LAYER_4 15
+#define N_LAYER_6 30
+#define N_LAYER_8 15
+#define N_LAYER_10 30
+#define N_LAYER_12 15
+#define N_OUTPUT_1 10
+#define N_OUTPUT_2 10
+#define N_OUTPUT_3 5 // number of jet classes
 
 
 void myproject(
@@ -36,9 +49,9 @@ void myproject(
 ) {
 
     //hls-fpga-machine-learning insert IO
-    #pragma HLS ARRAY_RESHAPE variable=fc1_input complete dim=0
-    #pragma HLS ARRAY_PARTITION variable=layer9_out complete dim=0
-    #pragma HLS INTERFACE ap_vld port=fc1_input,layer9_out
+    #pragma HLS ARRAY_RESHAPE variable=jedi_input complete dim=0
+    #pragma HLS ARRAY_PARTITION variable=final_out complete dim=0
+    #pragma HLS INTERFACE ap_vld port=jedi_input,final_out
     #pragma HLS PIPELINE
 
     const_size_in_1 = N_INPUT_1_1;
@@ -90,16 +103,25 @@ void myproject(
 
     //hls-fpga-machine-learning insert layers
 
-    // JEDI layers: perform initial matrix multiplication
+    //  ============ JEDI layers: perform initial matrix multiplication ================
     // Do B = (I x Rr) concatenate (I x Rs)
+    jedi2_t jedi2_out[P*N_o];
+    #pragma HLS ARRAY_PARTITION variable=jedi2_out complete dim=0
+    nnet::jedi_multiply<input_t, jedi2_t, jedi_config2>(jedi1_input, r_r, jedi2_out); // I x R_r
+
+    layer4_t layer4_out[P*N_o];
+    #pragma HLS ARRAY_PARTITION variable=jedi4_out complete dim=0
+    nnet::jedi_multiply<input_t, jedi4_t, jedi_config4>(jedi1_input, r_s, jedi4_out); // I x R_s
+
+    layer6_t layer6_out[2*P*N_o];
+    #pragma HLS ARRAY_PARTITION variable=jedi6_out complete dim=0
+    nnet::jedi_concat<input_t, jedi6_t, jedi_config6>(r_r, r_s, jedi6_out, w2, b2); // concatenate
 
 
-
-
-    // Dense MLP layers: for transforming B into E
+    //  ============= Dense MLP layers: for transforming B into E ==================
     layer2_t layer2_out[N_LAYER_2];
     #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
-    nnet::dense<input_t, layer2_t, config2>(fc1_input, layer2_out, w2, b2); // fc1
+    nnet::dense<jedi6_t, layer2_t, config2>(jedi6_out, layer2_out, w2, b2); // fc1
 
     layer3_t layer3_out[N_LAYER_2];
     #pragma HLS ARRAY_PARTITION variable=layer3_out complete dim=0
@@ -113,26 +135,54 @@ void myproject(
     #pragma HLS ARRAY_PARTITION variable=layer5_out complete dim=0
     nnet::relu<layer4_t, layer5_t, relu_config5>(layer4_out, layer5_out); // fc2_relu
 
-    layer6_t layer6_out[N_LAYER_6];
+    layer6_t layer6_out[N_OUTPUT_1];
     #pragma HLS ARRAY_PARTITION variable=layer6_out complete dim=0
     nnet::dense<layer5_t, layer6_t, config6>(layer5_out, layer6_out, w6, b6); // output
 
-    nnet::softmax<layer8_t, result_t, softmax_config9>(layer6_out, layer7_out); // output_softmax
+    layer7_t layer7_out[N_OUTPUT_1];
+    #pragma HLS ARRAY_PARTITION variable=layer7_out complete dim=0
+    nnet::softmax<layer6_t, layer7_t, softmax_config7>(layer6_out, layer7_out); // output_softmax
 
-    // JEDI layers: perform next matrix multiplication
+
+    //  ============ JEDI layers: perform next matrix multiplication ===============
     // Do E_bar = E x R_r(transposed)
+    jedi8_t jedi8_out[D_e * N_o];
+    #pragma HLS ARRAY_PARTITION variable=jedi8_out complete dim=0
+    nnet::jedi_multiply<input_t, jedi8_t, jedi_config8>(layer7_out, r_r_transposed, jedi8_out); // E x R_r.T
+
+    jedi10_t jedi10_out[(P+D_e) * N_o];
+    #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
+    nnet::jedi_concat<input_t, jedi10_t, jedi_config10>(jedi1_input, jedi8_out, jedi10_out, w2, b2); // concatenate
+
+
+    //  ============ Dense MLP layers: for transforming C into O ==================
+    layer8_t layer8_out[N_LAYER_8];
+    #pragma HLS ARRAY_PARTITION variable=layer8_out complete dim=0
+    nnet::dense<jedi10_t, layer8_t, config8>(jedi10_out, layer8_out, w8, b8); // fc1
+
+    layer9_t layer9_out[N_LAYER_8];
+    #pragma HLS ARRAY_PARTITION variable=layer9_out complete dim=0
+    nnet::relu<layer8_t, layer9_t, relu_config9>(layer8_out, layer9_out); // fc1_relu
+
+    layer10_t layer10_out[N_LAYER_10];
+    #pragma HLS ARRAY_PARTITION variable=layer10_out complete dim=0
+    nnet::dense<layer9_t, layer10_t, config10>(layer9_out, layer10_out, w10, b10); // fc2
+
+    layer11_t layer11_out[N_LAYER_10];
+    #pragma HLS ARRAY_PARTITION variable=layer11_out complete dim=0
+    nnet::relu<layer10_t, layer11_t, relu_config11>(layer10_out, layer11_out); // fc2_relu
+
+    layer12_t layer12_out[N_OUTPUT_2];
+    #pragma HLS ARRAY_PARTITION variable=layer12_out complete dim=0
+    nnet::dense<layer11_t, layer12_t, config12>(layer11_out, layer12_out, w12, b12); // output
+
+    layer13_t layer13_out[N_OUTPUT_2];
+    #pragma HLS ARRAY_PARTITION variable=layer13_out complete dim=0
+    nnet::softmax<layer12_t, layer13_t, softmax_config13>(layer12_out, layer13_out); // output_softmax
 
 
 
-    // JEDI layers: perform concatenation of C =  E_bar concatenate I
-
-
-
-    // Dense MLP layers: for transforming C into O
-
-
-
-    // Dense MLP layers: for transforming O into Output (N = 5)
+    //  ============ Dense MLP layers: for transforming O into Output (N = 5) =========
 
 
 }
