@@ -90,6 +90,13 @@ void myproject(
 
     //hls-fpga-machine-learning insert layers
 
+    // JEDI layers: perform initial matrix multiplication
+    // Do B = (I x Rr) concatenate (I x Rs)
+
+
+
+
+    // Dense MLP layers: for transforming B into E
     layer2_t layer2_out[N_LAYER_2];
     #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
     nnet::dense<input_t, layer2_t, config2>(fc1_input, layer2_out, w2, b2); // fc1
@@ -108,17 +115,25 @@ void myproject(
 
     layer6_t layer6_out[N_LAYER_6];
     #pragma HLS ARRAY_PARTITION variable=layer6_out complete dim=0
-    nnet::dense<layer5_t, layer6_t, config6>(layer5_out, layer6_out, w6, b6); // fc3
+    nnet::dense<layer5_t, layer6_t, config6>(layer5_out, layer6_out, w6, b6); // output
 
-    layer7_t layer7_out[N_LAYER_6];
-    #pragma HLS ARRAY_PARTITION variable=layer7_out complete dim=0
-    nnet::relu<layer6_t, layer7_t, relu_config7>(layer6_out, layer7_out); // fc3_relu
+    nnet::softmax<layer8_t, result_t, softmax_config9>(layer6_out, layer7_out); // output_softmax
 
-    layer8_t layer8_out[N_LAYER_8];
-    #pragma HLS ARRAY_PARTITION variable=layer8_out complete dim=0
-    nnet::dense<layer7_t, layer8_t, config8>(layer7_out, layer8_out, w8, b8); // output
+    // JEDI layers: perform next matrix multiplication
+    // Do E_bar = E x R_r(transposed)
 
-    nnet::softmax<layer8_t, result_t, softmax_config9>(layer8_out, layer9_out); // output_softmax
+
+
+    // JEDI layers: perform concatenation of C =  E_bar concatenate I
+
+
+
+    // Dense MLP layers: for transforming C into O
+
+
+
+    // Dense MLP layers: for transforming O into Output (N = 5)
+
 
 }
 
