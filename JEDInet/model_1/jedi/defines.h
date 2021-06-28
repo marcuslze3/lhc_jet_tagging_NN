@@ -8,7 +8,7 @@
 //hls-fpga-machine-learning insert numbers
 // add macros e.g #define
 #define P = 16
-#define N_o = 100
+#define N_o = 4
 #define N_e = N_o * (N_o - 1)
 #define D_e = 10
 #define D_o = 10
