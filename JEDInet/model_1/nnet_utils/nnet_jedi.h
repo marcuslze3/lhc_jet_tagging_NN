@@ -167,6 +167,89 @@ namespace nnet {
         #pragma HLS ARRAY_PARTITION variable=layer7_out complete dim=0
         nnet::softmax<data_t, data_t, CONFIG_T::softmax3_config>(layer6_out, res); // output_softmax
     }
+    template<class data_T, class res_T, typename CONFIG_T>
+    void jedi1(
+            data_T I[CONFIG_T::P][CONFIG_T::N_o],
+            data_T R_r[CONFIG_T::N_o][CONFIG_T::N_e],
+            data_T R_s[CONFIG_T::N_o][CONFIG_T::N_e],
+            res_T B[2*CONFIG_T::N_o][CONFIG_T::N_e]) {
+
+        data_T B_top[CONFIG_T::P][CONFIG_T::N_e];
+        data_T B_bot[CONFIG_T::P][CONFIG_T::N_e];
+
+        jedi_multiply<data_T, res_T, CONFIG_T::mult_1>(I, R_r, B_top);
+        jedi_multiply<data_T, res_T, CONFIG_T::mult_2>(I, R_s, B_bot);
+        jedi_concat<data_T, res_T, CONFIG_T::concat_1>(B_top, B_bot, B);
+    }
+
+    template<class data_T, class res_T, typename CONFIG_T>
+    void jedi_dnn1(
+            data_T B[2*CONFIG_T::N_o][CONFIG_T::N_e]),
+            res_T E[CONFIG_T::D_e][CONFIG_T::N_e],
+            data_T w1[],
+            data_T w2[],
+            data_T w3[],
+            data_T b1[],
+            data_T b2[],
+            data_T b3[]) {
+
+        data_T cache1[2 * CONFIG_T::P];
+        data_T E_col[CONFIG_T::D_e];
+
+        for (int cols = 0; cols < CONFIG_T::N_e; cols++) {
+
+            for (int rows = 0; rows < 2 * CONFIG_T::P; rows++)
+                cache1[rows] = B[rows][cols]; // add to an array of size 2P
+
+            // this dense layer needs a specific config that has n_in = 2P, n_out = N_e
+            // pass in the weights somehow, probably in jedi() as parameter
+            nnet::dnn1<data_T, data_T, CONFIG_T::dense_config1>(cache1, E_col, w1, w2, w3, b1, b2, b3);
+
+            // copy E_col into cols of E
+            for(int rows = 0; rows < CONFIG_T::D_e, rows++)
+            E[rows][cols] = E_col[rows];
+
+        }
+
+    }
+
+    template<class data_T, class res_T, typename CONFIG_T>
+    void jedi2(
+            data_T I[CONFIG_T::P][CONFIG_T::N_o],
+            data_T E[CONFIG_T::D_e][CONFIG_T::N_e],
+            res_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o],
+            data_T R_r_T[CONFIG_T::N_e][CONFIG_T::N_o]
+            ) {
+
+        // declare E_bar array
+        data_T E_bar[CONFIG_T::D_e][CONFIG_T::N_o];
+
+        // multiply by R_r_T
+        jedi_multiply<data_T, res_T, CONFIG_T::mult_3>(E, R_r_T, E_bar);
+
+        // concatenate I with E_bar
+        jedi_concat<data_T, res_T, CONFIG_T::concat_2>(I, E_bar, C);
+
+    }
+
+    template<class data_T, class res_T, typename CONFIG_T>
+    void jedi_dnn1(
+            data_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o],
+            res_T O[CONFIG_T::D_o][CONFIG_T::N_o],
+            data_T w1[],
+            data_T w2[],
+            data_T w3[],
+            data_T b1[],
+            data_T b2[],
+            data_T b3[]) {
+
+        // run fO neural network on C -> O
+        data_T cache2[CONFIG_T::P + CONFIG_T::D_e];
+        data_T O_col[CONFIG_T::D_o];
+
+    }
+
+
 
     // maybe split this up into layers, e.g the double for loops for nns can be split
     template<class data_T, class res_T, typename CONFIG_T>
@@ -189,7 +272,7 @@ namespace nnet {
 
     jedi_multiply<data_T, res_T, CONFIG_T::mult_1>(I, R_r, B_top);
     jedi_multiply<data_T, res_T, CONFIG_T::mult_2>(I, R_s, B_bot);
-    jedi_concat<data_T, res_T, CONFIG_T::concat_1>(B_top, B_bot);
+    jedi_concat<data_T, res_T, CONFIG_T::concat_1>(B_top, B_bot, B);
 
     // declare E array
     data_T E[CONFIG_T::D_e][CONFIG_T::N_e];
@@ -199,8 +282,8 @@ namespace nnet {
     data_T E_col[CONFIG_T::D_e];
 
     for (int cols = 0; cols < CONFIG_T::N_e; cols++) {
-    for (int rows = 0; rows < 2 * CONFIG_T::P; rows++)
-    cache1[rows] = B[rows][cols]; // add to an array of size 2P
+        for (int rows = 0; rows < 2 * CONFIG_T::P; rows++)
+            cache1[rows] = B[rows][cols]; // add to an array of size 2P
 
     // this dense layer needs a specific config that has n_in = 2P, n_out = N_e
     // pass in the weights somehow, probably in jedi() as parameter
@@ -210,7 +293,7 @@ namespace nnet {
     for(int rows = 0; rows < CONFIG_T::D_e, rows++)
     E[rows][cols] = E_col[rows];
 
-}
+    }
 
     // declare E_bar array
     data_T E_bar[CONFIG_T::D_e][CONFIG_T::N_o];
