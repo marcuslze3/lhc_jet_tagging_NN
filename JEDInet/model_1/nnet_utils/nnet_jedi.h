@@ -116,23 +116,23 @@ namespace nnet {
     void dnn2(data_t input[], data_t w1[], data_t w2[], data_t w3[], data_t b1[],
               data_t b2[], data_t b3[], res_T res[]) {
         //  ============= Dense MLP layers 1: for transforming B into E ==================
-        data_t layer2_out[CONFIG_T::N_LAYER_6];
+        data_t layer2_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::fc4_config>(input, layer2_out, w1, b1); // fc1
 
-        data_t layer3_out[CONFIG_T::N_LAYER_6];
+        data_t layer3_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer3_out complete dim=0
         nnet::relu<data_t, data_t, CONFIG_T::relu3_config>(layer2_out, layer3_out); // fc1_relu
 
-        data_t layer4_out[CONFIG_T::N_LAYER_8];
+        data_t layer4_out[CONFIG_T::fc2_out];
         #pragma HLS ARRAY_PARTITION variable=layer4_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::fc5_config_2>(layer3_out, layer4_out, w2, b2); // fc2
 
-        data_t layer5_out[CONFIG_T::N_LAYER_8];
+        data_t layer5_out[CONFIG_T::fc2_out];
         #pragma HLS ARRAY_PARTITION variable=layer5_out complete dim=0
         nnet::relu<data_t, data_t, CONFIG_T::relu4_config>(layer4_out, layer5_out); // fc2_relu
 
-        data_t layer6_out[CONFIG_T::N_OUTPUT_2];
+        data_t layer6_out[CONFIG_T::fc3_out];
         #pragma HLS ARRAY_PARTITION variable=layer6_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::output2_config>(layer5_out, layer6_out, w3, b3); // output
 
@@ -144,29 +144,30 @@ namespace nnet {
     void dnn3(data_t input[], res_T res[], data_t w1[], data_t w2[], data_t w3[], data_t b1[],
               data_t b2[], data_t b3[]) {
         //  ============= Dense MLP layers 1: for transforming B into E ==================
-        data_t layer2_out[CONFIG_T::N_LAYER_10];
+        data_t layer2_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::fc7_config>(input, layer2_out, w1, b1); // fc1
 
-        data_t layer3_out[CONFIG_T::N_LAYER_10];
+        data_t layer3_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer3_out complete dim=0
         nnet::relu<data_t, data_t, CONFIG_T::relu5_config>(layer2_out, layer3_out); // fc1_relu
 
-        data_t layer4_out[CONFIG_T::N_LAYER_12];
+        data_t layer4_out[CONFIG_T::fc2_out];
         #pragma HLS ARRAY_PARTITION variable=layer4_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::fc8_config>(layer3_out, layer4_out, w2, b2); // fc2
 
-        data_t layer5_out[CONFIG_T::N_LAYER_12];
+        data_t layer5_out[CONFIG_T::fc2_out];
         #pragma HLS ARRAY_PARTITION variable=layer5_out complete dim=0
         nnet::relu<data_t, data_t, CONFIG_T::relu6_config>(layer4_out, layer5_out); // fc2_relu
 
-        data_t layer6_out[CONFIG_T::N_OUTPUT_3];
+        data_t layer6_out[CONFIG_T::fc3_out];
         #pragma HLS ARRAY_PARTITION variable=layer6_out complete dim=0
         nnet::dense<data_t, data_t, CONFIG_T::output3_config>(layer5_out, layer6_out, w3, b3); // output
 
         #pragma HLS ARRAY_PARTITION variable=layer7_out complete dim=0
         nnet::softmax<data_t, data_t, CONFIG_T::softmax3_config>(layer6_out, res); // output_softmax
     }
+
     template<class data_T, class res_T, typename CONFIG_T>
     void jedi1(
             data_T I[CONFIG_T::P][CONFIG_T::N_o],
@@ -217,8 +218,8 @@ namespace nnet {
     void jedi2(
             data_T I[CONFIG_T::P][CONFIG_T::N_o],
             data_T E[CONFIG_T::D_e][CONFIG_T::N_e],
-            res_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o],
-            data_T R_r_T[CONFIG_T::N_e][CONFIG_T::N_o]
+            data_T R_r_T[CONFIG_T::N_e][CONFIG_T::N_o],
+            res_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o]
             ) {
 
         // declare E_bar array
@@ -233,7 +234,7 @@ namespace nnet {
     }
 
     template<class data_T, class res_T, typename CONFIG_T>
-    void jedi_dnn1(
+    void jedi_dnn2(
             data_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o],
             res_T O[CONFIG_T::D_o][CONFIG_T::N_o],
             data_T w1[],
@@ -247,10 +248,55 @@ namespace nnet {
         data_T cache2[CONFIG_T::P + CONFIG_T::D_e];
         data_T O_col[CONFIG_T::D_o];
 
+        for (int cols = 0; cols < CONFIG_T::N_o; cols++) {
+            for (int rows = 0; rows < CONFIG_T::P + CONFIG_T::D_e; rows++)
+                cache2[rows] = B[rows][cols]; // add to an array of size P+D_e
+
+            // this dense layer needs a specific config that has n_in = P+D_e, n_out = D_o
+            // pass in the weights somehow, probably in jedi() as parameter
+            nnet::dnn2<data_T, data_T, CONFIG_T::dense_config2>(cache1, O_col, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
+
+            // copy O_col into cols of O
+            for(int rows = 0; rows < CONFIG_T::D_o, rows++)
+                O[rows][cols] = O_col[rows];
+
+        }
+
     }
 
+    template<class data_T, class res_T, typename CONFIG_T>
+    void jedi_dnn3(
+            data_T O[CONFIG_T::D_o][CONFIG_T::N_o],
+            res_T res[CONFIG_T::n_out],
+            data_T w1[],
+            data_T w2[],
+            data_T w3[],
+            data_T b1[],
+            data_T b2[],
+            data_T b3[]
+            ) {
+
+        // initialise O_sum with 0s
+        data_T O_sum[CONFIG_T::N_o];
+        for(int i = 0; i < CONFIG_T::N_o; i++)
+            O_sum[i] = 0;
+
+        // sum every element in each col of O
+        for(int cols = 0; cols < CONFIG_T::No; cols++)
+            for(int rows = 0; rows < CONFIG_T::D_o; rows++)
+                O_sum[cols] += O[rows][cols];
+
+        // run sigma_c final neural network on O -> output
+        // shape D_o -> N, sum all rows of each column to achieve dimension D_o.
+        nnet::dnn3<data_T, data_T, CONFIG_T::dense_config3>(O_sum, res, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
+
+    }
+
+}
 
 
+
+/*
     // maybe split this up into layers, e.g the double for loops for nns can be split
     template<class data_T, class res_T, typename CONFIG_T>
     void jedi(
@@ -263,7 +309,7 @@ namespace nnet {
         int P,
         int N_o,
         int D_o,
-        int D_e,*/
+        int D_e,
     ) {
     // declare B array
     data_T B_top[CONFIG_T::P][CONFIG_T::N_e];
@@ -346,4 +392,4 @@ namespace nnet {
 
 
 
-}
+}*/

@@ -79,6 +79,21 @@ struct concat_2 {
     static const unsigned n_col2 = N_o;
 };
 
+struct jedi1_config {
+
+    typedef mult_1 mult_1;
+    typedef mult_2 mult_2;
+    typedef concat_1 concat_1;
+
+};
+
+struct jedi2_config {
+
+    typedef mult_3 mult_3;
+    typedef concat_2 concat_2;
+
+};
+
 // fc1 dnn1
 struct fc1_config : nnet::dense_config {
     static const unsigned n_in = 2*P;
@@ -320,25 +335,44 @@ struct softmax3_config : nnet::activ_config {
 };
 
 
-struct dense_config1 {
+struct dense1_config {
     // add in all the layers of dnn1 here
     static const unsigned fc1_out = N_LAYER_2;
     static const unsigned fc2_out = N_LAYER_4;
     static const unsigned fc3_out = N_OUTPUT_1;
+    typedef fc1_config fc1_config;
+    typedef relu1_config relu1_config;
+    typedef fc2_config fc2_config;
+    typedef relu2_config relu2_config;
+    typedef output1_config output1_config;
+    typedef softmax1_config softmax1_config;
+
 };
 
-struct dense_config2 {
+struct dense2_config {
     // add in all the layers of dnn2 here
     static const unsigned fc1_out = N_LAYER_6;
     static const unsigned fc2_out = N_LAYER_8;
     static const unsigned fc3_out = N_OUTPUT_2;
+    typedef fc4_config fc1_config;
+    typedef relu3_config relu1_config;
+    typedef fc5_config fc2_config;
+    typedef relu4_config relu2_config;
+    typedef output2_config output1_config;
+    typedef softmax2_config softmax1_config;
 };
 
-struct dense_config3 {
+struct dense3_config {
     // add in all the layers of dnn3 here
     static const unsigned fc1_out = N_LAYER_10;
     static const unsigned fc2_out = N_LAYER_12;
     static const unsigned fc3_out = N_OUTPUT_3;
+    typedef fc7_config fc1_config;
+    typedef relu5_config relu1_config;
+    typedef fc8_config fc2_config;
+    typedef relu6_config relu2_config;
+    typedef output3_config output1_config;
+    typedef softmax3_config softmax1_config;
 };
 
 
