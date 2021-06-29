@@ -360,6 +360,10 @@ struct dense1_config {
 
 struct dense2_config {
     // add in all the layers of dnn2 here
+    static const unsigned P = P;
+    static const unsigned D_e = D_e;
+    static const unsigned D_o = D_o;
+    static const unsigned N_o = N_o;
     static const unsigned fc1_out = N_LAYER_6;
     static const unsigned fc2_out = N_LAYER_8;
     static const unsigned fc3_out = N_OUTPUT_2;
@@ -373,6 +377,9 @@ struct dense2_config {
 
 struct dense3_config {
     // add in all the layers of dnn3 here
+    static const unsigned D_o = D_o;
+    static const unsigned N_o = N_o;
+    static const unsigned n_out = N_OUTPUT_3;
     static const unsigned fc1_out = N_LAYER_10;
     static const unsigned fc2_out = N_LAYER_12;
     static const unsigned fc3_out = N_OUTPUT_3;
