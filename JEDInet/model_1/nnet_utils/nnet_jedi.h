@@ -204,7 +204,7 @@ namespace nnet {
 
             // this dense layer needs a specific config that has n_in = 2P, n_out = N_e
             // pass in the weights somehow, probably in jedi() as parameter
-            nnet::dnn1<data_T, data_T, CONFIG_T::dense_config1>(cache1, E_col, w1, w2, w3, b1, b2, b3);
+            nnet::dnn1<data_T, data_T, CONFIG_T>(cache1, E_col, w1, w2, w3, b1, b2, b3);
 
             // copy E_col into cols of E
             for(int rows = 0; rows < CONFIG_T::D_e, rows++)
@@ -219,7 +219,7 @@ namespace nnet {
             data_T I[CONFIG_T::P][CONFIG_T::N_o],
             data_T E[CONFIG_T::D_e][CONFIG_T::N_e],
             data_T R_r_T[CONFIG_T::N_e][CONFIG_T::N_o],
-            res_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o]
+            res_T C[CONFIG_T::P + CONFIG_T::D_e][CONFIG_T::N_o]
             ) {
 
         // declare E_bar array
@@ -235,7 +235,7 @@ namespace nnet {
 
     template<class data_T, class res_T, typename CONFIG_T>
     void jedi_dnn2(
-            data_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o],
+            data_T C[CONFIG_T::P + CONFIG_T::D_e][CONFIG_T::N_o],
             res_T O[CONFIG_T::D_o][CONFIG_T::N_o],
             data_T w1[],
             data_T w2[],
@@ -254,7 +254,7 @@ namespace nnet {
 
             // this dense layer needs a specific config that has n_in = P+D_e, n_out = D_o
             // pass in the weights somehow, probably in jedi() as parameter
-            nnet::dnn2<data_T, data_T, CONFIG_T::dense_config2>(cache1, O_col, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
+            nnet::dnn2<data_T, data_T, CONFIG_T>(cache1, O_col, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
 
             // copy O_col into cols of O
             for(int rows = 0; rows < CONFIG_T::D_o, rows++)
@@ -288,7 +288,7 @@ namespace nnet {
 
         // run sigma_c final neural network on O -> output
         // shape D_o -> N, sum all rows of each column to achieve dimension D_o.
-        nnet::dnn3<data_T, data_T, CONFIG_T::dense_config3>(O_sum, res, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
+        nnet::dnn3<data_T, data_T, CONFIG_T>(O_sum, res, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
 
     }
 
@@ -348,7 +348,7 @@ namespace nnet {
     jedi_multiply<data_T, res_T, CONFIG_T::mult_3>(E, R_r_T, E_bar);
 
     // declare C array
-    data_T C[CONFIG_T::P_e + CONFIG_T::D_e][CONFIG_T::N_o];
+    data_T C[CONFIG_T::P + CONFIG_T::D_e][CONFIG_T::N_o];
 
     // concatenate I with E_bar
     jedi_concat<data_T, res_T, CONFIG_T::concat_2>(I, E_bar, C);
