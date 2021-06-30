@@ -18,7 +18,8 @@
 //
 #include <iostream>
 
-#include "myproject.h"
+#include "jedi.h"
+#include "../nnet_utils/nnet_jedi.h"
 
 #include "weights/w1_1.h"
 #include "weights/w2_1.h"
@@ -26,7 +27,7 @@
 #include "weights/b1_1.h"
 #include "weights/b2_1.h"
 #include "weights/b3_1.h"
-
+/*
 #include "weights/w1_2.h"
 #include "weights/w2_2.h"
 #include "weights/w3_2.h"
@@ -40,36 +41,17 @@
 #include "weights/b1_3.h"
 #include "weights/b2_3.h"
 #include "weights/b3_3.h"
+*/
 
-
-// put these parameters into parameters.h/defines.h later
-//hls-fpga-machine-learning insert numbers
-#define P = 16
-#define N_o = 4
-#define N_e = N_o * (N_o - 1)
-#define D_e = 10
-#define D_o = 10
-#define N_INPUT_1_1 P
-#define N_INPUT_1_2 N_o
-#define N_LAYER_2 30
-#define N_LAYER_4 15
-#define N_LAYER_6 30
-#define N_LAYER_8 15
-#define N_LAYER_10 30
-#define N_LAYER_12 15
-#define N_OUTPUT_1 10
-#define N_OUTPUT_2 10
-#define N_OUTPUT_3 5 // number of jet classes
-
-
-void myproject(
-        input_t I[][N_o]
-        data_T R_r[][N_e],
-        data_T R_r_T[][N_o], // R_r transposed
-        data_T R_s[][N_e],
-        result_t result[N_OUTPUT_3],
+void jedi(
+        input_t I[][N_o],
+        input_t R_r[][N_e],
+        input_t R_r_T[][N_o], // R_r transposed
+        input_t R_s[][N_e],
+        result_t result[N_OUTPUT_3]) {
+        /*
         unsigned short &const_size_in_1,
-        unsigned short &const_size_out_1) {
+        unsigned short &const_size_out_1) {*/
 
 
         // either call entire jedi (but then find a way to pass weights & biases)
@@ -81,18 +63,27 @@ void myproject(
         // call dnn2
         // call dnn3
 
+
         input_t B[2*N_o][N_e];
         nnet::jedi1<input_t, input_t, jedi1_config>(I, R_r, R_s, B);
+        for(int i = 0; i < 2*N_o; i++) {
+            for (int j = 0; j < N_e; j++)
+                std::cout << B[i][j] << " ";
+
+            std::cout << "\n";
+        }
 
         input_t E[D_e][N_e];
-        nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+        //nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+        std::cout << "jedi_dnn1 ran! \n";
 
-        input_t C[P_e + D_e][N_o];
-        nnet::jedi2<input_t, input_t, jedi2_config>(I, E, R_r_T, C);
+
+        input_t C[P + D_e][N_o];
+        //nnet::jedi2<input_t, input_t, jedi2_config>(I, E, R_r_T, C);
 
         input_t O[D_o][N_o];
-        nnet::jedi_dnn2<input_t, input_t, dense2_config>(C, O, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
+        //nnet::jedi_dnn2<input_t, input_t, dense2_config>(C, O, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
 
-        nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result);
+        //nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
 
 }

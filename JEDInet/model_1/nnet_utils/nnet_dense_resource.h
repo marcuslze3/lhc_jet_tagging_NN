@@ -22,7 +22,7 @@
 
 #include "nnet_common.h"
 #include "nnet_mult.h"
-#include "hls_stream.h"
+#include "../jedi/ap_types/hls_stream.h"
 #include <math.h>
 #include <assert.h>
 

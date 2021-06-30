@@ -23,7 +23,7 @@
 #include "nnet_common.h"
 #include "nnet_mult.h"
 #include "nnet_helpers.h"
-#include "hls_stream.h"
+#include "../jedi/ap_types/hls_stream.h"
 #include <math.h>
 
 namespace nnet {
@@ -93,7 +93,8 @@ void dense_latency(
                 CONFIG_T::template product<data_T, typename CONFIG_T::weight_t, typename CONFIG_T::accum_t>::limit(multiplier_limit);
             }
         int index = ii*CONFIG_T::n_out+jj;
-        mult[index] = CONFIG_T::template product<data_T, typename CONFIG_T::weight_t, typename CONFIG_T::accum_t>::product(cache, weights[index]);
+        mult[index] = CONFIG_T::template product<data_T, typename CONFIG_T::weight_t,
+                typename CONFIG_T::accum_t>::product(cache, weights[index]);
         }
     }
 

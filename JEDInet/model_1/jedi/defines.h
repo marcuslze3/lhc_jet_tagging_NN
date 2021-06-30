@@ -1,17 +1,17 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
-#include "ap_int.h"
-#include "ap_fixed.h"
-#include "nnet_utils/nnet_types.h"
+#include "ap_types/ap_int.h"
+#include "ap_types/ap_fixed.h"
+#include "../nnet_utils/nnet_types.h"
 
 //hls-fpga-machine-learning insert numbers
 // add macros e.g #define
-#define P = 16
-#define N_o = 4
-#define N_e = N_o * (N_o - 1)
-#define D_e = 10
-#define D_o = 10
+#define P 2 // change to 16, set to 2 for testing
+#define N_o  4
+#define N_e (N_o * (N_o - 1))
+#define D_e 10
+#define D_o  10
 #define N_INPUT_1_1 P
 #define N_INPUT_1_2 N_o
 #define N_LAYER_2 30
@@ -35,6 +35,7 @@ typedef ap_fixed<16,6> input_t;
 typedef ap_fixed<16,6> jedi2_t;
 typedef ap_fixed<16,6> jedi4_t;
 typedef ap_fixed<16,6> jedi6_t;
+typedef ap_fixed<16,6> result_t;
 
 typedef ap_fixed<16,6> layer2_t; // dense
 typedef ap_fixed<16,6> fc1_weight_t;
@@ -86,5 +87,15 @@ typedef ap_fixed<16,6> output3_weight_t;
 typedef ap_fixed<16,6> output3_bias_t;
 typedef ap_fixed<16,6> output3_softmax_default_t;
 typedef ap_fixed<16,6> layer19_t; // softmax
+
+typedef ap_fixed<16,6> fc7_weight_t;
+typedef ap_fixed<16,6> fc7_bias_t;
+
+typedef ap_fixed<16,6> fc8_weight_t;
+typedef ap_fixed<16,6> fc8_bias_t;
+
+typedef ap_fixed<16,6> fc9_weight_t;
+typedef ap_fixed<16,6> fc9_bias_t;
+
 
 #endif

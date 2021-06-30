@@ -20,20 +20,19 @@
 #ifndef MYPROJECT_H_
 #define MYPROJECT_H_
 
-#include "ap_int.h"
-#include "ap_fixed.h"
-#include "hls_stream.h"
+#include "ap_types/ap_int.h"
+#include "ap_types/ap_fixed.h"
+#include "ap_types/hls_stream.h"
 
 #include "defines.h"
-#include "parameters1.h"
+#include "parameters.h"
 
-void myproject(
-        input_t I[][N_o]
-        data_T R_r[][N_e],
-        data_T R_r_T[][N_o], // R_r transposed
-        data_T R_s[][N_e],
-        result_t result[N_OUTPUT_3],
-        unsigned short &const_size_in_1,
-        unsigned short &const_size_out_1);
+void jedi(
+        input_t I[][N_o],
+        input_t R_r[][N_e],
+        input_t R_r_T[][N_o], // R_r transposed
+        input_t R_s[][N_e],
+        result_t result[N_OUTPUT_3]
+        );
 
 #endif

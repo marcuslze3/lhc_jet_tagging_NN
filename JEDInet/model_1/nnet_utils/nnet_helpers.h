@@ -26,7 +26,7 @@
 #include <fstream>
 #include <algorithm>
 #include <map>
-#include "hls_stream.h"
+#include "../jedi/ap_types/hls_stream.h"
 
 namespace nnet {
 

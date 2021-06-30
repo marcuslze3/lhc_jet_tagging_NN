@@ -6,7 +6,7 @@
 #include "nnet_dense_latency.h"
 #include "nnet_dense_resource.h"
 #include "nnet_helpers.h"
-#include "hls_stream.h"
+#include "../jedi/ap_types/hls_stream.h"
 #include <math.h>
 
 namespace nnet {

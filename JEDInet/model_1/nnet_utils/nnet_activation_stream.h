@@ -21,8 +21,8 @@
 #define NNET_ACTIVATION_STREAM_H_
 
 #include <cmath>
-#include "ap_fixed.h"
-#include "hls_stream.h"
+#include "../jedi/ap_types/ap_fixed.h"
+#include "../jedi/ap_types/hls_stream.h"
 #include "nnet_common.h"
 #include "nnet_types.h"
 #include "nnet_stream.h"
