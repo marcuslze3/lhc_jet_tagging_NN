@@ -6,7 +6,7 @@
 // numpy array shape [10]
 
 input_t b3_1[N_OUTPUT_1] = {
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
 #endif

@@ -47,7 +47,7 @@ namespace nnet {
             }*/
 
             for (int j = 0; j < CONFIG_T::n_col2; j++) {
-                //pro[i][j] = 0;
+               res[i][j] = 0;
 
                 for (int k = 0; k < CONFIG_T::n_col1; k++)
                     //res[i][j] = res[i][j] + CONFIG_T::template product<data_T, data_T, res_T>::product(data1[i][k], data2[k][j]);
@@ -76,6 +76,7 @@ namespace nnet {
 
         // To store elements
         // of matrix B
+
         for (int i = 0; i < CONFIG_T::n_row2; i++) {
             for (int j = 0; j < CONFIG_T::n_col2; j++) {
                 res[i + CONFIG_T::n_row1][j] = data2[i][j];
@@ -88,6 +89,10 @@ namespace nnet {
     template <class data_t, class res_T, typename CONFIG_T>
     void dnn1(data_t input[], data_t w1[], data_t w2[], data_t w3[], data_t b1[],
               data_t b2[], data_t b3[], res_T res[]) {
+
+        for(int i = 0; i < 2*P; i++)
+            for(int j = 0; j < 30; j++)
+                std::cout<<w1[i+j];
         //  ============= Dense MLP layers 1: for transforming B into E ==================
         data_t layer2_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
@@ -144,6 +149,7 @@ namespace nnet {
     template <class data_t, class res_T, typename CONFIG_T>
     void dnn3(data_t input[], res_T res[], data_t w1[], data_t w2[], data_t w3[], data_t b1[],
               data_t b2[], data_t b3[]) {
+
         //  ============= Dense MLP layers 1: for transforming B into E ==================
         data_t layer2_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
@@ -194,6 +200,10 @@ namespace nnet {
             data_T b1[],
             data_T b2[],
             data_T b3[]) {
+
+        for(int i = 0; i < 2*P; i++)
+            for(int j = 0; j < 30; j++)
+                std::cout<<w1[i+j];
 
         data_T cache1[2 * CONFIG_T::P_p];
         data_T E_col[CONFIG_T::D_e_p];

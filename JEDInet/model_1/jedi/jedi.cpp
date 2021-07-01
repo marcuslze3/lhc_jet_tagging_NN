@@ -43,6 +43,8 @@
 #include "weights/b3_3.h"
 */
 
+
+
 void jedi(
         input_t I[][N_o],
         input_t R_r[][N_e],
@@ -64,17 +66,34 @@ void jedi(
         // call dnn3
 
 
-        input_t B[2*N_o][N_e];
+        input_t B[2*P][N_e];
+
         nnet::jedi1<input_t, input_t, jedi1_config>(I, R_r, R_s, B);
-        for(int i = 0; i < 2*N_o; i++) {
+
+
+        for(int i = 0; i < 2*P; i++) {
             for (int j = 0; j < N_e; j++)
                 std::cout << B[i][j] << " ";
 
             std::cout << "\n";
         }
+        std::cout << "================================================ \n";
+
+    for(int i = 0; i < 2*P; i++)
+        for(int j = 0; j < 30; j++)
+            std::cout<<w1_1[i+j];
 
         input_t E[D_e][N_e];
-        //nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+        nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+
+        for(int i = 0; i < D_e; i++) {
+            for (int j = 0; j < N_e; j++)
+                std::cout << E[i][j] << " ";
+
+            std::cout << "\n";
+        }
+
+
         std::cout << "jedi_dnn1 ran! \n";
 
 
@@ -87,3 +106,15 @@ void jedi(
         //nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
 
 }
+
+/*
+ * 2.84375 4.12793 4 4 3.32031 4.12793 4 4 3.34375 4.12793 4 4
+3.34375 4.12793 4 4 4 4 4 4 -3.50879 31.9521 4 4
+2.50098 4.12793 4 4 -16.8125 31.9531 4 4 2.60938 4.12793 4 4
+-2.76563 4.06348 4 4 -16.8125 31.9531 4 4 3.99902 3.99902 3.99902 3.99902
+-0.660156 0.12793 0 0 0.00976563 0 0 0 -0.6875 0.12793 0 0
+13.8516 0.0634766 0 0 -0.509766 0.12793 0 0 16.6328 0.0634766 0 0
+-0.660156 0.12793 0 0 -0.660156 0.12793 0 0 -0.640625 0.12793 0 0
+16.8359 0.0634766 0 0 -0.509766 0.12793 0 0 5.27441 0.0625 0 0
+
+ */
