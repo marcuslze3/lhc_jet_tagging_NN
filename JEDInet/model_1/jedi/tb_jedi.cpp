@@ -24,6 +24,5 @@ int main() {
     }
 
     std::cout << "\n";
-
     std::cout << "testbench ended \n";
 }
