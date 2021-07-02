@@ -263,7 +263,7 @@ struct softmax2_config : nnet::activ_config {
 
 // fc1 dnn3
 struct fc7_config : nnet::dense_config {
-    static const unsigned n_in = 2*P;
+    static const unsigned n_in = D_o;
     static const unsigned n_out = N_LAYER_10;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned strategy = nnet::latency;
