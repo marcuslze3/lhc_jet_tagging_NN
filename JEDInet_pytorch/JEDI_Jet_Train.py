@@ -170,6 +170,7 @@ def stats(predict, target):
     print("Overall: %s/%s = %s%%" % (sum(p_vals == t), len(t), sum(p_vals == t) * 100.0/len(t)))
     return sum(p_vals == t) * 100.0/len(t)
 
+
 best_perf = {
     30 : [50, 12,  6,  0,  2,  2,  0], #L 0.63
     50 : [50, 12, 14,  1,  2,  1,  0], #L 0.57
@@ -177,10 +178,12 @@ best_perf = {
     150: [10,  4, 14,  2,  2,  2,  0]  #L 0.62
 }
 sumO_best_perf = {
+	# hidden, De, Do, fr_activation=0, fo_activation=0, fc_activation=0, optimizer = 0
     30 : [ 6,  8,  6, 0, 1, 1, 0], #L 0.84
     50 : [50, 12, 14, 0, 0, 2, 0], #L 0.58
     100: [30,  4,  4, 2, 0, 2, 0], #L 0.62
-    150: [50, 14, 10, 2, 2, 2, 0]  #L 0.55
+    150: [30, 10, 10, 2, 2, 2, 0]  #L 0.55
+    #150: [50, 14, 10, 2, 2, 2, 0]  #L 0.55
 }
 # ### Prepare Dataset
 nParticles = int(sys.argv[1])
@@ -201,17 +204,17 @@ params = ['j1_px', 'j1_py' , 'j1_pz' , 'j1_e' , 'j1_erel' , 'j1_pt' , 'j1_ptrel'
           'j1_etarot' , 'j1_phi' , 'j1_phirel' , 'j1_phirot', 'j1_deltaR' , 'j1_costheta' , 'j1_costhetarel']
 
 val_split = 0.3
-batch_size = 100
-n_epochs = 1000
-n_epochs = 20
+batch_size = 32
+n_epochs = 100
+n_epochs = 15
 patience = 10
 
 import glob
 import os
-
+"""
 if True:
-	inputTrainFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/train/jetImage*_%sp*.h5" %nParticles)
-	inputValFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/val/jetImage*_%sp*.h5" %nParticles)
+	inputFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/train/jetImage*_%sp*.h5" %nParticles)
+	#inputValFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/val/jetImage*_%sp*.h5" %nParticles)
 		
 if os.path.isdir('/data/ML/mpierini'):
     inputTrainFiles = glob.glob("/data/ML/mpierini/hls-fml/jetImage*_%sp*.h5" %nParticles)
@@ -231,6 +234,13 @@ elif os.path.isdir('/bigdata/shared'):
     inputTrainFiles = glob.glob("/bigdata/shared/hls-fml/NEWDATA/jetImage*_%sp*.h5" %nParticles)
     inputValFiles = glob.glob("/bigdata/shared/hls-fml/NEWDATA/VALIDATION/jetImage*_%sp*.h5" %nParticles)        
 
+from sklearn.model_selection import train_test_split
+nFilesVal = int(len(inputFiles)/3)
+inputValFiles = []
+inputTrainFiles = inputFiles.copy()
+for iFile in range(0,nFilesVal):
+        inputValFiles.append(inputFiles[iFile])
+        inputTrainFiles.remove(inputFiles[iFile])
 
 mymodel = GraphNet(nParticles, len(labels), params, int(x[0]), int(x[1]), int(x[2]), 
                    fr_activation=int(x[3]),  fo_activation=int(x[4]), fc_activation=int(x[5]), optimizer=int(x[6]), verbose=True)
@@ -266,8 +276,13 @@ for i in range(n_epochs):
             data, target = data.cuda(), target.cuda()
         data, target = Variable(data), Variable(target)
         optimizer.zero_grad()
+        print(data.shape)
+        print(data)
+        print("target: ", target)
         out = mymodel(data)
         acc = accuracy(out, target)
+        #print("out: ", out)
+        #print("target: ", target)
         l = loss(out, target)
         l.backward()
         optimizer.step()
@@ -312,5 +327,117 @@ f.create_dataset('train_loss', data= np.asarray(loss_train), compression='gzip')
 f.create_dataset('val_loss', data= np.asarray(loss_val), compression='gzip')
 
 # the best model
-torch.save(mymodel.state_dict(), "%s/IN%s_bestmodel.params" %(loc, '_sumO' if mymodel.sum_O else ''))
+torch.save(mymodel.state_dict(), "%s/IN%s_bestmodel4.params" %(loc, '_sumO' if mymodel.sum_O else ''))
+"""
+#  ===== testing =====
+import tqdm
+
+loc='IN_kFold_%s'%(sys.argv[1])
+
+mymodel = GraphNet(nParticles, len(labels), params, int(x[0]), int(x[1]), int(x[2]), 
+                   fr_activation=int(x[3]),  fo_activation=int(x[4]), fc_activation=int(x[5]), optimizer=int(x[6]), verbose=True)
+
+mymodel.load_state_dict(torch.load("%s/IN%s_bestmodel3.params" %(loc, '_sumO' if mymodel.sum_O else '')))
+
+inputTestFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/val/jetImage*_%sp*.h5" %nParticles)
+
+loss = nn.CrossEntropyLoss(reduction='mean')
+
+test_set = InEventLoader(file_names=inputTestFiles, nP=nParticles,
+                              feature_name ='jetConstituentList',label_name = 'jets', verbose=False)
+test_loader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
+
+# PRINTING DATA
+
+import sys
+import numpy
+
+for mydict in test_loader:
+	data = mydict['jetConstituentList']
+	target = mydict['jets']
+	np.set_printoptions(suppress=True)
+	np.set_printoptions(threshold=sys.maxsize)
+	print(data.numpy()[0].shape)
+	print(repr(data.numpy()[0]))
+
+# END PRINT DATA
+
+nBatches_per_test_epoch = len(test_set)/batch_size
+print("nBatches_per_test_epoch: %i" %nBatches_per_test_epoch)
+
+# testing
+t = tqdm.tqdm(enumerate(test_loader), total = len(test_set)/batch_size)
+mymodel.eval()
+#if not os.path.isfile("%s/testing%s.h5" %(loc, '_sumO' if mymodel.sum_O else '')):
+if True:
+    with torch.no_grad():
+        out_tests = []
+        print("here")
+        targets = []
+        for batch_idx, mydict in t:
+            data = mydict['jetConstituentList']
+            target = mydict['jets']
+            if args_cuda:
+                data, target = data.cuda(), target.cuda()
+            out_test = mymodel(data)
+            out_tests  += [out_test]
+            targets  += [target]
+            l_test = loss(out_test, target)
+            acc_test = accuracy(out_test, target)
+            loss_test_item = l_test.cpu().data.numpy()
+            t.set_description("test batch loss = %.5f, acc = %.5f" % (loss_test_item, acc_test))
+            t.refresh() # to show immediately the update
+        targets = torch.cat(targets,0)
+        out_tests = torch.cat(out_tests,0)
+        acc_test = accuracy(out_tests, targets)
+        loss_test = loss(out_tests, targets)
+        if mymodel.verbose: 
+            print("Testing Loss: %f" %loss_test)
+            print("Testing Acc: %f" %acc_test)
+
+        targets = targets.cpu().data.numpy()
+        out_tests = out_tests.cpu().data.numpy()
+        with h5py.File("%s/testing%s.h5" %(loc, '_sumO' if mymodel.sum_O else ''), "w") as f:
+            f.create_dataset('out_test', data=out_tests, compression='gzip')
+            f.create_dataset('target_test', data=targets, compression='gzip')
+else:
+    with h5py.File("%s/testing%s.h5" %(loc, '_sumO' if mymodel.sum_O else ''), "r") as f:
+        out_tests = f['out_test'][()]
+        targets = f['target_test'][()]
+        
+"""
+N = 3
+Nr = N * (N-1)
+receiver_sender_list = [i for i in itertools.product(range(N), range(N)) if i[0]!=i[1]]
+print(receiver_sender_list)
+Rr = torch.zeros(N, Nr)
+Rs = torch.zeros(N, Nr)
+for i, (r, s) in enumerate(receiver_sender_list):
+	Rr[r, i] = 1
+	Rs[s, i] = 1
+
+
+print(Rs)  
+print(Rr)  
+
+
+print('Rr: ', mymodel.Rr)
+print(mymodel.Rr.shape)
+np.savetxt('Rr.txt', mymodel.Rr.cpu().numpy())
+print('Rs: ', mymodel.Rs)
+"""
+"""
+np.set_printoptions(suppress=True)
+
+for i, params in enumerate(mymodel.parameters()):
+	#print('param %s'%(i))
+	print(params.data.cpu().numpy().flatten().shape)
+	#print(repr(params.data.cpu().numpy().flatten()))
+	#np.savetxt('params/param_%s.txt'%(i), params.data.cpu().numpy())
+	#print(type(params.data))
+
+inputTestFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/val/jetImage*_%sp*.h5" %nParticles)
+
+mymodel.load_state_dict(torch.load("%s/IN%s_bestmodel.params" %(loc, '_sumO' if mymodel.sum_O else '')))
+"""
 

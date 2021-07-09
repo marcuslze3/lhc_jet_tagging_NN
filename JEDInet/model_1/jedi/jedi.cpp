@@ -42,34 +42,37 @@
 #include "weights/b2_3.h"
 #include "weights/b3_3.h"
 
+void transpose(int Rr[][3], int RrT[][2]) {
+
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            RrT[j][i] = Rr[i][j];
+        }
+    }
+
+}
 
 
-
-void jedi(
+/*void jedi(
         input_t I[][N_o],
         input_t R_r[][N_e],
         input_t R_r_T[][N_o], // R_r transposed
         input_t R_s[][N_e],
         result_t result[N_OUTPUT_3]) {
-        /*
-        unsigned short &const_size_in_1,
-        unsigned short &const_size_out_1) {*/
+        */
+void jedi(
+        input_t I[][N_o],
+        result_t result[N_OUTPUT_3]) {
 
+        input_t Rr[N_o][N_e];
+        input_t Rr_T[N_e][N_o];
+        input_t Rs[N_o][N_e];
 
-        // either call entire jedi (but then find a way to pass weights & biases)
-        // OR
-        // jedi multiply and concat
-        // call dnn1
-        // jedi multiply
-        // jedi concat
-        // call dnn2
-        // call dnn3
-
+        nnet::assign_matrices<input_t, input_t, jedi1_config>(Rr, Rs);
+        nnet::transposeRr<input_t, input_t, jedi1_config>(Rr, Rr_T);
 
         input_t B[2*P][N_e];
-
-        nnet::jedi1<input_t, input_t, jedi1_config>(I, R_r, R_s, B);
-
+        nnet::jedi1<input_t, input_t, jedi1_config>(I, Rr, Rs, B);
 
         for(int i = 0; i < 2*P; i++) {
             for (int j = 0; j < N_e; j++)
@@ -82,8 +85,17 @@ void jedi(
         input_t E[D_e][N_e];
         nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
 
+        for(int i = 0; i < D_e; i++) {
+            for (int j = 0; j < N_e; j++)
+                std::cout << E[i][j] << " ";
+
+            std::cout << "\n";
+        }
+
+        std::cout << "================================================ \n";
+
         input_t C[P + D_e][N_o];
-        nnet::jedi2<input_t, input_t, jedi2_config>(I, E, R_r_T, C);
+        nnet::jedi2<input_t, input_t, jedi2_config>(I, E, Rr_T, C);
 
         for(int i = 0; i < P+D_e; i++) {
             for (int j = 0; j < N_o; j++)
@@ -101,7 +113,7 @@ void jedi(
 
             std::cout << "\n";
         }
+        std::cout << "================================================ \n";
 
         nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
-
 }

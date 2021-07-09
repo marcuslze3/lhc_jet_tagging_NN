@@ -17,12 +17,13 @@ int main() {
 
     jedi(input, R_r, R_r_T, R_s, result);
 
-    std::cout << "the softmax output for n = " << N_OUTPUT_3 << " is: ";
+    std::cout << "the final selu output for n = " << N_OUTPUT_3 << " is: ";
 
     for(int i = 0; i < N_OUTPUT_3; i++) {
         std::cout << result[i] << ", ";
     }
 
     std::cout << "\n";
+
     std::cout << "testbench ended \n";
 }
