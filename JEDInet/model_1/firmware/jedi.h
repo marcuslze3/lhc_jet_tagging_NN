@@ -27,6 +27,7 @@
 #include "defines.h"
 #include "parameters.h"
 
+/*
 void jedi(
         input_t I[][N_o],
         input_t R_r[][N_e],
@@ -34,5 +35,10 @@ void jedi(
         input_t R_s[][N_e],
         result_t result[N_OUTPUT_3]
         );
+*/
+
+void jedi(
+        input_t I[][N_o],
+        result_t result[N_OUTPUT_3]);
 
 #endif
