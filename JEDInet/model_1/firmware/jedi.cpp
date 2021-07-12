@@ -42,49 +42,53 @@
 #include "weights/b2_3.h"
 #include "weights/b3_3.h"
 
-void transpose(int Rr[][3], int RrT[][2]) {
 
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 3; j++) {
-            RrT[j][i] = Rr[i][j];
-        }
-    }
-
-}
-
-
-/*void jedi(
-        input_t I[][N_o],
-        input_t R_r[][N_e],
-        input_t R_r_T[][N_o], // R_r transposed
-        input_t R_s[][N_e],
-        result_t result[N_OUTPUT_3]) {
-        */
 void jedi(
         input_t I[][N_o],
+        input_t Rr[][N_e],
+        input_t Rr_T[][N_o], // R_r transposed
+        input_t Rs[][N_e],
         result_t result[N_OUTPUT_3]) {
-
-        input_t Rr[N_o][N_e];
-        input_t Rr_T[N_e][N_o];
-        input_t Rs[N_o][N_e];
-
-        nnet::assign_matrices<input_t, input_t, jedi1_config>(Rr, Rs);
-        nnet::transposeRr<input_t, input_t, jedi1_config>(Rr, Rr_T);
+        
+/*void jedi(
+        input_t I[][N_o],
+        result_t result[N_OUTPUT_3]) {*/
+		
+		std::cout << "ENTERED JEDI.cpp \n"; //debugging
+		for(int i = 0; i < 10; i++)
+			std::cout << I[0][i] << " ";
+		
+		//auto Rr = new input_t [N_o][N_e];
+        //auto Rr_T = new input_t [N_e][N_o];
+        //auto Rs = new input_t [N_o][N_e];
+        
+        //std::cout << "ASSIGNING MATRICES \n"; //debugging
+		// think about pre loading Rr and Rs, not assigning... takes long
+        //nnet::assign_matrices<input_t, input_t, jedi1_config>(Rr, Rs);
+        //std::cout << "TRANSPOSING Rr MATRICES \n"; //debugging
+        //nnet::transposeRr<input_t, input_t, jedi1_config>(Rr, Rr_T);
 
         input_t B[2*P][N_e];
         nnet::jedi1<input_t, input_t, jedi1_config>(I, Rr, Rs, B);
-
+        std::cout << N_e << "\n";
+        std::cout << "C++: PRINTING MATRIX B \n";
+        for(int i = 0; i < 10; i++) 
+			std::cout << B[0][i] << " ";
+		std::cout << std::endl;
+		
+		/*
         for(int i = 0; i < 2*P; i++) {
             for (int j = 0; j < N_e; j++)
                 std::cout << B[i][j] << " ";
 
             std::cout << "\n";
         }
-        std::cout << "================================================ \n";
+        std::cout << "================================================ \n";*/
 
         input_t E[D_e][N_e];
         nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
-
+		
+		/*
         for(int i = 0; i < D_e; i++) {
             for (int j = 0; j < N_e; j++)
                 std::cout << E[i][j] << " ";
@@ -92,28 +96,45 @@ void jedi(
             std::cout << "\n";
         }
 
-        std::cout << "================================================ \n";
+        std::cout << "================================================ \n";*/
 
         input_t C[P + D_e][N_o];
         nnet::jedi2<input_t, input_t, jedi2_config>(I, E, Rr_T, C);
-
+		
+		/*
         for(int i = 0; i < P+D_e; i++) {
             for (int j = 0; j < N_o; j++)
                 std::cout << C[i][j] << " ";
 
             std::cout << "\n";
         }
-        std::cout << "================================================ \n";
+        std::cout << "================================================ \n";*/
 
         input_t O[D_o][N_o];
         nnet::jedi_dnn2<input_t, input_t, dense2_config>(C, O, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
+        
+        /*
         for(int i = 0; i < D_o; i++) {
             for (int j = 0; j < N_o; j++)
                 std::cout << O[i][j] << " ";
 
             std::cout << "\n";
         }
-        std::cout << "================================================ \n";
-
+        std::cout << "================================================ \n";*/
+		
         nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
+        
+        // free heap
+        /*
+        for(int i = 0; i < N_o; i++) {
+			delete[] Rr[i];
+			delete[] Rr[i];
+		}
+		for(int i = 0; i < N_e; i++) {
+			delete[] Rr_T[i];
+		}
+		delete[] Rr;
+		delete[] Rr_T;
+		delete[] Rs;*/
+        
 }

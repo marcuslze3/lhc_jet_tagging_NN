@@ -20,7 +20,7 @@
 #ifndef NNET_COMMON_H_
 #define NNET_COMMON_H_
 
-#include "../jedi/ap_types/ap_fixed.h"
+#include "../firmware/ap_types/ap_fixed.h"
 
 // This is a substitute for "ceil(n/(float)d)".
 #define DIV_ROUNDUP(n,d) ((n + d - 1) / d)

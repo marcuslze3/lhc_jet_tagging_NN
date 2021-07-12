@@ -23,7 +23,7 @@
 #include "nnet_common.h"
 #include "nnet_mult.h"
 #include "nnet_helpers.h"
-#include "../jedi/ap_types/hls_stream.h"
+#include "../firmware/ap_types/hls_stream.h"
 #include <math.h>
 
 namespace nnet {

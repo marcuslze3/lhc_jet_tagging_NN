@@ -27,18 +27,18 @@
 #include "defines.h"
 #include "parameters.h"
 
+
+void jedi(
+        input_t I[][N_o],
+        input_t Rr[][N_e],
+        input_t Rr_T[][N_o], // R_r transposed
+        input_t Rs[][N_e],
+        result_t result[N_OUTPUT_3]
+        );
+
 /*
 void jedi(
         input_t I[][N_o],
-        input_t R_r[][N_e],
-        input_t R_r_T[][N_o], // R_r transposed
-        input_t R_s[][N_e],
-        result_t result[N_OUTPUT_3]
-        );
-*/
-
-void jedi(
-        input_t I[][N_o],
         result_t result[N_OUTPUT_3]);
-
+*/
 #endif

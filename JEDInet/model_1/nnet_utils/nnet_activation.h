@@ -21,7 +21,7 @@
 #define NNET_ACTIVATION_H_
 
 #include <cmath>
-#include "../jedi/ap_types/ap_fixed.h"
+#include "../firmware/ap_types/ap_fixed.h"
 #include "nnet_common.h"
 
 namespace nnet {

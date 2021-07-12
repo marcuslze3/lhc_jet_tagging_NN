@@ -36,7 +36,7 @@
 #include "../nnet_utils/nnet_dense.h"
 
 //hls-fpga-machine-learning insert layer-config
-struct mult_1 {
+struct mult_1_struct {
     static const unsigned n_row1 = P;
     static const unsigned n_col1 = N_o;
     static const unsigned n_row2 = N_o;
@@ -46,7 +46,7 @@ struct mult_1 {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct mult_2{
+struct mult_2_struct{
     static const unsigned n_row1 = P;
     static const unsigned n_col1 = N_o;
     static const unsigned n_row2 = N_o;
@@ -56,7 +56,7 @@ struct mult_2{
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct mult_3 {
+struct mult_3_struct {
     static const unsigned n_row1 = D_e;
     static const unsigned n_col1 = N_e;
     static const unsigned n_row2 = N_e;
@@ -66,14 +66,14 @@ struct mult_3 {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct concat_1 {
+struct concat_1_struct {
     static const unsigned n_row1 = P;
     static const unsigned n_col1 = N_e;
     static const unsigned n_row2 = P;
     static const unsigned n_col2 = N_e;
 };
 
-struct concat_2 {
+struct concat_2_struct {
     static const unsigned n_row1 = P;
     static const unsigned n_col1 = N_o;
     static const unsigned n_row2 = D_e;
@@ -84,9 +84,9 @@ struct jedi1_config {
     static const unsigned P_p = P;
     static const unsigned N_o_p = N_o;
     static const unsigned N_e_p = N_e;
-    typedef mult_1 mult_1;
-    typedef mult_2 mult_2;
-    typedef concat_1 concat_1;
+    typedef mult_1_struct mult_1;
+    typedef mult_2_struct mult_2;
+    typedef concat_1_struct concat_1;
 
 };
 
@@ -95,13 +95,13 @@ struct jedi2_config {
     static const unsigned N_o_p = N_o;
     static const unsigned N_e_p = N_e;
     static const unsigned D_e_p = D_e;
-    typedef mult_3 mult_3;
-    typedef concat_2 concat_2;
+    typedef mult_3_struct mult_3;
+    typedef concat_2_struct concat_2;
 
 };
 
 // fc1 dnn1
-struct fc1_config : nnet::dense_config {
+struct fc1_config_struct : nnet::dense_config {
     static const unsigned n_in = 2*P;
     static const unsigned n_out = N_LAYER_2;
     static const unsigned io_type = nnet::io_parallel;
@@ -119,7 +119,7 @@ struct fc1_config : nnet::dense_config {
 };
 
 // fc1_relu
-struct relu1_config : nnet::activ_config {
+struct relu1_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_2;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -128,7 +128,7 @@ struct relu1_config : nnet::activ_config {
 };
 
 // fc2 dnn1
-struct fc2_config : nnet::dense_config {
+struct fc2_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_2;
     static const unsigned n_out = N_LAYER_4;
     static const unsigned io_type = nnet::io_parallel;
@@ -145,7 +145,7 @@ struct fc2_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct relu2_config : nnet::activ_config {
+struct relu2_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_4;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -154,7 +154,7 @@ struct relu2_config : nnet::activ_config {
 };
 
 // fc3 dnn1
-struct output1_config : nnet::dense_config {
+struct output1_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_4;
     static const unsigned n_out = N_OUTPUT_1;
     static const unsigned io_type = nnet::io_parallel;
@@ -171,7 +171,7 @@ struct output1_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct softmax1_config : nnet::activ_config {
+struct softmax1_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_1;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -182,7 +182,7 @@ struct softmax1_config : nnet::activ_config {
 };
 
 // fc1 dnn2
-struct fc4_config : nnet::dense_config {
+struct fc4_config_struct : nnet::dense_config {
     static const unsigned n_in = P+D_e;
     static const unsigned n_out = N_LAYER_6;
     static const unsigned io_type = nnet::io_parallel;
@@ -199,7 +199,7 @@ struct fc4_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct relu3_config : nnet::activ_config {
+struct relu3_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_6;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -208,7 +208,7 @@ struct relu3_config : nnet::activ_config {
 };
 
 // fc2 dnn2
-struct fc5_config : nnet::dense_config {
+struct fc5_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_6;
     static const unsigned n_out = N_LAYER_8;
     static const unsigned io_type = nnet::io_parallel;
@@ -225,7 +225,7 @@ struct fc5_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct relu4_config : nnet::activ_config {
+struct relu4_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_8;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -234,7 +234,7 @@ struct relu4_config : nnet::activ_config {
 };
 
 // fc3 dnn2
-struct output2_config : nnet::dense_config {
+struct output2_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_8;
     static const unsigned n_out = N_OUTPUT_2;
     static const unsigned io_type = nnet::io_parallel;
@@ -251,7 +251,7 @@ struct output2_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct softmax2_config : nnet::activ_config {
+struct softmax2_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_2;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -262,7 +262,7 @@ struct softmax2_config : nnet::activ_config {
 };
 
 // fc1 dnn3
-struct fc7_config : nnet::dense_config {
+struct fc7_config_struct : nnet::dense_config {
     static const unsigned n_in = D_o;
     static const unsigned n_out = N_LAYER_10;
     static const unsigned io_type = nnet::io_parallel;
@@ -279,7 +279,7 @@ struct fc7_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct relu5_config : nnet::activ_config {
+struct relu5_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_10;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -288,7 +288,7 @@ struct relu5_config : nnet::activ_config {
 };
 
 // fc2 dnn3
-struct fc8_config : nnet::dense_config {
+struct fc8_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_10;
     static const unsigned n_out = N_LAYER_12;
     static const unsigned io_type = nnet::io_parallel;
@@ -305,7 +305,7 @@ struct fc8_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct relu6_config : nnet::activ_config {
+struct relu6_config_struct : nnet::activ_config {
     static const unsigned n_in = N_LAYER_12;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -314,7 +314,7 @@ struct relu6_config : nnet::activ_config {
 };
 
 // fc3 dnn3
-struct output3_config : nnet::dense_config {
+struct output3_config_struct : nnet::dense_config {
     static const unsigned n_in = N_LAYER_12;
     static const unsigned n_out = N_OUTPUT_3;
     static const unsigned io_type = nnet::io_parallel;
@@ -331,7 +331,7 @@ struct output3_config : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
-struct softmax3_config : nnet::activ_config {
+struct softmax3_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_3;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
@@ -351,12 +351,12 @@ struct dense1_config {
     static const unsigned fc1_out = N_LAYER_2;
     static const unsigned fc2_out = N_LAYER_4;
     static const unsigned fc3_out = N_OUTPUT_1;
-    typedef fc1_config fc1_config;
-    typedef relu1_config relu1_config;
-    typedef fc2_config fc2_config;
-    typedef relu2_config relu2_config;
-    typedef output1_config output1_config;
-    typedef softmax1_config softmax1_config;
+    typedef fc1_config_struct fc1_config;
+    typedef relu1_config_struct relu1_config;
+    typedef fc2_config_struct fc2_config;
+    typedef relu2_config_struct relu2_config;
+    typedef output1_config_struct output1_config;
+    typedef softmax1_config_struct softmax1_config;
 
 };
 
@@ -369,12 +369,12 @@ struct dense2_config {
     static const unsigned fc1_out = N_LAYER_6;
     static const unsigned fc2_out = N_LAYER_8;
     static const unsigned fc3_out = N_OUTPUT_2;
-    typedef fc4_config fc4_config;
-    typedef relu3_config relu3_config;
-    typedef fc5_config fc5_config;
-    typedef relu4_config relu4_config;
-    typedef output2_config output2_config;
-    typedef softmax2_config softmax2_config;
+    typedef fc4_config_struct fc4_config;
+    typedef relu3_config_struct relu3_config;
+    typedef fc5_config_struct fc5_config;
+    typedef relu4_config_struct relu4_config;
+    typedef output2_config_struct output2_config;
+    typedef softmax2_config_struct softmax2_config;
 };
 
 struct dense3_config {
@@ -385,12 +385,12 @@ struct dense3_config {
     static const unsigned fc1_out = N_LAYER_10;
     static const unsigned fc2_out = N_LAYER_12;
     static const unsigned fc3_out = N_OUTPUT_3;
-    typedef fc7_config fc7_config;
-    typedef relu5_config relu5_config;
-    typedef fc8_config fc8_config;
-    typedef relu6_config relu6_config;
-    typedef output3_config output3_config;
-    typedef softmax3_config softmax3_config;
+    typedef fc7_config_struct fc7_config;
+    typedef relu5_config_struct relu5_config;
+    typedef fc8_config_struct fc8_config;
+    typedef relu6_config_struct relu6_config;
+    typedef output3_config_struct output3_config;
+    typedef softmax3_config_struct softmax3_config;
 };
 
 #endif

@@ -25,14 +25,14 @@
 #include "nnet_activation.h"
 #include "nnet_dense.h"
 #include "nnet_helpers.h"
-#include "../jedi/ap_types/hls_stream.h"
+#include "../firmware/ap_types/hls_stream.h"
 #include <math.h>
-#include "../jedi/weights/w1_1.h"
-#include "../jedi/weights/b1_1.h"
-#include "../jedi/weights/w2_1.h"
-#include "../jedi/weights/b2_1.h"
-#include "../jedi/weights/w3_1.h"
-#include "../jedi/weights/b3_1.h"
+#include "../firmware/weights/w1_1.h"
+#include "../firmware/weights/b1_1.h"
+#include "../firmware/weights/w2_1.h"
+#include "../firmware/weights/b2_1.h"
+#include "../firmware/weights/w3_1.h"
+#include "../firmware/weights/b3_1.h"
 
 namespace nnet {
 
@@ -44,6 +44,9 @@ namespace nnet {
             data_T    data2[CONFIG_T::n_row2][CONFIG_T::n_col2],
             res_T     res[CONFIG_T::n_row1][CONFIG_T::n_col2]) // n_col1 = n_row2
     {
+		std::cout << "C++ PRINTING X: \n";
+		for(int i= 0; i < 10; i++)
+			std::cout << data1[0][i];
 
         // Do the matrix-multiply
         Product1: for (int i = 0; i < CONFIG_T::n_row1; i++) {

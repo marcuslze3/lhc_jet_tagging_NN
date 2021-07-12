@@ -31,7 +31,7 @@ typedef ap_fixed<16,6> jedi6_t;
 // add types e.g typedef ap_fixed<16,6> input_t
 //hls-fpga-machine-learning insert layer-precision
 typedef ap_fixed<16,6> model_default_t;
-typedef ap_fixed<16,6> input_t;
+typedef ap_fixed<16,6> input_t; // default <16,6>, changed to <16,10>
 typedef ap_fixed<16,6> jedi2_t;
 typedef ap_fixed<16,6> jedi4_t;
 typedef ap_fixed<16,6> jedi6_t;

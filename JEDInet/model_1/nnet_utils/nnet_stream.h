@@ -2,7 +2,7 @@
 #ifndef NNET_STREAM_H
 #define NNET_STREAM_H
 
-#include "../jedi/ap_types/hls_stream.h"
+#include "../firmware/ap_types/hls_stream.h"
 
 namespace nnet {
 

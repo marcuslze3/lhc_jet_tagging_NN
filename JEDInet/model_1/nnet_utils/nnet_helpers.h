@@ -26,7 +26,7 @@
 #include <fstream>
 #include <algorithm>
 #include <map>
-#include "../jedi/ap_types/hls_stream.h"
+#include "../firmware/ap_types/hls_stream.h"
 
 namespace nnet {
 
@@ -162,6 +162,17 @@ void convert_data(srcType *src, dstType *dst) {
         dst[i] = dstType(src[i]);
     }
 }
+
+// 3d version of convert_data
+template<class srcType, class dstType,size_t SIZE_ROW, size_t SIZE_COL>
+void convert_data(srcType src[][SIZE_COL], dstType dst[][SIZE_COL]) {
+    for (size_t i = 0; i < SIZE_ROW; i++) {
+		for (size_t j = 0; j < SIZE_COL; j++) {
+			dst[i][j] = dstType(src[i][j]);
+		}
+    }
+}
+
 
 template<class srcType, class dstType, size_t SIZE>
 void convert_data(srcType *src, hls::stream<dstType> &dst) {
