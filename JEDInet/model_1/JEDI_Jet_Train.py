@@ -175,12 +175,20 @@ class GraphNet(nn.Module):
         print(Orr[0][0][:10])
         B = torch.cat([Orr, Ors], 1)
         print("PYTHON: Matrix B after concatenation:")
-        print(B.shape)
-        print(B[0][0][:10])
+        #print(B.view(-1, 2 * self.P + self.Dr).shape)
+        #np.savetxt('params/B.txt', B[0][:32][0].data.cpu().numpy())
+        A = []
+        for i in range(32):
+            A.append(B[0][i][0])
+		
+        np.savetxt('params/B.txt', np.array(A))
+        print(np.array(A))
         ### First MLP ###
         B = torch.transpose(B, 1, 2).contiguous()
         if self.fr_activation ==2:
-            B = nn.functional.selu(self.fr1(B.view(-1, 2 * self.P + self.Dr)))
+            B = self.fr1(B.view(-1, 2 * self.P + self.Dr))
+            #B = nn.functional.selu(self.fr1(B.view(-1, 2 * self.P + self.Dr)))
+            B = nn.functional.selu(B)
             B = nn.functional.selu(self.fr2(B))
             E = nn.functional.selu(self.fr3(B).view(-1, self.Nr, self.De))            
         elif self.fr_activation ==1:
@@ -193,6 +201,13 @@ class GraphNet(nn.Module):
             E = nn.functional.relu(self.fr3(B).view(-1, self.Nr, self.De))
         del B
         E = torch.transpose(E, 1, 2).contiguous()
+        print("PYTHON: Matrix E after dnn1:")
+        print(E.shape)
+        #print(E[0][0][:10])
+        A = []
+        for i in range(10):
+            A.append(E[0][i][0])
+        print(np.array(A))
         Ebar = self.tmul(E, torch.transpose(self.Rr, 0, 1).contiguous())
         del E
         C = torch.cat([x, Ebar], 1)
@@ -494,7 +509,10 @@ if True:
             #print(data[0][0][:150])
             #print(out_test)
             #print(target)
-            y_hls = predict(data.cpu().numpy(), mymodel.Rr, torch.transpose(mymodel.Rr, 0, 1).contiguous(), mymodel.Rs) # JEDI HLS PREDICTION   
+            Rr = mymodel.Rr
+            Rr_T = torch.transpose(mymodel.Rr, 0, 1).contiguous()
+            Rs = mymodel.Rs
+            y_hls = predict(data.cpu().numpy(), Rr, Rr_T, Rs) # JEDI HLS PREDICTION   
             print(y_hls)
             print(out_test)
             
@@ -526,11 +544,8 @@ else:
     with h5py.File("%s/testing%s.h5" %(loc, '_sumO' if mymodel.sum_O else ''), "r") as f:
         out_tests = f['out_test'][()]
         targets = f['target_test'][()]
-       
-       
-#print('Predicting the test set with the hls model...')
-#y_hls = predict(       
- 
+        
+      
 """
 N = 3
 Nr = N * (N-1)
@@ -551,19 +566,15 @@ print('Rr: ', mymodel.Rr)
 print(mymodel.Rr.shape)
 np.savetxt('Rr.txt', mymodel.Rr.cpu().numpy())
 print('Rs: ', mymodel.Rs)
-"""
-"""
+
+
+#printing parameters of model
 np.set_printoptions(suppress=True)
 
 for i, params in enumerate(mymodel.parameters()):
-	#print('param %s'%(i))
-	print(params.data.cpu().numpy().flatten().shape)
-	#print(repr(params.data.cpu().numpy().flatten()))
+	print('param %s'%(i))
+	print(params.data.cpu().numpy().transpose().shape)
+	print(repr(params.data.cpu().numpy().transpose().flatten()))
 	#np.savetxt('params/param_%s.txt'%(i), params.data.cpu().numpy())
 	#print(type(params.data))
-
-inputTestFiles = glob.glob("/mnt/ccnas2/bdp/mzl20/proj_conda/lhc_jet_tagging_NN/JEDInet_pytorch/val/jetImage*_%sp*.h5" %nParticles)
-
-mymodel.load_state_dict(torch.load("%s/IN%s_bestmodel.params" %(loc, '_sumO' if mymodel.sum_O else '')))
 """
-

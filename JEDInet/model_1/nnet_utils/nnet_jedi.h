@@ -159,10 +159,21 @@ namespace nnet {
             for(int j = 0; j < 30; j++)
                 std::cout<< w1_1[i+j];*/
         //  ============= Dense MLP layers 1: for transforming B into E ==================
+        /*std::cout << "DNN1: PRINTING MATRIX B \n";
+        for(int i = 0; i < 32; i++) 
+			std::cout << input[i] << " ";
+		std::cout << std::endl;
+		std::cout << "DNN1: PRINTING W1 \n";
+        for(int i = 0; i < 32; i++) 
+			std::cout << w1[i] << " ";
+		std::cout << std::endl;*/
+        
         data_t layer2_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
         nnet::dense<data_t, data_t, typename CONFIG_T::fc1_config>(input, layer2_out, w1, b1); // fc1
-
+		//std::cout << "DNN1: PRINTING OUTPUT OF FC1 FIRST NODE \n";
+		//std::cout << layer2_out[0] << std::endl;
+		
         data_t layer3_out[CONFIG_T::fc1_out];
         #pragma HLS ARRAY_PARTITION variable=layer3_out complete dim=0
         nnet::selu<data_t, data_t, typename CONFIG_T::relu1_config>(layer2_out, layer3_out); // fc1_relu
@@ -272,19 +283,38 @@ namespace nnet {
 
         data_T cache1[2 * CONFIG_T::P_p];
         data_T E_col[CONFIG_T::D_e_p];
-
-        for(int i = 0; i < CONFIG_T::D_e_p; i++)
-            E_col[i] = 1;
+		
+		// what is this for??
+        //for(int i = 0; i < CONFIG_T::D_e_p; i++)
+        //    E_col[i] = 1;
 
         for (int cols = 0; cols < CONFIG_T::N_e_p; cols++) {
+			//for (int cols = 0; cols < 1; cols++) {
 
             for (int rows = 0; rows < 2 * CONFIG_T::P_p; rows++) {
                 cache1[rows] = B[rows][cols]; // add to an array of size 2P
             }
+            /*
+            if(cols == 0) {
+				
+			std::cout << "CACHE1 is: ";
+            for (int rows = 0; rows < 2 * CONFIG_T::P_p; rows++) {
+                std::cout << cache1[rows] << " ";
+            }
+            std::cout << std::endl;
+			}*/
 
             // this dense layer needs a specific config that has n_in = 2P, n_out = N_e
             // pass in the weights somehow, probably in jedi() as parameter
             nnet::dnn1<data_T, data_T, CONFIG_T>(cache1, E_col, w1, w2, w3, b1, b2, b3);
+            /*
+            if(cols == 0) {
+				
+			std::cout << "ECOL is: ";
+            for (int rows = 0; rows < CONFIG_T::D_e_p; rows++) {
+                std::cout << E_col[rows] << " ";
+            }
+			}*/
 
             // copy E_col into cols of E
             for(int rows = 0; rows < CONFIG_T::D_e_p; rows++)

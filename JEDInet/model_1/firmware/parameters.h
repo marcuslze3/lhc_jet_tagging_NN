@@ -108,9 +108,10 @@ struct fc1_config_struct : nnet::dense_config {
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
     static const unsigned n_zeros = 0;
-    static const unsigned n_nonzeros = P*30;
+    static const unsigned n_nonzeros = 2*P*N_LAYER_2;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc1_bias_t bias_t;
     typedef fc1_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -124,7 +125,8 @@ struct relu1_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc2 dnn1
@@ -137,7 +139,8 @@ struct fc2_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_2 * N_LAYER_4;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc2_bias_t bias_t;
     typedef fc2_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -150,7 +153,8 @@ struct relu2_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc3 dnn1
@@ -163,14 +167,24 @@ struct output1_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_4 * N_OUTPUT_1;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
-    typedef fc3_bias_t bias_t;
+	//typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;    typedef fc3_bias_t bias_t;
     typedef fc3_weight_t weight_t;
     typedef ap_uint<1> index_t;
     template<class x_T, class y_T, class res_T>
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
+struct selu1_config_struct : nnet::activ_config {
+    static const unsigned n_in = N_OUTPUT_1;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
+};
+
+/*
 struct softmax1_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_1;
     static const unsigned table_size = 1024;
@@ -179,7 +193,7 @@ struct softmax1_config_struct : nnet::activ_config {
     static const nnet::softmax_implementation implementation = nnet::softmax_implementation::latency;
     typedef ap_fixed<18,8> exp_table_t;
     typedef ap_fixed<18,8> inv_table_t;
-};
+};*/
 
 // fc1 dnn2
 struct fc4_config_struct : nnet::dense_config {
@@ -191,7 +205,8 @@ struct fc4_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = (P+D_e) * N_LAYER_6;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc4_bias_t bias_t;
     typedef fc4_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -204,7 +219,8 @@ struct relu3_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc2 dnn2
@@ -217,7 +233,8 @@ struct fc5_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_6 * N_LAYER_8;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc5_bias_t bias_t;
     typedef fc5_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -230,7 +247,8 @@ struct relu4_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc3 dnn2
@@ -243,7 +261,8 @@ struct output2_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_8 * N_OUTPUT_2;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc6_bias_t bias_t;
     typedef fc6_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -251,6 +270,16 @@ struct output2_config_struct : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
+struct selu2_config_struct : nnet::activ_config {
+    static const unsigned n_in = N_OUTPUT_2;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
+};
+
+/*
 struct softmax2_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_2;
     static const unsigned table_size = 1024;
@@ -259,7 +288,7 @@ struct softmax2_config_struct : nnet::activ_config {
     static const nnet::softmax_implementation implementation = nnet::softmax_implementation::latency;
     typedef ap_fixed<18,8> exp_table_t;
     typedef ap_fixed<18,8> inv_table_t;
-};
+};*/
 
 // fc1 dnn3
 struct fc7_config_struct : nnet::dense_config {
@@ -271,7 +300,8 @@ struct fc7_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_10 * D_o;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc7_bias_t bias_t;
     typedef fc7_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -284,7 +314,8 @@ struct relu5_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc2 dnn3
@@ -297,7 +328,8 @@ struct fc8_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_10 * N_LAYER_12;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc8_bias_t bias_t;
     typedef fc8_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -310,7 +342,8 @@ struct relu6_config_struct : nnet::activ_config {
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef ap_fixed<18,8> table_t;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
 };
 
 // fc3 dnn3
@@ -323,7 +356,8 @@ struct output3_config_struct : nnet::dense_config {
     static const unsigned n_zeros = 0;
     static const unsigned n_nonzeros = N_LAYER_12 * N_OUTPUT_3;
     static const bool store_weights_in_bram = false;
-    typedef ap_fixed<16,6> accum_t;
+    //typedef ap_fixed<16,6> accum_t;
+    typedef float accum_t;
     typedef fc9_bias_t bias_t;
     typedef fc9_weight_t weight_t;
     typedef ap_uint<1> index_t;
@@ -331,6 +365,16 @@ struct output3_config_struct : nnet::dense_config {
     using product = nnet::product::mult<x_T, y_T, res_T>;
 };
 
+struct selu3_config_struct : nnet::activ_config {
+    static const unsigned n_in = N_OUTPUT_3;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    //typedef ap_fixed<18,8> table_t;
+    typedef float table_t;
+};
+
+/*
 struct softmax3_config_struct : nnet::activ_config {
     static const unsigned n_in = N_OUTPUT_3;
     static const unsigned table_size = 1024;
@@ -339,7 +383,7 @@ struct softmax3_config_struct : nnet::activ_config {
     static const nnet::softmax_implementation implementation = nnet::softmax_implementation::latency;
     typedef ap_fixed<18,8> exp_table_t;
     typedef ap_fixed<18,8> inv_table_t;
-};
+};*/
 
 
 struct dense1_config {
@@ -356,7 +400,7 @@ struct dense1_config {
     typedef fc2_config_struct fc2_config;
     typedef relu2_config_struct relu2_config;
     typedef output1_config_struct output1_config;
-    typedef softmax1_config_struct softmax1_config;
+    typedef selu1_config_struct softmax1_config;
 
 };
 
@@ -374,7 +418,7 @@ struct dense2_config {
     typedef fc5_config_struct fc5_config;
     typedef relu4_config_struct relu4_config;
     typedef output2_config_struct output2_config;
-    typedef softmax2_config_struct softmax2_config;
+    typedef selu2_config_struct softmax2_config;
 };
 
 struct dense3_config {
@@ -390,7 +434,7 @@ struct dense3_config {
     typedef fc8_config_struct fc8_config;
     typedef relu6_config_struct relu6_config;
     typedef output3_config_struct output3_config;
-    typedef softmax3_config_struct softmax3_config;
+    typedef selu3_config_struct softmax3_config;
 };
 
 #endif

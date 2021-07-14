@@ -54,7 +54,7 @@ void jedi(
         input_t I[][N_o],
         result_t result[N_OUTPUT_3]) {*/
 		
-		std::cout << "ENTERED JEDI.cpp \n"; //debugging
+		//std::cout << "ENTERED JEDI.cpp \n"; //debugging
 		for(int i = 0; i < 10; i++)
 			std::cout << I[0][i] << " ";
 		
@@ -70,11 +70,12 @@ void jedi(
 
         input_t B[2*P][N_e];
         nnet::jedi1<input_t, input_t, jedi1_config>(I, Rr, Rs, B);
+        /*
         std::cout << N_e << "\n";
         std::cout << "C++: PRINTING MATRIX B \n";
-        for(int i = 0; i < 10; i++) 
-			std::cout << B[0][i] << " ";
-		std::cout << std::endl;
+        for(int i = 0; i < 32; i++) 
+			std::cout << B[i][0] << " ";
+		std::cout << std::endl;*/
 		
 		/*
         for(int i = 0; i < 2*P; i++) {
@@ -87,6 +88,12 @@ void jedi(
 
         input_t E[D_e][N_e];
         nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+        
+        /*
+        std::cout << "C++: PRINTING MATRIX E \n";
+        for(int i = 0; i < 10; i++) 
+			std::cout << E[0][i] << " ";
+		std::cout << std::endl;*/
 		
 		/*
         for(int i = 0; i < D_e; i++) {
