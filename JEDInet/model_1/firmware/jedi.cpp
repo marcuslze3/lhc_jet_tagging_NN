@@ -21,26 +21,26 @@
 #include "jedi.h"
 #include "../nnet_utils/nnet_jedi.h"
 
-#include "weights/w1_1.h"
-#include "weights/w2_1.h"
-#include "weights/w3_1.h"
-#include "weights/b1_1.h"
-#include "weights/b2_1.h"
-#include "weights/b3_1.h"
+#include "weights/w1.h"
+#include "weights/w2.h"
+#include "weights/w3.h"
+#include "weights/b1.h"
+#include "weights/b2.h"
+#include "weights/b3.h"
 
-#include "weights/w1_2.h"
-#include "weights/w2_2.h"
-#include "weights/w3_2.h"
-#include "weights/b1_2.h"
-#include "weights/b2_2.h"
-#include "weights/b3_2.h"
+#include "weights/w4.h"
+#include "weights/w5.h"
+#include "weights/w6.h"
+#include "weights/b4.h"
+#include "weights/b5.h"
+#include "weights/b6.h"
 
-#include "weights/w1_3.h"
-#include "weights/w2_3.h"
-#include "weights/w3_3.h"
-#include "weights/b1_3.h"
-#include "weights/b2_3.h"
-#include "weights/b3_3.h"
+#include "weights/w7.h"
+#include "weights/w8.h"
+#include "weights/w9.h"
+#include "weights/b7.h"
+#include "weights/b8.h"
+#include "weights/b9.h"
 
 
 void jedi(
@@ -55,8 +55,8 @@ void jedi(
         result_t result[N_OUTPUT_3]) {*/
 		
 		//std::cout << "ENTERED JEDI.cpp \n"; //debugging
-		for(int i = 0; i < 10; i++)
-			std::cout << I[0][i] << " ";
+		//for(int i = 0; i < 10; i++)
+			//std::cout << I[0][i] << " ";
 		
 		//auto Rr = new input_t [N_o][N_e];
         //auto Rr_T = new input_t [N_e][N_o];
@@ -87,7 +87,7 @@ void jedi(
         std::cout << "================================================ \n";*/
 
         input_t E[D_e][N_e];
-        nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1_1, w2_1, w3_1, b1_1, b2_1, b3_1);
+        nnet::jedi_dnn1<input_t, input_t, dense1_config>(B, E, w1, w2, w3, b1, b2, b3);
         
         /*
         std::cout << "C++: PRINTING MATRIX E \n";
@@ -118,7 +118,7 @@ void jedi(
         std::cout << "================================================ \n";*/
 
         input_t O[D_o][N_o];
-        nnet::jedi_dnn2<input_t, input_t, dense2_config>(C, O, w1_2, w2_2, w3_2, b1_2, b2_2, b3_2);
+        nnet::jedi_dnn2<input_t, input_t, dense2_config>(C, O, w4, w5, w6, b4, b5, b6);
         
         /*
         for(int i = 0; i < D_o; i++) {
@@ -129,7 +129,7 @@ void jedi(
         }
         std::cout << "================================================ \n";*/
 		
-        nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w1_3, w2_3, w3_3, b1_3, b2_3, b3_3);
+        nnet::jedi_dnn3<input_t, input_t, dense3_config>(O, result, w7, w8, w9, b7, b8, b9);
         
         // free heap
         /*
