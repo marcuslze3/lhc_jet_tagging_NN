@@ -1,0 +1,60 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'selu_float_float_relu2_config_struct_s'" level="0">
+<item name = "Date">Sun Jul 18 16:04:16 2021
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">myproject_prj</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcu250-figd2104-2L-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 4.084 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">9, 9, 45.000 ns, 45.000 ns, 1, 1, function</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="index_p_hls_fptosi_float_i32_fu_505">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_1_p_hls_fptosi_float_i32_fu_510">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_2_p_hls_fptosi_float_i32_fu_515">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_3_p_hls_fptosi_float_i32_fu_520">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_4_p_hls_fptosi_float_i32_fu_525">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_5_p_hls_fptosi_float_i32_fu_530">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_6_p_hls_fptosi_float_i32_fu_535">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_7_p_hls_fptosi_float_i32_fu_540">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_8_p_hls_fptosi_float_i32_fu_545">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_9_p_hls_fptosi_float_i32_fu_550">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_10_p_hls_fptosi_float_i32_fu_555">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_11_p_hls_fptosi_float_i32_fu_560">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_12_p_hls_fptosi_float_i32_fu_565">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_13_p_hls_fptosi_float_i32_fu_570">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+<column name="index_14_p_hls_fptosi_float_i32_fu_575">p_hls_fptosi_float_i32, 0, 0, 0 ns, 0 ns, 1, 1, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

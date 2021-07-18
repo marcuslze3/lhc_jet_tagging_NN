@@ -1,0 +1,998 @@
+
+
+================================================================
+== Vivado HLS Report for 'jedi'
+================================================================
+* Date:           Sun Jul 18 16:11:28 2021
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: virtexuplus
+* Target device:  xcu250-figd2104-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 5.845 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +------------+------------+-----------+-----------+------------+------------+---------+
+    |     Latency (cycles)    |   Latency (absolute)  |         Interval        | Pipeline|
+    |     min    |     max    |    min    |    max    |     min    |     max    |   Type  |
+    +------------+------------+-----------+-----------+------------+------------+---------+
+    |  1563800167|  1563800167| 9.140 sec | 9.140 sec |  1563800167|  1563800167|   none  |
+    +------------+------------+-----------+-----------+------------+------------+---------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------------------------------+-------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |                                                      |                                           |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+        |                       Instance                       |                   Module                  |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+        +------------------------------------------------------+-------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |grp_jedi_dnn1_float_float_dense1_config_s_fu_80       |jedi_dnn1_float_float_dense1_config_s      |   11286751|   11286751| 65.971 ms | 65.971 ms |   11286751|   11286751|   none  |
+        |grp_jedi_dnn2_float_float_dense2_config_s_fu_92       |jedi_dnn2_float_float_dense2_config_s      |      60601|      60601|  0.354 ms |  0.354 ms |      60601|      60601|   none  |
+        |grp_jedi_dnn3_float_float_dense3_config_s_fu_104      |jedi_dnn3_float_float_dense3_config_s      |      10793|      10793| 63.085 us | 63.085 us |      10793|      10793|   none  |
+        |grp_jedi_multiply_float_float_mult_1_struct_s_fu_117  |jedi_multiply_float_float_mult_1_struct_s  |  590755233|  590755233| 3.453 sec | 3.453 sec |  590755233|  590755233|   none  |
+        |grp_jedi_multiply_float_float_mult_2_struct_s_fu_127  |jedi_multiply_float_float_mult_2_struct_s  |  590755233|  590755233| 3.453 sec | 3.453 sec |  590755233|  590755233|   none  |
+        |grp_jedi_multiply_float_float_mult_3_struct_s_fu_136  |jedi_multiply_float_float_mult_3_struct_s  |  368778021|  368778021| 2.156 sec | 2.156 sec |  368778021|  368778021|   none  |
+        |grp_jedi_concat_float_float_concat_1_struct_s_fu_144  |jedi_concat_float_float_concat_1_struct_s  |    2145666|    2145666| 12.541 ms | 12.541 ms |    2145666|    2145666|   none  |
+        |grp_jedi_concat_float_float_concat_2_struct_s_fu_151  |jedi_concat_float_float_concat_2_struct_s  |       7854|       7854| 45.907 us | 45.907 us |       7854|       7854|   none  |
+        +------------------------------------------------------+-------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+------+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM |
++---------------------+---------+-------+---------+---------+------+
+|DSP                  |        -|      -|        -|        -|     -|
+|Expression           |        -|      -|        -|        -|     -|
+|FIFO                 |        -|      -|        -|        -|     -|
+|Instance             |      150|  10389|  1133670|   789972|     0|
+|Memory               |     2952|      -|       64|        0|     0|
+|Multiplexer          |        -|      -|        -|      400|     -|
+|Register             |        -|      -|       24|        -|     -|
++---------------------+---------+-------+---------+---------+------+
+|Total                |     3102|  10389|  1133758|   790372|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available SLR        |     1344|   3072|   864000|   432000|   320|
++---------------------+---------+-------+---------+---------+------+
+|Utilization SLR (%)  |      230|    338|      131|      182|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available            |     5376|  12288|  3456000|  1728000|  1280|
++---------------------+---------+-------+---------+---------+------+
+|Utilization (%)      |       57|     84|       32|       45|     0|
++---------------------+---------+-------+---------+---------+------+
+
++ Detail: 
+    * Instance: 
+    +------------------------------------------------------+-------------------------------------------+---------+-------+--------+--------+-----+
+    |                       Instance                       |                   Module                  | BRAM_18K| DSP48E|   FF   |   LUT  | URAM|
+    +------------------------------------------------------+-------------------------------------------+---------+-------+--------+--------+-----+
+    |grp_jedi_concat_float_float_concat_1_struct_s_fu_144  |jedi_concat_float_float_concat_1_struct_s  |        0|      1|     224|     323|    0|
+    |grp_jedi_concat_float_float_concat_2_struct_s_fu_151  |jedi_concat_float_float_concat_2_struct_s  |        0|      0|     140|     294|    0|
+    |grp_jedi_dnn1_float_float_dense1_config_s_fu_80       |jedi_dnn1_float_float_dense1_config_s      |       52|   3582|  410623|  280201|    0|
+    |grp_jedi_dnn2_float_float_dense2_config_s_fu_92       |jedi_dnn2_float_float_dense2_config_s      |       50|   3582|  396670|  271321|    0|
+    |grp_jedi_dnn3_float_float_dense3_config_s_fu_104      |jedi_dnn3_float_float_dense3_config_s      |       48|   3209|  323901|  236048|    0|
+    |grp_jedi_multiply_float_float_mult_1_struct_s_fu_117  |jedi_multiply_float_float_mult_1_struct_s  |        0|      5|     709|     597|    0|
+    |grp_jedi_multiply_float_float_mult_2_struct_s_fu_127  |jedi_multiply_float_float_mult_2_struct_s  |        0|      5|     709|     597|    0|
+    |grp_jedi_multiply_float_float_mult_3_struct_s_fu_136  |jedi_multiply_float_float_mult_3_struct_s  |        0|      5|     694|     591|    0|
+    +------------------------------------------------------+-------------------------------------------+---------+-------+--------+--------+-----+
+    |Total                                                 |                                           |      150|  10389| 1133670|  789972|    0|
+    +------------------------------------------------------+-------------------------------------------+---------+-------+--------+--------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +---------+------------+---------+----+----+-----+--------+-----+------+-------------+
+    |  Memory |   Module   | BRAM_18K| FF | LUT| URAM|  Words | Bits| Banks| W*Bits*Banks|
+    +---------+------------+---------+----+----+-----+--------+-----+------+-------------+
+    |B_U      |jedi_B      |     1268|  64|   0|    0|  715200|   32|     1|     22886400|
+    |B_top_U  |jedi_B_top  |      635|   0|   0|    0|  357600|   32|     1|     11443200|
+    |B_bot_U  |jedi_B_top  |      635|   0|   0|    0|  357600|   32|     1|     11443200|
+    |C_U      |jedi_C      |        8|   0|   0|    0|    3900|   32|     1|       124800|
+    |E_U      |jedi_E      |      398|   0|   0|    0|  223500|   32|     1|      7152000|
+    |E_bar_U  |jedi_E_bar  |        4|   0|   0|    0|    1500|   32|     1|        48000|
+    |O_U      |jedi_E_bar  |        4|   0|   0|    0|    1500|   32|     1|        48000|
+    +---------+------------+---------+----+----+-----+--------+-----+------+-------------+
+    |Total    |            |     2952|  64|   0|    0| 1660800|  224|     7|     53145600|
+    +---------+------------+---------+----+----+-----+--------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +----------------+----+-----------+-----+-----------+
+    |      Name      | LUT| Input Size| Bits| Total Bits|
+    +----------------+----+-----------+-----+-----------+
+    |B_address0      |  15|          3|   20|         60|
+    |B_bot_address0  |  15|          3|   19|         57|
+    |B_bot_ce0       |  15|          3|    1|          3|
+    |B_bot_we0       |   9|          2|    1|          2|
+    |B_ce0           |  15|          3|    1|          3|
+    |B_top_address0  |  15|          3|   19|         57|
+    |B_top_ce0       |  15|          3|    1|          3|
+    |B_top_we0       |   9|          2|    1|          2|
+    |B_we0           |   9|          2|    1|          2|
+    |C_address0      |  15|          3|   12|         36|
+    |C_ce0           |  15|          3|    1|          3|
+    |C_we0           |   9|          2|    1|          2|
+    |E_address0      |  15|          3|   18|         54|
+    |E_bar_address0  |  15|          3|   11|         33|
+    |E_bar_ce0       |  15|          3|    1|          3|
+    |E_bar_we0       |   9|          2|    1|          2|
+    |E_ce0           |  15|          3|    1|          3|
+    |E_we0           |   9|          2|    1|          2|
+    |I_address0      |  21|          4|   15|         60|
+    |I_ce0           |  21|          4|    1|          4|
+    |O_address0      |  15|          3|   11|         33|
+    |O_ce0           |  15|          3|    1|          3|
+    |O_we0           |   9|          2|    1|          2|
+    |ap_NS_fsm       |  85|         17|    1|         17|
+    +----------------+----+-----------+-----+-----------+
+    |Total           | 400|         81|  141|        446|
+    +----------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |                                Name                               | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                          |  16|   0|   16|          0|
+    |grp_jedi_concat_float_float_concat_1_struct_s_fu_144_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_concat_float_float_concat_2_struct_s_fu_151_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_dnn1_float_float_dense1_config_s_fu_80_ap_start_reg       |   1|   0|    1|          0|
+    |grp_jedi_dnn2_float_float_dense2_config_s_fu_92_ap_start_reg       |   1|   0|    1|          0|
+    |grp_jedi_dnn3_float_float_dense3_config_s_fu_104_ap_start_reg      |   1|   0|    1|          0|
+    |grp_jedi_multiply_float_float_mult_1_struct_s_fu_117_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_multiply_float_float_mult_2_struct_s_fu_127_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_multiply_float_float_mult_3_struct_s_fu_136_ap_start_reg  |   1|   0|    1|          0|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                              |  24|   0|   24|          0|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------+-----+-----+------------+--------------+--------------+
+|    RTL Ports    | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-----------------+-----+-----+------------+--------------+--------------+
+|ap_clk           |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_rst           |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_start         |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_done          | out |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_idle          | out |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_ready         | out |    1| ap_ctrl_hs |     jedi     | return value |
+|I_address0       | out |   15|  ap_memory |       I      |     array    |
+|I_ce0            | out |    1|  ap_memory |       I      |     array    |
+|I_q0             |  in |   32|  ap_memory |       I      |     array    |
+|Rr_address0      | out |   22|  ap_memory |      Rr      |     array    |
+|Rr_ce0           | out |    1|  ap_memory |      Rr      |     array    |
+|Rr_q0            |  in |   32|  ap_memory |      Rr      |     array    |
+|Rr_T_address0    | out |   22|  ap_memory |     Rr_T     |     array    |
+|Rr_T_ce0         | out |    1|  ap_memory |     Rr_T     |     array    |
+|Rr_T_q0          |  in |   32|  ap_memory |     Rr_T     |     array    |
+|Rs_address0      | out |   22|  ap_memory |      Rs      |     array    |
+|Rs_ce0           | out |    1|  ap_memory |      Rs      |     array    |
+|Rs_q0            |  in |   32|  ap_memory |      Rs      |     array    |
+|result_address0  | out |    3|  ap_memory |    result    |     array    |
+|result_ce0       | out |    1|  ap_memory |    result    |     array    |
+|result_we0       | out |    1|  ap_memory |    result    |     array    |
+|result_d0        | out |   32|  ap_memory |    result    |     array    |
+|result_address1  | out |    3|  ap_memory |    result    |     array    |
+|result_ce1       | out |    1|  ap_memory |    result    |     array    |
+|result_we1       | out |    1|  ap_memory |    result    |     array    |
+|result_d1        | out |   32|  ap_memory |    result    |     array    |
++-----------------+-----+-----+------------+--------------+--------------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 2
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 16
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 16 
+16 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.15>
+ST_1 : Operation 17 [1/1] (1.15ns)   --->   "%E_bar = alloca [1500 x float], align 4" [../../nnet_utils/nnet_jedi.h:335->../jedi.cpp:109]   --->   Operation 17 'alloca' 'E_bar' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 18 [1/1] (1.15ns)   --->   "%B_top = alloca [357600 x float], align 4" [../../nnet_utils/nnet_jedi.h:262->../jedi.cpp:72]   --->   Operation 18 'alloca' 'B_top' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 19 [1/1] (1.15ns)   --->   "%B_bot = alloca [357600 x float], align 4" [../../nnet_utils/nnet_jedi.h:263->../jedi.cpp:72]   --->   Operation 19 'alloca' 'B_bot' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 20 [1/1] (1.15ns)   --->   "%B = alloca [715200 x float], align 4" [../jedi.cpp:71]   --->   Operation 20 'alloca' 'B' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 21 [1/1] (1.15ns)   --->   "%E = alloca [223500 x float], align 4" [../jedi.cpp:89]   --->   Operation 21 'alloca' 'E' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 22 [1/1] (1.15ns)   --->   "%C = alloca [3900 x float], align 4" [../jedi.cpp:108]   --->   Operation 22 'alloca' 'C' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 23 [1/1] (1.15ns)   --->   "%O = alloca [1500 x float], align 4" [../jedi.cpp:120]   --->   Operation 23 'alloca' 'O' <Predicate = true> <Delay = 1.15>
+ST_1 : Operation 24 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_1_struct>"([22500 x float]* %I, [3352500 x float]* %Rr, [357600 x float]* %B_top) nounwind" [../../nnet_utils/nnet_jedi.h:265->../jedi.cpp:72]   --->   Operation 24 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 25 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_1_struct>"([22500 x float]* %I, [3352500 x float]* %Rr, [357600 x float]* %B_top) nounwind" [../../nnet_utils/nnet_jedi.h:265->../jedi.cpp:72]   --->   Operation 25 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 26 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_2_struct>"([22500 x float]* %I, [3352500 x float]* %Rs, [357600 x float]* %B_bot) nounwind" [../../nnet_utils/nnet_jedi.h:266->../jedi.cpp:72]   --->   Operation 26 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 27 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_2_struct>"([22500 x float]* %I, [3352500 x float]* %Rs, [357600 x float]* %B_bot) nounwind" [../../nnet_utils/nnet_jedi.h:266->../jedi.cpp:72]   --->   Operation 27 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 28 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_concat<float, float, concat_1_struct>"([357600 x float]* %B_top, [357600 x float]* %B_bot, [715200 x float]* %B) nounwind" [../../nnet_utils/nnet_jedi.h:267->../jedi.cpp:72]   --->   Operation 28 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 29 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_concat<float, float, concat_1_struct>"([357600 x float]* %B_top, [357600 x float]* %B_bot, [715200 x float]* %B) nounwind" [../../nnet_utils/nnet_jedi.h:267->../jedi.cpp:72]   --->   Operation 29 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 0.00>
+ST_7 : Operation 30 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn1<float, float, dense1_config>"([715200 x float]* %B, [223500 x float]* %E) nounwind" [../jedi.cpp:90]   --->   Operation 30 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 8 <SV = 7> <Delay = 0.00>
+ST_8 : Operation 31 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn1<float, float, dense1_config>"([715200 x float]* %B, [223500 x float]* %E) nounwind" [../jedi.cpp:90]   --->   Operation 31 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 9 <SV = 8> <Delay = 0.00>
+ST_9 : Operation 32 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_3_struct>"([223500 x float]* %E, [3352500 x float]* %Rr_T, [1500 x float]* %E_bar) nounwind" [../../nnet_utils/nnet_jedi.h:338->../jedi.cpp:109]   --->   Operation 32 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 10 <SV = 9> <Delay = 0.00>
+ST_10 : Operation 33 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_multiply<float, float, mult_3_struct>"([223500 x float]* %E, [3352500 x float]* %Rr_T, [1500 x float]* %E_bar) nounwind" [../../nnet_utils/nnet_jedi.h:338->../jedi.cpp:109]   --->   Operation 33 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 11 <SV = 10> <Delay = 0.00>
+ST_11 : Operation 34 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_concat<float, float, concat_2_struct>"([22500 x float]* %I, [1500 x float]* %E_bar, [3900 x float]* %C) nounwind" [../../nnet_utils/nnet_jedi.h:341->../jedi.cpp:109]   --->   Operation 34 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 12 <SV = 11> <Delay = 0.00>
+ST_12 : Operation 35 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_concat<float, float, concat_2_struct>"([22500 x float]* %I, [1500 x float]* %E_bar, [3900 x float]* %C) nounwind" [../../nnet_utils/nnet_jedi.h:341->../jedi.cpp:109]   --->   Operation 35 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 13 <SV = 12> <Delay = 0.00>
+ST_13 : Operation 36 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn2<float, float, dense2_config>"([3900 x float]* %C, [1500 x float]* %O) nounwind" [../jedi.cpp:121]   --->   Operation 36 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 0.00>
+ST_14 : Operation 37 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn2<float, float, dense2_config>"([3900 x float]* %C, [1500 x float]* %O) nounwind" [../jedi.cpp:121]   --->   Operation 37 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 15 <SV = 14> <Delay = 0.00>
+ST_15 : Operation 38 [2/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn3<float, float, dense3_config>"([1500 x float]* %O, [5 x float]* %result) nounwind" [../jedi.cpp:132]   --->   Operation 38 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 16 <SV = 15> <Delay = 0.00>
+ST_16 : Operation 39 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([22500 x float]* %I) nounwind, !map !129"   --->   Operation 39 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 40 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([3352500 x float]* %Rr) nounwind, !map !135"   --->   Operation 40 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 41 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([3352500 x float]* %Rr_T) nounwind, !map !141"   --->   Operation 41 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 42 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([3352500 x float]* %Rs) nounwind, !map !146"   --->   Operation 42 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([5 x float]* %result) nounwind, !map !150"   --->   Operation 43 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 44 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([5 x i8]* @jedi_str) nounwind"   --->   Operation 44 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 45 [1/2] (0.00ns)   --->   "call fastcc void @"jedi_dnn3<float, float, dense3_config>"([1500 x float]* %O, [5 x float]* %result) nounwind" [../jedi.cpp:132]   --->   Operation 45 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_16 : Operation 46 [1/1] (0.00ns)   --->   "ret void" [../jedi.cpp:147]   --->   Operation 46 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 1
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ I]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ Rr]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ Rr_T]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ Rs]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ result]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=1; pingpong=0; private_global=0; MemPort=[00]; IO mode=ap_memory:ce=0
+Port [ selu_table22]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table24]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table26]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[11]; IO mode=ap_memory:ce=0
+Port [ selu_table11]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table13]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table15]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[11]; IO mode=ap_memory:ce=0
+Port [ selu_table1]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table3]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[111111111111111]; IO mode=ap_memory:ce=0
+Port [ selu_table5]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[11]; IO mode=ap_memory:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+E_bar             (alloca       ) [ 00111111111110000]
+B_top             (alloca       ) [ 00111110000000000]
+B_bot             (alloca       ) [ 00111110000000000]
+B                 (alloca       ) [ 00111111100000000]
+E                 (alloca       ) [ 00111111111000000]
+C                 (alloca       ) [ 00111111111111100]
+O                 (alloca       ) [ 00111111111111111]
+call_ln265        (call         ) [ 00000000000000000]
+call_ln266        (call         ) [ 00000000000000000]
+call_ln267        (call         ) [ 00000000000000000]
+call_ln90         (call         ) [ 00000000000000000]
+call_ln338        (call         ) [ 00000000000000000]
+call_ln341        (call         ) [ 00000000000000000]
+call_ln121        (call         ) [ 00000000000000000]
+specbitsmap_ln0   (specbitsmap  ) [ 00000000000000000]
+specbitsmap_ln0   (specbitsmap  ) [ 00000000000000000]
+specbitsmap_ln0   (specbitsmap  ) [ 00000000000000000]
+specbitsmap_ln0   (specbitsmap  ) [ 00000000000000000]
+specbitsmap_ln0   (specbitsmap  ) [ 00000000000000000]
+spectopmodule_ln0 (spectopmodule) [ 00000000000000000]
+call_ln132        (call         ) [ 00000000000000000]
+ret_ln147         (ret          ) [ 00000000000000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="I">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="I"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="Rr">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Rr"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="Rr_T">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Rr_T"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="Rs">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Rs"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="result">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="result"/><MemPortTyVec>0 0 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="selu_table22">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table22"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="selu_table24">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table24"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1000" name="selu_table26">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table26"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1000" name="selu_table11">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table11"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1000" name="selu_table13">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table13"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1000" name="selu_table15">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table15"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1000" name="selu_table1">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table1"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1000" name="selu_table3">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table3"/><MemPortTyVec>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1000" name="selu_table5">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="selu_table5"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_multiply<float, float, mult_1_struct>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_multiply<float, float, mult_2_struct>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_concat<float, float, concat_1_struct>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_dnn1<float, float, dense1_config>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_multiply<float, float, mult_3_struct>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_concat<float, float, concat_2_struct>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_dnn2<float, float, dense2_config>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1001" name="const_44">
+<pin_list>
+<pin id="45" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_dnn3<float, float, dense3_config>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="46" class="1001" name="const_46">
+<pin_list>
+<pin id="47" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecBitsMap"/></StgValue>
+</bind>
+</comp>
+
+<comp id="48" class="1001" name="const_48">
+<pin_list>
+<pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecTopModule"/></StgValue>
+</bind>
+</comp>
+
+<comp id="50" class="1001" name="const_50">
+<pin_list>
+<pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="jedi_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="52" class="1004" name="E_bar_alloca_fu_52">
+<pin_list>
+<pin id="53" dir="0" index="0" bw="1" slack="0"/>
+<pin id="54" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="E_bar/1 "/>
+</bind>
+</comp>
+
+<comp id="56" class="1004" name="B_top_alloca_fu_56">
+<pin_list>
+<pin id="57" dir="0" index="0" bw="1" slack="0"/>
+<pin id="58" dir="1" index="1" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="B_top/1 "/>
+</bind>
+</comp>
+
+<comp id="60" class="1004" name="B_bot_alloca_fu_60">
+<pin_list>
+<pin id="61" dir="0" index="0" bw="1" slack="0"/>
+<pin id="62" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="B_bot/1 "/>
+</bind>
+</comp>
+
+<comp id="64" class="1004" name="B_alloca_fu_64">
+<pin_list>
+<pin id="65" dir="0" index="0" bw="1" slack="0"/>
+<pin id="66" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="B/1 "/>
+</bind>
+</comp>
+
+<comp id="68" class="1004" name="E_alloca_fu_68">
+<pin_list>
+<pin id="69" dir="0" index="0" bw="1" slack="0"/>
+<pin id="70" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="E/1 "/>
+</bind>
+</comp>
+
+<comp id="72" class="1004" name="C_alloca_fu_72">
+<pin_list>
+<pin id="73" dir="0" index="0" bw="1" slack="0"/>
+<pin id="74" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="C/1 "/>
+</bind>
+</comp>
+
+<comp id="76" class="1004" name="O_alloca_fu_76">
+<pin_list>
+<pin id="77" dir="0" index="0" bw="1" slack="0"/>
+<pin id="78" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="O/1 "/>
+</bind>
+</comp>
+
+<comp id="80" class="1004" name="grp_jedi_dnn1_float_float_dense1_config_s_fu_80">
+<pin_list>
+<pin id="81" dir="0" index="0" bw="0" slack="0"/>
+<pin id="82" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="83" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="84" dir="0" index="3" bw="32" slack="0"/>
+<pin id="85" dir="0" index="4" bw="32" slack="0"/>
+<pin id="86" dir="0" index="5" bw="32" slack="0"/>
+<pin id="87" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln90/7 "/>
+</bind>
+</comp>
+
+<comp id="92" class="1004" name="grp_jedi_dnn2_float_float_dense2_config_s_fu_92">
+<pin_list>
+<pin id="93" dir="0" index="0" bw="0" slack="0"/>
+<pin id="94" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="95" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="96" dir="0" index="3" bw="32" slack="0"/>
+<pin id="97" dir="0" index="4" bw="32" slack="0"/>
+<pin id="98" dir="0" index="5" bw="32" slack="0"/>
+<pin id="99" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln121/13 "/>
+</bind>
+</comp>
+
+<comp id="104" class="1004" name="grp_jedi_dnn3_float_float_dense3_config_s_fu_104">
+<pin_list>
+<pin id="105" dir="0" index="0" bw="0" slack="0"/>
+<pin id="106" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="107" dir="0" index="2" bw="32" slack="0"/>
+<pin id="108" dir="0" index="3" bw="32" slack="0"/>
+<pin id="109" dir="0" index="4" bw="32" slack="0"/>
+<pin id="110" dir="0" index="5" bw="32" slack="0"/>
+<pin id="111" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln132/15 "/>
+</bind>
+</comp>
+
+<comp id="117" class="1004" name="grp_jedi_multiply_float_float_mult_1_struct_s_fu_117">
+<pin_list>
+<pin id="118" dir="0" index="0" bw="0" slack="0"/>
+<pin id="119" dir="0" index="1" bw="32" slack="0"/>
+<pin id="120" dir="0" index="2" bw="32" slack="0"/>
+<pin id="121" dir="0" index="3" bw="32" slack="0"/>
+<pin id="122" dir="1" index="4" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln265/1 "/>
+</bind>
+</comp>
+
+<comp id="127" class="1004" name="grp_jedi_multiply_float_float_mult_2_struct_s_fu_127">
+<pin_list>
+<pin id="128" dir="0" index="0" bw="0" slack="0"/>
+<pin id="129" dir="0" index="1" bw="32" slack="0"/>
+<pin id="130" dir="0" index="2" bw="32" slack="0"/>
+<pin id="131" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="132" dir="1" index="4" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln266/3 "/>
+</bind>
+</comp>
+
+<comp id="136" class="1004" name="grp_jedi_multiply_float_float_mult_3_struct_s_fu_136">
+<pin_list>
+<pin id="137" dir="0" index="0" bw="0" slack="0"/>
+<pin id="138" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="139" dir="0" index="2" bw="32" slack="0"/>
+<pin id="140" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="141" dir="1" index="4" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln338/9 "/>
+</bind>
+</comp>
+
+<comp id="144" class="1004" name="grp_jedi_concat_float_float_concat_1_struct_s_fu_144">
+<pin_list>
+<pin id="145" dir="0" index="0" bw="0" slack="0"/>
+<pin id="146" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="147" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="148" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="149" dir="1" index="4" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln267/5 "/>
+</bind>
+</comp>
+
+<comp id="151" class="1004" name="grp_jedi_concat_float_float_concat_2_struct_s_fu_151">
+<pin_list>
+<pin id="152" dir="0" index="0" bw="0" slack="0"/>
+<pin id="153" dir="0" index="1" bw="32" slack="0"/>
+<pin id="154" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="155" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="156" dir="1" index="4" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln341/11 "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="55"><net_src comp="28" pin="0"/><net_sink comp="52" pin=0"/></net>
+
+<net id="59"><net_src comp="28" pin="0"/><net_sink comp="56" pin=0"/></net>
+
+<net id="63"><net_src comp="28" pin="0"/><net_sink comp="60" pin=0"/></net>
+
+<net id="67"><net_src comp="28" pin="0"/><net_sink comp="64" pin=0"/></net>
+
+<net id="71"><net_src comp="28" pin="0"/><net_sink comp="68" pin=0"/></net>
+
+<net id="75"><net_src comp="28" pin="0"/><net_sink comp="72" pin=0"/></net>
+
+<net id="79"><net_src comp="28" pin="0"/><net_sink comp="76" pin=0"/></net>
+
+<net id="88"><net_src comp="36" pin="0"/><net_sink comp="80" pin=0"/></net>
+
+<net id="89"><net_src comp="10" pin="0"/><net_sink comp="80" pin=3"/></net>
+
+<net id="90"><net_src comp="12" pin="0"/><net_sink comp="80" pin=4"/></net>
+
+<net id="91"><net_src comp="14" pin="0"/><net_sink comp="80" pin=5"/></net>
+
+<net id="100"><net_src comp="42" pin="0"/><net_sink comp="92" pin=0"/></net>
+
+<net id="101"><net_src comp="16" pin="0"/><net_sink comp="92" pin=3"/></net>
+
+<net id="102"><net_src comp="18" pin="0"/><net_sink comp="92" pin=4"/></net>
+
+<net id="103"><net_src comp="20" pin="0"/><net_sink comp="92" pin=5"/></net>
+
+<net id="112"><net_src comp="44" pin="0"/><net_sink comp="104" pin=0"/></net>
+
+<net id="113"><net_src comp="8" pin="0"/><net_sink comp="104" pin=2"/></net>
+
+<net id="114"><net_src comp="22" pin="0"/><net_sink comp="104" pin=3"/></net>
+
+<net id="115"><net_src comp="24" pin="0"/><net_sink comp="104" pin=4"/></net>
+
+<net id="116"><net_src comp="26" pin="0"/><net_sink comp="104" pin=5"/></net>
+
+<net id="123"><net_src comp="30" pin="0"/><net_sink comp="117" pin=0"/></net>
+
+<net id="124"><net_src comp="0" pin="0"/><net_sink comp="117" pin=1"/></net>
+
+<net id="125"><net_src comp="2" pin="0"/><net_sink comp="117" pin=2"/></net>
+
+<net id="126"><net_src comp="56" pin="1"/><net_sink comp="117" pin=3"/></net>
+
+<net id="133"><net_src comp="32" pin="0"/><net_sink comp="127" pin=0"/></net>
+
+<net id="134"><net_src comp="0" pin="0"/><net_sink comp="127" pin=1"/></net>
+
+<net id="135"><net_src comp="6" pin="0"/><net_sink comp="127" pin=2"/></net>
+
+<net id="142"><net_src comp="38" pin="0"/><net_sink comp="136" pin=0"/></net>
+
+<net id="143"><net_src comp="4" pin="0"/><net_sink comp="136" pin=2"/></net>
+
+<net id="150"><net_src comp="34" pin="0"/><net_sink comp="144" pin=0"/></net>
+
+<net id="157"><net_src comp="40" pin="0"/><net_sink comp="151" pin=0"/></net>
+
+<net id="158"><net_src comp="0" pin="0"/><net_sink comp="151" pin=1"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: result | {15 16 }
+ - Input state : 
+	Port: jedi : I | {1 2 3 4 11 12 }
+	Port: jedi : Rr | {1 2 }
+	Port: jedi : Rr_T | {9 10 }
+	Port: jedi : Rs | {3 4 }
+	Port: jedi : selu_table22 | {7 8 }
+	Port: jedi : selu_table24 | {7 8 }
+	Port: jedi : selu_table26 | {7 8 }
+	Port: jedi : selu_table11 | {13 14 }
+	Port: jedi : selu_table13 | {13 14 }
+	Port: jedi : selu_table15 | {13 14 }
+	Port: jedi : selu_table1 | {15 16 }
+	Port: jedi : selu_table3 | {15 16 }
+	Port: jedi : selu_table5 | {15 16 }
+  - Chain level:
+	State 1
+		call_ln265 : 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|------------------------------------------------------|---------|---------|---------|---------|---------|---------|
+| Operation|                    Functional Unit                   |   BRAM  |  DSP48E |  Delay  |    FF   |   LUT   |   URAM  |
+|----------|------------------------------------------------------|---------|---------|---------|---------|---------|---------|
+|          |    grp_jedi_dnn1_float_float_dense1_config_s_fu_80   |    4    |   3582  | 335.174 |  341435 |  237377 |    0    |
+|          |    grp_jedi_dnn2_float_float_dense2_config_s_fu_92   |    2    |   3582  | 303.278 |  336113 |  235203 |    0    |
+|          |   grp_jedi_dnn3_float_float_dense3_config_s_fu_104   |    0    |   3209  | 290.103 |  288331 |  210769 |    0    |
+|   call   | grp_jedi_multiply_float_float_mult_1_struct_s_fu_117 |    0    |    5    |  3.015  |   771   |   517   |    0    |
+|          | grp_jedi_multiply_float_float_mult_2_struct_s_fu_127 |    0    |    5    |  3.015  |   771   |   517   |    0    |
+|          | grp_jedi_multiply_float_float_mult_3_struct_s_fu_136 |    0    |    5    |  3.015  |   766   |   511   |    0    |
+|          | grp_jedi_concat_float_float_concat_1_struct_s_fu_144 |    0    |    1    |  3.675  |   402   |   269   |    0    |
+|          | grp_jedi_concat_float_float_concat_2_struct_s_fu_151 |    0    |    0    |  3.618  |   212   |   232   |    0    |
+|----------|------------------------------------------------------|---------|---------|---------|---------|---------|---------|
+|   Total  |                                                      |    6    |  10389  | 944.894 |  968801 |  685395 |    0    |
+|----------|------------------------------------------------------|---------|---------|---------|---------|---------|---------|
+
+Memories:
++------------+--------+--------+--------+--------+
+|            |  BRAM  |   FF   |   LUT  |  URAM  |
++------------+--------+--------+--------+--------+
+|      B     |  1268  |   64   |    0   |    0   |
+|    B_bot   |   635  |    0   |    0   |    0   |
+|    B_top   |   635  |    0   |    0   |    0   |
+|      C     |    8   |    0   |    0   |    0   |
+|      E     |   398  |    0   |    0   |    0   |
+|    E_bar   |    4   |    0   |    0   |    0   |
+|      O     |    4   |    0   |    0   |    0   |
+| selu_table1|   30   |    0   |    0   |    -   |
+|selu_table11|   30   |    0   |    0   |    -   |
+|selu_table13|   16   |    0   |    0   |    -   |
+|selu_table15|    2   |    0   |    0   |    -   |
+|selu_table22|   30   |    0   |    0   |    -   |
+|selu_table24|   16   |    0   |    0   |    -   |
+|selu_table26|    2   |    0   |    0   |    -   |
+| selu_table3|   16   |    0   |    0   |    -   |
+| selu_table5|    2   |    0   |    0   |    -   |
++------------+--------+--------+--------+--------+
+|    Total   |  3096  |   64   |    0   |    0   |
++------------+--------+--------+--------+--------+
+
+* Register list:
+N/A
+
+* Multiplexer (MUX) list: 
+|--------|------|------|------|--------|
+|  Comp  |  Pin | Size |  BW  | S x BW |
+|--------|------|------|------|--------|
+|  Total |      |      |      |    0   |
+|--------|------|------|------|--------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+--------+--------+
+|           |  BRAM  | DSP48E |  Delay |   FF   |   LUT  |  URAM  |
++-----------+--------+--------+--------+--------+--------+--------+
+|  Function |    6   |  10389 |   944  | 968801 | 685395 |    0   |
+|   Memory  |  3096  |    -   |    -   |   64   |    0   |    0   |
+|Multiplexer|    -   |    -   |    -   |    -   |    -   |    -   |
+|  Register |    -   |    -   |    -   |    -   |    -   |    -   |
++-----------+--------+--------+--------+--------+--------+--------+
+|   Total   |  3102  |  10389 |   944  | 968865 | 685395 |    0   |
++-----------+--------+--------+--------+--------+--------+--------+

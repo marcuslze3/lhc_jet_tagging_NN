@@ -1,0 +1,1198 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'mzl20' on host 'cccad5.doc.ic.ac.uk' (Linux_x86_64 version 3.10.0-957.1.3.el7.x86_64) on Sun Jul 18 14:06:41 BST 2021
+INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
+INFO: [HLS 200-10] In directory '/mnt/ccnas2/bdp/mzl20/JEDInet_copy/JEDInet/model_1/firmware/prj_cmd'
+Sourcing Tcl script 'build_prj.tcl'
+INFO: [HLS 200-10] Opening project '/mnt/ccnas2/bdp/mzl20/JEDInet_copy/JEDInet/model_1/firmware/prj_cmd/myproject_prj'.
+INFO: [HLS 200-10] Adding design file '../jedi.cpp' to the project
+WARNING: [HLS 200-40] Cannot find test bench file 'tb_jedi.cpp'
+INFO: [HLS 200-10] Opening solution '/mnt/ccnas2/bdp/mzl20/JEDInet_copy/JEDInet/model_1/firmware/prj_cmd/myproject_prj/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2L-e'
+INFO: [XFORM 203-101] Allowed max sub elements number after partition is 4096.
+INFO: [XFORM 203-1161] The maximum of name length is set into 60.
+INFO: [XFORM 203-101] Allowed max sub elements number after partition is 4096.
+INFO: [XFORM 203-1161] The maximum of name length is set into 60.
+***** C/RTL SYNTHESIS *****
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file '../jedi.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ../../nnet_utils/nnet_dense_latency.h:64:9
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ../../nnet_utils/nnet_dense_latency.h:79:2
+WARNING: [HLS 214-104] Only for-loops and functions support the dataflow: ../../nnet_utils/nnet_dense_latency.h:76:9
+WARNING: [HLS 200-471] Dataflow form checks found 3 issue(s) in file ../jedi.cpp
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1051.270 ; gain = 529.180 ; free physical = 190804 ; free virtual = 588369
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1051.270 ; gain = 529.180 ; free physical = 190804 ; free virtual = 588369
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::limit' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:57).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::product::mult<float, float, float>::product' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:96).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc1_config_struct>' into 'nnet::dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:171).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc2_config_struct>' into 'nnet::dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:181).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, output1_config_struct>' into 'nnet::dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:189).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc4_config_struct>' into 'nnet::dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:201).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc5_config_struct>' into 'nnet::dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:209).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, output2_config_struct>' into 'nnet::dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:217).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc7_config_struct>' into 'nnet::dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:231).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, fc8_config_struct>' into 'nnet::dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:239).
+INFO: [XFORM 203-603] Inlining function 'nnet::dense<float, float, output3_config_struct>' into 'nnet::dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:247).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1179.270 ; gain = 657.180 ; free physical = 190656 ; free virtual = 588222
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc1_config_struct>' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu1_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc2_config_struct>' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu2_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output1_config_struct>' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, selu1_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::dnn1<float, float, dense1_config>' into 'nnet::jedi_dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:307) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc4_config_struct>' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu3_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc5_config_struct>' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu4_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output2_config_struct>' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, selu2_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::dnn2<float, float, dense2_config>' into 'nnet::jedi_dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:366) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc7_config_struct>' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu5_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc8_config_struct>' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, relu6_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output3_config_struct>' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, selu3_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::dnn3<float, float, dense3_config>' into 'nnet::jedi_dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:401) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::jedi1<float, float, jedi1_config>' into 'jedi' (../jedi.cpp:72) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::jedi2<float, float, jedi2_config>' into 'jedi' (../jedi.cpp:109) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:57:48 ; elapsed = 00:58:13 . Memory (MB): peak = 1819.270 ; gain = 1297.180 ; free physical = 190010 ; free virtual = 587580
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, selu3_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu6_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu5_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, selu2_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu4_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu3_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, selu1_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu2_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::selu<float, float, relu1_config_struct>' (../../nnet_utils/nnet_activation.h:749).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:33).
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, selu3_config_struct>' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, output3_config_struct>' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu6_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc8_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu5_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc7_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, selu2_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, output2_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu4_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc5_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu3_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 26.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 26.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc4_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, selu1_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, output1_config_struct>' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc2_config_struct>' completely with a factor of 15.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (../../nnet_utils/nnet_activation.h:771) in function 'nnet::selu<float, float, relu1_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Product1' (../../nnet_utils/nnet_dense_latency.h:85) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Product2' (../../nnet_utils/nnet_dense_latency.h:90) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'ResetAccum' (../../nnet_utils/nnet_dense_latency.h:102) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Accum1' (../../nnet_utils/nnet_dense_latency.h:110) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Accum2' (../../nnet_utils/nnet_dense_latency.h:114) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 30.
+INFO: [HLS 200-489] Unrolling loop 'Result' (../../nnet_utils/nnet_dense_latency.h:121) in function 'nnet::dense_latency<float, float, fc1_config_struct>' completely with a factor of 30.
+INFO: [XFORM 203-101] Partitioning array 'layer2_out' (../../nnet_utils/nnet_jedi.h:229) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer3_out' (../../nnet_utils/nnet_jedi.h:233) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer4_out' (../../nnet_utils/nnet_jedi.h:237) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer5_out' (../../nnet_utils/nnet_jedi.h:241) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer6_out' (../../nnet_utils/nnet_jedi.h:245) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b9'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b8'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b7'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer2_out' (../../nnet_utils/nnet_jedi.h:199) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer3_out' (../../nnet_utils/nnet_jedi.h:203) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer4_out' (../../nnet_utils/nnet_jedi.h:207) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer5_out' (../../nnet_utils/nnet_jedi.h:211) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer6_out' (../../nnet_utils/nnet_jedi.h:215) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b6'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b5'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b4'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer2_out' (../../nnet_utils/nnet_jedi.h:169) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer3_out' (../../nnet_utils/nnet_jedi.h:175) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer4_out' (../../nnet_utils/nnet_jedi.h:179) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer5_out' (../../nnet_utils/nnet_jedi.h:183) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'layer6_out' (../../nnet_utils/nnet_jedi.h:187) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b3'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b2'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b1'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'mult' (../../nnet_utils/nnet_dense_latency.h:39) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (../../nnet_utils/nnet_dense_latency.h:40) in dimension 1 completely.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc1_config_struct>' into 'nnet::dense_latency<float, float, fc1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc2_config_struct>' into 'nnet::dense_latency<float, float, fc2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output1_config_struct>' into 'nnet::dense_latency<float, float, output1_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc4_config_struct>' into 'nnet::dense_latency<float, float, fc4_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc5_config_struct>' into 'nnet::dense_latency<float, float, fc5_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output2_config_struct>' into 'nnet::dense_latency<float, float, output2_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc7_config_struct>' into 'nnet::dense_latency<float, float, fc7_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, fc8_config_struct>' into 'nnet::dense_latency<float, float, fc8_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:56) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<float, float, output3_config_struct>' into 'nnet::dense_latency<float, float, output3_config_struct>' (../../nnet_utils/nnet_dense_latency.h:126) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'nnet::selu<float, float, selu3_config_struct>' (../../nnet_utils/nnet_activation.h:779) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::jedi1<float, float, jedi1_config>' into 'jedi' (../jedi.cpp:72) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::jedi2<float, float, jedi2_config>' into 'jedi' (../jedi.cpp:109) automatically.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, output3_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'weights' to 'w9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:1) to 'nnet::dense_latency<float, float, output3_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'biases[0]' to 'b9.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:1) to 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'biases[1]' to 'b9.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:1) to 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'biases[2]' to 'b9.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:1) to 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'biases[3]' to 'b9.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:1) to 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:247) by setting 'biases[4]' to 'b9.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc8_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'weights' to 'w8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[0]' to 'b8.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[1]' to 'b8.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[2]' to 'b8.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[3]' to 'b8.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[4]' to 'b8.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[5]' to 'b8.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[6]' to 'b8.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[7]' to 'b8.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[8]' to 'b8.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[9]' to 'b8.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[10]' to 'b8.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[11]' to 'b8.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[12]' to 'b8.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[13]' to 'b8.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) by setting 'biases[14]' to 'b8.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc7_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'weights' to 'w7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[0]' to 'b7.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[1]' to 'b7.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[2]' to 'b7.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[3]' to 'b7.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[4]' to 'b7.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[5]' to 'b7.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[6]' to 'b7.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[7]' to 'b7.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[8]' to 'b7.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[9]' to 'b7.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[10]' to 'b7.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[11]' to 'b7.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[12]' to 'b7.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[13]' to 'b7.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[14]' to 'b7.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[15]' to 'b7.15'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[16]' to 'b7.16'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[17]' to 'b7.17'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[18]' to 'b7.18'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[19]' to 'b7.19'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[20]' to 'b7.20'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[21]' to 'b7.21'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[22]' to 'b7.22'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[23]' to 'b7.23'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[24]' to 'b7.24'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[25]' to 'b7.25'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[26]' to 'b7.26'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[27]' to 'b7.27'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[28]' to 'b7.28'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:231) by setting 'biases[29]' to 'b7.29'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, output2_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'weights' to 'w6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[0]' to 'b6.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[1]' to 'b6.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[2]' to 'b6.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[3]' to 'b6.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[4]' to 'b6.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[5]' to 'b6.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[6]' to 'b6.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[7]' to 'b6.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[8]' to 'b6.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) by setting 'biases[9]' to 'b6.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc5_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'weights' to 'w5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[0]' to 'b5.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[1]' to 'b5.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[2]' to 'b5.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[3]' to 'b5.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[4]' to 'b5.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[5]' to 'b5.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[6]' to 'b5.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[7]' to 'b5.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[8]' to 'b5.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[9]' to 'b5.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[10]' to 'b5.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[11]' to 'b5.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[12]' to 'b5.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[13]' to 'b5.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:209) by setting 'biases[14]' to 'b5.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc4_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'weights' to 'w4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[0]' to 'b4.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[1]' to 'b4.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[2]' to 'b4.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[3]' to 'b4.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[4]' to 'b4.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[5]' to 'b4.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[6]' to 'b4.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[7]' to 'b4.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[8]' to 'b4.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[9]' to 'b4.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[10]' to 'b4.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[11]' to 'b4.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[12]' to 'b4.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[13]' to 'b4.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[14]' to 'b4.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[15]' to 'b4.15'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[16]' to 'b4.16'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[17]' to 'b4.17'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[18]' to 'b4.18'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[19]' to 'b4.19'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[20]' to 'b4.20'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[21]' to 'b4.21'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[22]' to 'b4.22'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[23]' to 'b4.23'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[24]' to 'b4.24'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[25]' to 'b4.25'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[26]' to 'b4.26'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[27]' to 'b4.27'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[28]' to 'b4.28'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:201) by setting 'biases[29]' to 'b4.29'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, output1_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'weights' to 'w3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[0]' to 'b3.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[1]' to 'b3.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[2]' to 'b3.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[3]' to 'b3.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[4]' to 'b3.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[5]' to 'b3.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[6]' to 'b3.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[7]' to 'b3.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[8]' to 'b3.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:9) to 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:189) by setting 'biases[9]' to 'b3.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc2_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'weights' to 'w2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[0]' to 'b2.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[1]' to 'b2.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[2]' to 'b2.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[3]' to 'b2.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[4]' to 'b2.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[5]' to 'b2.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[6]' to 'b2.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[7]' to 'b2.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[8]' to 'b2.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[9]' to 'b2.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[10]' to 'b2.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[11]' to 'b2.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[12]' to 'b2.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[13]' to 'b2.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) by setting 'biases[14]' to 'b2.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>'(../../nnet_utils/nnet_dense_latency.h:33) to 'nnet::dense_latency<float, float, fc1_config_struct>.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'weights' to 'w1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[0]' to 'b1.0'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[1]' to 'b1.1'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[2]' to 'b1.2'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[3]' to 'b1.3'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[4]' to 'b1.4'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[5]' to 'b1.5'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[6]' to 'b1.6'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[7]' to 'b1.7'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[8]' to 'b1.8'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[9]' to 'b1.9'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[10]' to 'b1.10'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[11]' to 'b1.11'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[12]' to 'b1.12'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[13]' to 'b1.13'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[14]' to 'b1.14'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[15]' to 'b1.15'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[16]' to 'b1.16'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[17]' to 'b1.17'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[18]' to 'b1.18'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[19]' to 'b1.19'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[20]' to 'b1.20'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[21]' to 'b1.21'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[22]' to 'b1.22'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[23]' to 'b1.23'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[24]' to 'b1.24'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[25]' to 'b1.25'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[26]' to 'b1.26'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[27]' to 'b1.27'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[28]' to 'b1.28'.
+INFO: [XFORM 203-622] Instantiating function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'(../../nnet_utils/nnet_dense_latency.h:45:23) to 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' at call site (../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:171) by setting 'biases[29]' to 'b1.29'.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 01:55:23 ; elapsed = 01:56:03 . Memory (MB): peak = 2357.285 ; gain = 1835.195 ; free physical = 189550 ; free virtual = 587131
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, selu3_config_struct>' to 'selu<float, float, selu3_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, selu2_config_struct>' to 'selu<float, float, selu2_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, selu1_config_struct>' to 'selu<float, float, selu1_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu6_config_struct>' to 'selu<float, float, relu6_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu5_config_struct>' to 'selu<float, float, relu5_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu4_config_struct>' to 'selu<float, float, relu4_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu3_config_struct>' to 'selu<float, float, relu3_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu2_config_struct>' to 'selu<float, float, relu2_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::selu<float, float, relu1_config_struct>' to 'selu<float, float, relu1_config_struct>' (../../nnet_utils/nnet_activation.h:749)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_multiply<float, float, mult_3_struct>' to 'jedi_multiply<float, float, mult_3_struct>' (../../nnet_utils/nnet_jedi.h:44)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_multiply<float, float, mult_2_struct>' to 'jedi_multiply<float, float, mult_2_struct>' (../../nnet_utils/nnet_jedi.h:44)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_multiply<float, float, mult_1_struct>' to 'jedi_multiply<float, float, mult_1_struct>' (../../nnet_utils/nnet_jedi.h:44)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_dnn3<float, float, dense3_config>' to 'jedi_dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:378)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_dnn2<float, float, dense2_config>' to 'jedi_dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:347)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_dnn1<float, float, dense1_config>' to 'jedi_dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:272)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_concat<float, float, concat_2_struct>' to 'jedi_concat<float, float, concat_2_struct>' (../../nnet_utils/nnet_jedi.h:69)
+WARNING: [XFORM 203-631] Renaming function 'nnet::jedi_concat<float, float, concat_1_struct>' to 'jedi_concat<float, float, concat_1_struct>' (../../nnet_utils/nnet_jedi.h:69)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dnn3<float, float, dense3_config>' to 'dnn3<float, float, dense3_config>' (../../nnet_utils/nnet_jedi.h:224)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dnn2<float, float, dense2_config>' to 'dnn2<float, float, dense2_config>' (../../nnet_utils/nnet_jedi.h:196)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dnn1<float, float, dense1_config>' to 'dnn1<float, float, dense1_config>' (../../nnet_utils/nnet_jedi.h:152)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, output3_config_struct>.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0' (../../nnet_utils/nnet_dense_latency.h:45:1)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, output2_config_struct>.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0' (../../nnet_utils/nnet_dense_latency.h:45:1)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, output1_config_struct>.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.1' (../../nnet_utils/nnet_dense_latency.h:45:1)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc8_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' (../../nnet_utils/nnet_dense_latency.h:45:9)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc7_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.' (../../nnet_utils/nnet_dense_latency.h:45:9)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc5_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1' (../../nnet_utils/nnet_dense_latency.h:45:9)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc4_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..1' (../../nnet_utils/nnet_mult.h:45:2)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc2_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2' (../../nnet_utils/nnet_dense_latency.h:45:9)
+WARNING: [XFORM 203-631] Renaming function 'nnet::dense_latency<float, float, fc1_config_struct>.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..2' (../../nnet_utils/nnet_mult.h:45:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_activation.h:777:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_activation.h:781:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_activation.h:777:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_activation.h:781:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:61:22)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:61:22)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:61:22)
+INFO: [HLS 200-472] Inferring partial write operation for 'O_sum' (../../nnet_utils/nnet_jedi.h:391:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'O_sum' (../../nnet_utils/nnet_jedi.h:397:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'cache2' (../../nnet_utils/nnet_jedi.h:362:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'O' (../../nnet_utils/nnet_jedi.h:370:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'cache1' (../../nnet_utils/nnet_jedi.h:293:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'E' (../../nnet_utils/nnet_jedi.h:319:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:80:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:89:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:80:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'res' (../../nnet_utils/nnet_jedi.h:89:17)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 01:55:34 ; elapsed = 01:56:14 . Memory (MB): peak = 2357.285 ; gain = 1835.195 ; free physical = 189544 ; free virtual = 587128
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'jedi' ...
+WARNING: [SYN 201-103] Legalizing function name 'jedi_multiply<float, float, mult_1_struct>' to 'jedi_multiply_float_float_mult_1_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_multiply<float, float, mult_2_struct>' to 'jedi_multiply_float_float_mult_2_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_concat<float, float, concat_1_struct>' to 'jedi_concat_float_float_concat_1_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..2' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2'.
+WARNING: [SYN 201-103] Legalizing function name '__hls_fptosi_float_i32' to 'p_hls_fptosi_float_i32'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu1_config_struct>' to 'selu_float_float_relu1_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu2_config_struct>' to 'selu_float_float_relu2_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.1' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_1'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, selu1_config_struct>' to 'selu_float_float_selu1_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dnn1<float, float, dense1_config>' to 'dnn1_float_float_dense1_config_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_dnn1<float, float, dense1_config>' to 'jedi_dnn1_float_float_dense1_config_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_multiply<float, float, mult_3_struct>' to 'jedi_multiply_float_float_mult_3_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_concat<float, float, concat_2_struct>' to 'jedi_concat_float_float_concat_2_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..1' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu3_config_struct>' to 'selu_float_float_relu3_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu4_config_struct>' to 'selu_float_float_relu4_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, selu2_config_struct>' to 'selu_float_float_selu2_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dnn2<float, float, dense2_config>' to 'dnn2_float_float_dense2_config_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_dnn2<float, float, dense2_config>' to 'jedi_dnn2_float_float_dense2_config_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_s'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu5_config_struct>' to 'selu_float_float_relu5_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' to 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, relu6_config_struct>' to 'selu_float_float_relu6_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_latency.0.0.0.0.0.0' to 'dense_latency_0_0_0_0_0_0'.
+WARNING: [SYN 201-103] Legalizing function name 'selu<float, float, selu3_config_struct>' to 'selu_float_float_selu3_config_struct_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dnn3<float, float, dense3_config>' to 'dnn3_float_float_dense3_config_s'.
+WARNING: [SYN 201-103] Legalizing function name 'jedi_dnn3<float, float, dense3_config>' to 'jedi_dnn3_float_float_dense3_config_s'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..2': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.1': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..1': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0': cannot find any operation of 'mul'.
+WARNING: [SYN 201-223] Checking resource limit in 'dense_latency.0.0.0.0.0.0': cannot find any operation of 'mul'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_multiply_float_float_mult_1_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 6974.35 seconds; current allocated memory: 649.241 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 3.21 seconds; current allocated memory: 649.481 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_multiply_float_float_mult_2_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 649.697 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 649.927 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_concat_float_float_concat_1_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 650.142 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 650.361 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..2'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('data_load_2', ../../nnet_utils/nnet_dense_latency.h:89) on array 'data' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'data'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 136.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 24.17 seconds; current allocated memory: 667.673 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 12.85 seconds; current allocated memory: 686.083 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_hls_fptosi_float_i32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '__hls_fptosi_float_i32'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 11.93 seconds; current allocated memory: 688.443 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.07 seconds; current allocated memory: 688.561 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu1_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu1_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.46 seconds; current allocated memory: 691.815 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.7 seconds; current allocated memory: 695.271 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 123.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 9.51 seconds; current allocated memory: 704.088 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.48 seconds; current allocated memory: 715.657 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu2_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu2_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 8.55 seconds; current allocated memory: 719.539 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.82 seconds; current allocated memory: 721.288 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 3.51 seconds; current allocated memory: 724.411 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.12 seconds; current allocated memory: 728.276 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_selu1_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, selu1_config_struct>'.
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation ('res_addr_32_write_ln781', ../../nnet_utils/nnet_activation.h:781) of variable 'selu_table26_load_2', ../../nnet_utils/nnet_activation.h:781 on array 'res' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'res'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 5, Depth = 14.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 3.26 seconds; current allocated memory: 730.134 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.56 seconds; current allocated memory: 731.243 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dnn1_float_float_dense1_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (5.845ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'dnn1_float_float_dense1_config_s' consists of the following:
+	'call' operation ('call_ret1', ../../nnet_utils/nnet_jedi.h:177) to 'selu<float, float, relu1_config_struct>' [38]  (1.76 ns)
+	'call' operation ('call_ret2', ../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:181) to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2' [69]  (4.08 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.66 seconds; current allocated memory: 732.253 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 7.8 seconds; current allocated memory: 739.338 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_dnn1_float_float_dense1_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 6.01 seconds; current allocated memory: 742.232 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.94 seconds; current allocated memory: 743.326 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_multiply_float_float_mult_3_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.67 seconds; current allocated memory: 746.234 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 746.466 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_concat_float_float_concat_2_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.18 seconds; current allocated memory: 746.739 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 746.955 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0..1'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('data_load_11', ../../nnet_utils/nnet_dense_latency.h:89) on array 'data' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'data'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 13, Depth = 109.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 19.18 seconds; current allocated memory: 761.022 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 9.74 seconds; current allocated memory: 775.718 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu3_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu3_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 11.29 seconds; current allocated memory: 780.805 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.67 seconds; current allocated memory: 784.297 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 123.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 9.71 seconds; current allocated memory: 793.061 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.56 seconds; current allocated memory: 804.627 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu4_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu4_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 8.71 seconds; current allocated memory: 808.538 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.86 seconds; current allocated memory: 810.305 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 3.65 seconds; current allocated memory: 813.411 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.27 seconds; current allocated memory: 817.277 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_selu2_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, selu2_config_struct>'.
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation ('res_addr_13_write_ln781', ../../nnet_utils/nnet_activation.h:781) of variable 'selu_table15_load_2', ../../nnet_utils/nnet_activation.h:781 on array 'res' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'res'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 5, Depth = 14.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 3.52 seconds; current allocated memory: 819.179 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.59 seconds; current allocated memory: 820.287 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dnn2_float_float_dense2_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (5.845ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'dnn2_float_float_dense2_config_s' consists of the following:
+	'call' operation ('call_ret8', ../../nnet_utils/nnet_jedi.h:213) to 'selu<float, float, relu4_config_struct>' [85]  (1.76 ns)
+	'call' operation ('call_ret', ../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:217) to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0' [101]  (4.08 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.7 seconds; current allocated memory: 821.253 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 7.75 seconds; current allocated memory: 828.287 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_dnn2_float_float_dense2_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.92 seconds; current allocated memory: 831.178 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.94 seconds; current allocated memory: 832.269 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('data_load_2', ../../nnet_utils/nnet_dense_latency.h:89) on array 'data' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'data'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 5, Depth = 45.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 11.43 seconds; current allocated memory: 840.521 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 3.87 seconds; current allocated memory: 847.186 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu5_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu5_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.52 seconds; current allocated memory: 851.279 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.65 seconds; current allocated memory: 854.737 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 123.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 9.46 seconds; current allocated memory: 863.523 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.51 seconds; current allocated memory: 875.072 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_relu6_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, relu6_config_struct>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 8.53 seconds; current allocated memory: 878.975 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.84 seconds; current allocated memory: 880.706 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_latency_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'dense_latency.0.0.0.0.0.0'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.34 seconds; current allocated memory: 882.502 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.11 seconds; current allocated memory: 884.528 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'selu_float_float_selu3_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'selu<float, float, selu3_config_struct>'.
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation ('res_addr_4_write_ln781', ../../nnet_utils/nnet_activation.h:781) of variable 'selu_table5_load_2', ../../nnet_utils/nnet_activation.h:781 on array 'res' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'res'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 3, Depth = 12.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.71 seconds; current allocated memory: 885.942 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.46 seconds; current allocated memory: 886.932 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dnn3_float_float_dense3_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (5.845ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'dnn3_float_float_dense3_config_s' consists of the following:
+	'call' operation ('call_ret2', ../../nnet_utils/nnet_jedi.h:235) to 'selu<float, float, relu5_config_struct>' [38]  (1.76 ns)
+	'call' operation ('call_ret3', ../../nnet_utils/nnet_dense.h:46->../../nnet_utils/nnet_jedi.h:239) to 'dense_latency.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0' [69]  (4.08 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.57 seconds; current allocated memory: 887.775 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.85 seconds; current allocated memory: 894.157 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi_dnn3_float_float_dense3_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.57 seconds; current allocated memory: 896.852 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.77 seconds; current allocated memory: 897.858 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'jedi' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.11 seconds; current allocated memory: 900.500 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 27.3 seconds; current allocated memory: 914.087 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_multiply_float_float_mult_1_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_multiply_float_float_mult_1_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 16.48 seconds; current allocated memory: 922.674 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_multiply_float_float_mult_2_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_multiply_float_float_mult_2_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.28 seconds; current allocated memory: 924.117 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_concat_float_float_concat_1_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_mul_mul_5ns_16ns_20_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_concat_float_float_concat_1_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 925.364 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' is 12480 from HDL expression: ((1'b0 == ap_block_pp0_stage3_11001) & (1'b1 == ap_CS_fsm_pp0_stage3))
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2'.
+INFO: [HLS 200-111]  Elapsed time: 1.82 seconds; current allocated memory: 941.619 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_hls_fptosi_float_i32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_hls_fptosi_float_i32'.
+INFO: [HLS 200-111]  Elapsed time: 17.4 seconds; current allocated memory: 980.732 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu1_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 30 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu1_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.88 seconds; current allocated memory: 990.114 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2' is 84480 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_2'.
+INFO: [HLS 200-111]  Elapsed time: 6.88 seconds; current allocated memory: 1.005 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu2_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 15 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 30 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu2_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 13.65 seconds; current allocated memory: 1.035 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_1' is 23040 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 150 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 150 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.82 seconds; current allocated memory: 1.050 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_selu1_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_selu1_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 5.11 seconds; current allocated memory: 1.061 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dnn1_float_float_dense1_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dnn1_float_float_dense1_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 1.79 seconds; current allocated memory: 1.072 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_dnn1_float_float_dense1_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_dnn1_float_float_dense1_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 6.93 seconds; current allocated memory: 1.078 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_multiply_float_float_mult_3_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_multiply_float_float_mult_3_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 6.72 seconds; current allocated memory: 1.082 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_concat_float_float_concat_2_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_concat_float_float_concat_2_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 1 seconds; current allocated memory: 1.083 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' is 11520 from HDL expression: ((1'b0 == ap_block_pp0_stage3_11001) & (1'b1 == ap_CS_fsm_pp0_stage3))
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.23 seconds; current allocated memory: 1.097 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu3_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 30 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu3_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 15.59 seconds; current allocated memory: 1.137 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1' is 84480 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_1'.
+INFO: [HLS 200-111]  Elapsed time: 7.59 seconds; current allocated memory: 1.175 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu4_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 15 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 30 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu4_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 14.27 seconds; current allocated memory: 1.205 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0' is 23040 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 150 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 150 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0'.
+INFO: [HLS 200-111]  Elapsed time: 3.61 seconds; current allocated memory: 1.220 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_selu2_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_selu2_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 5.79 seconds; current allocated memory: 1.231 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dnn2_float_float_dense2_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dnn2_float_float_dense2_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 2.48 seconds; current allocated memory: 1.242 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_dnn2_float_float_dense2_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_dnn2_float_float_dense2_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 7.42 seconds; current allocated memory: 1.248 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_s' is 10560 from HDL expression: ((1'b0 == ap_block_pp0_stage3_11001) & (1'b1 == ap_CS_fsm_pp0_stage3))
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_s'.
+INFO: [HLS 200-111]  Elapsed time: 7.61 seconds; current allocated memory: 1.259 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu5_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 30 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 60 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu5_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 8.29 seconds; current allocated memory: 1.282 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0' is 84480 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 450 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0'.
+INFO: [HLS 200-111]  Elapsed time: 7.99 seconds; current allocated memory: 1.320 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_relu6_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 15 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 30 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_relu6_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 14.83 seconds; current allocated memory: 1.350 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_latency_0_0_0_0_0_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'dense_latency_0_0_0_0_0_0' is 18240 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 75 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 75 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_latency_0_0_0_0_0_0'.
+INFO: [HLS 200-111]  Elapsed time: 3.91 seconds; current allocated memory: 1.361 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'selu_float_float_selu3_config_struct_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fcmp_32ns_32ns_1_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'jedi_fmul_32ns_32ns_32_3_max_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'selu_float_float_selu3_config_struct_s'.
+INFO: [HLS 200-111]  Elapsed time: 4.3 seconds; current allocated memory: 1.368 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dnn3_float_float_dense3_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dnn3_float_float_dense3_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 2.86 seconds; current allocated memory: 1.378 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi_dnn3_float_float_dense3_config_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'jedi_fadd_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi_dnn3_float_float_dense3_config_s'.
+INFO: [HLS 200-111]  Elapsed time: 7.31 seconds; current allocated memory: 1.383 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'jedi' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'jedi/I' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'jedi/Rr' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'jedi/Rr_T' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'jedi/Rs' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'jedi/result' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'jedi' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'jedi'.
+INFO: [HLS 200-111]  Elapsed time: 7.14 seconds; current allocated memory: 1.388 GB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 171.09 MHz
+INFO: [RTMG 210-279] Implementing memory 'selu_float_float_relu1_config_struct_s_selu_table22_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'selu_float_float_relu2_config_struct_s_selu_table24_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'selu_float_float_selu1_config_struct_s_selu_table26_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_dnn1_float_float_dense1_config_s_cache1_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_dnn1_float_float_dense1_config_s_E_col_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_dnn2_float_float_dense2_config_s_cache2_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_dnn3_float_float_dense3_config_s_O_sum_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_E_bar_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_B_top_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_B_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_E_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'jedi_C_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 02:01:48 ; elapsed = 02:05:29 . Memory (MB): peak = 2437.273 ; gain = 1915.184 ; free physical = 188686 ; free virtual = 586587
+INFO: [VHDL 208-304] Generating VHDL RTL for jedi.
+INFO: [VLOG 209-307] Generating Verilog RTL for jedi.
+***** C/RTL SYNTHESIS COMPLETED IN 2h5m17s *****
+***** C/RTL VALIDATION *****
+can't read "CSIM_RESULTS": no such variable
+    while executing
+"compare_files $CSIM_RESULTS $RTL_COSIM_RESULTS"
+    invoked from within
+"if {$opt(validation)} {
+  puts "***** C/RTL VALIDATION *****"
+  if {[compare_files $CSIM_RESULTS $RTL_COSIM_RESULTS]} {
+      puts "INFO: Test PASSED"..."
+    (file "build_prj.tcl" line 101)
+    invoked from within
+"source build_prj.tcl"
+    invoked from within
+"hls::main build_prj.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$args"
+    (procedure "hls_proc" line 5)
+    invoked from within
+"hls_proc $argv"
+INFO: [HLS 200-112] Total elapsed time: 7529.29 seconds; peak allocated memory: 1.388 GB.
+INFO: [Common 17-206] Exiting vivado_hls at Sun Jul 18 16:12:09 2021...

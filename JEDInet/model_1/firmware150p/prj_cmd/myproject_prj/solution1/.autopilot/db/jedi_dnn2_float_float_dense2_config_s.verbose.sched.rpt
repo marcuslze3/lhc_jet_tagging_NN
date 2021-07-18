@@ -1,0 +1,213 @@
+
+
+================================================================
+== Vivado HLS Report for 'jedi_dnn2_float_float_dense2_config_s'
+================================================================
+* Date:           Sun Jul 18 16:06:20 2021
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: virtexuplus
+* Target device:  xcu250-figd2104-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 5.845 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-------+-------+---------+
+    |  Latency (cycles) |  Latency (absolute) |    Interval   | Pipeline|
+    |   min   |   max   |    min   |    max   |  min  |  max  |   Type  |
+    +---------+---------+----------+----------+-------+-------+---------+
+    |    60601|    60601| 0.354 ms | 0.354 ms |  60601|  60601|   none  |
+    +---------+---------+----------+----------+-------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |    60600|    60600|       404|          -|          -|   150|    no    |
+        | + Loop 1.1  |       52|       52|         2|          -|          -|    26|    no    |
+        | + Loop 1.2  |       20|       20|         2|          -|          -|    10|    no    |
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 7
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 5 
+4 --> 3 
+5 --> 6 
+6 --> 7 2 
+7 --> 6 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.60>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%cache2 = alloca [26 x float], align 16" [../../nnet_utils/nnet_jedi.h:357]   --->   Operation 8 'alloca' 'cache2' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%O_col = alloca [10 x float], align 16"   --->   Operation 9 'alloca' 'O_col' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_1 : Operation 10 [1/1] (0.60ns)   --->   "br label %.loopexit" [../../nnet_utils/nnet_jedi.h:360]   --->   Operation 10 'br' <Predicate = true> <Delay = 0.60>
+
+State 2 <SV = 1> <Delay = 0.60>
+ST_2 : Operation 11 [1/1] (0.00ns)   --->   "%cols_0 = phi i8 [ 0, %0 ], [ %cols, %.loopexit.loopexit ]"   --->   Operation 11 'phi' 'cols_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 12 [1/1] (0.58ns)   --->   "%icmp_ln360 = icmp eq i8 %cols_0, -106" [../../nnet_utils/nnet_jedi.h:360]   --->   Operation 12 'icmp' 'icmp_ln360' <Predicate = true> <Delay = 0.58> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.65> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 150, i64 150, i64 150)"   --->   Operation 13 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 14 [1/1] (0.48ns)   --->   "%cols = add i8 %cols_0, 1" [../../nnet_utils/nnet_jedi.h:360]   --->   Operation 14 'add' 'cols' <Predicate = true> <Delay = 0.48> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "br i1 %icmp_ln360, label %5, label %.preheader.preheader" [../../nnet_utils/nnet_jedi.h:360]   --->   Operation 15 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "%zext_ln361 = zext i8 %cols_0 to i12" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 16 'zext' 'zext_ln361' <Predicate = (!icmp_ln360)> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%zext_ln361_1 = zext i8 %cols_0 to i11" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 17 'zext' 'zext_ln361_1' <Predicate = (!icmp_ln360)> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (0.60ns)   --->   "br label %.preheader" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 18 'br' <Predicate = (!icmp_ln360)> <Delay = 0.60>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "ret void" [../../nnet_utils/nnet_jedi.h:374]   --->   Operation 19 'ret' <Predicate = (icmp_ln360)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 1.68>
+ST_3 : Operation 20 [1/1] (0.00ns)   --->   "%rows_0 = phi i5 [ %rows, %1 ], [ 0, %.preheader.preheader ]"   --->   Operation 20 'phi' 'rows_0' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 21 [1/1] (0.00ns)   --->   "%phi_mul = phi i12 [ %add_ln362_1, %1 ], [ 0, %.preheader.preheader ]" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 21 'phi' 'phi_mul' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 22 [1/1] (0.63ns)   --->   "%icmp_ln361 = icmp eq i5 %rows_0, -6" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 22 'icmp' 'icmp_ln361' <Predicate = true> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.65> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 23 [1/1] (0.00ns)   --->   "%empty_44 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 26, i64 26, i64 26)"   --->   Operation 23 'speclooptripcount' 'empty_44' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 24 [1/1] (0.34ns)   --->   "%rows = add i5 %rows_0, 1" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 24 'add' 'rows' <Predicate = true> <Delay = 0.34> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "br i1 %icmp_ln361, label %2, label %1" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 25 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 26 [1/1] (0.52ns)   --->   "%add_ln362_1 = add i12 %phi_mul, 150" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 26 'add' 'add_ln362_1' <Predicate = (!icmp_ln361)> <Delay = 0.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 27 [1/1] (0.52ns)   --->   "%add_ln362 = add i12 %zext_ln361, %phi_mul" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 27 'add' 'add_ln362' <Predicate = (!icmp_ln361)> <Delay = 0.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "%zext_ln362_1 = zext i12 %add_ln362 to i64" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 28 'zext' 'zext_ln362_1' <Predicate = (!icmp_ln361)> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (0.00ns)   --->   "%C_addr = getelementptr [3900 x float]* %C, i64 0, i64 %zext_ln362_1" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 29 'getelementptr' 'C_addr' <Predicate = (!icmp_ln361)> <Delay = 0.00>
+ST_3 : Operation 30 [2/2] (1.15ns)   --->   "%C_load = load float* %C_addr, align 4" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 30 'load' 'C_load' <Predicate = (!icmp_ln361)> <Delay = 1.15> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_3 : Operation 31 [2/2] (0.00ns)   --->   "call fastcc void @"dnn2<float, float, dense2_config>"([26 x float]* %cache2, [10 x float]* %O_col)" [../../nnet_utils/nnet_jedi.h:366]   --->   Operation 31 'call' <Predicate = (icmp_ln361)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 1.75>
+ST_4 : Operation 32 [1/1] (0.00ns)   --->   "%zext_ln362 = zext i5 %rows_0 to i64" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 32 'zext' 'zext_ln362' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 33 [1/2] (1.15ns)   --->   "%C_load = load float* %C_addr, align 4" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 33 'load' 'C_load' <Predicate = true> <Delay = 1.15> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_4 : Operation 34 [1/1] (0.00ns)   --->   "%cache2_addr = getelementptr inbounds [26 x float]* %cache2, i64 0, i64 %zext_ln362" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 34 'getelementptr' 'cache2_addr' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 35 [1/1] (0.59ns)   --->   "store float %C_load, float* %cache2_addr, align 4" [../../nnet_utils/nnet_jedi.h:362]   --->   Operation 35 'store' <Predicate = true> <Delay = 0.59> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_4 : Operation 36 [1/1] (0.00ns)   --->   "br label %.preheader" [../../nnet_utils/nnet_jedi.h:361]   --->   Operation 36 'br' <Predicate = true> <Delay = 0.00>
+
+State 5 <SV = 3> <Delay = 0.60>
+ST_5 : Operation 37 [1/2] (0.00ns)   --->   "call fastcc void @"dnn2<float, float, dense2_config>"([26 x float]* %cache2, [10 x float]* %O_col)" [../../nnet_utils/nnet_jedi.h:366]   --->   Operation 37 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 38 [1/1] (0.60ns)   --->   "br label %3" [../../nnet_utils/nnet_jedi.h:369]   --->   Operation 38 'br' <Predicate = true> <Delay = 0.60>
+
+State 6 <SV = 4> <Delay = 0.65>
+ST_6 : Operation 39 [1/1] (0.00ns)   --->   "%rows1_0 = phi i4 [ 0, %2 ], [ %rows_1, %4 ]"   --->   Operation 39 'phi' 'rows1_0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 40 [1/1] (0.00ns)   --->   "%phi_mul1 = phi i11 [ 0, %2 ], [ %add_ln370_1, %4 ]" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 40 'phi' 'phi_mul1' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 41 [1/1] (0.65ns)   --->   "%icmp_ln369 = icmp eq i4 %rows1_0, -6" [../../nnet_utils/nnet_jedi.h:369]   --->   Operation 41 'icmp' 'icmp_ln369' <Predicate = true> <Delay = 0.65> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.65> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 42 [1/1] (0.00ns)   --->   "%empty_45 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10)"   --->   Operation 42 'speclooptripcount' 'empty_45' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 43 [1/1] (0.33ns)   --->   "%rows_1 = add i4 %rows1_0, 1" [../../nnet_utils/nnet_jedi.h:369]   --->   Operation 43 'add' 'rows_1' <Predicate = true> <Delay = 0.33> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 44 [1/1] (0.00ns)   --->   "br i1 %icmp_ln369, label %.loopexit.loopexit, label %4" [../../nnet_utils/nnet_jedi.h:369]   --->   Operation 44 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 45 [1/1] (0.00ns)   --->   "%zext_ln370 = zext i4 %rows1_0 to i64" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 45 'zext' 'zext_ln370' <Predicate = (!icmp_ln369)> <Delay = 0.00>
+ST_6 : Operation 46 [1/1] (0.53ns)   --->   "%add_ln370_1 = add i11 %phi_mul1, 150" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 46 'add' 'add_ln370_1' <Predicate = (!icmp_ln369)> <Delay = 0.53> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 47 [1/1] (0.53ns)   --->   "%add_ln370 = add i11 %zext_ln361_1, %phi_mul1" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 47 'add' 'add_ln370' <Predicate = (!icmp_ln369)> <Delay = 0.53> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.53> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 48 [1/1] (0.00ns)   --->   "%O_col_addr = getelementptr inbounds [10 x float]* %O_col, i64 0, i64 %zext_ln370" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 48 'getelementptr' 'O_col_addr' <Predicate = (!icmp_ln369)> <Delay = 0.00>
+ST_6 : Operation 49 [2/2] (0.59ns)   --->   "%O_col_load = load float* %O_col_addr, align 4" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 49 'load' 'O_col_load' <Predicate = (!icmp_ln369)> <Delay = 0.59> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_6 : Operation 50 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 50 'br' <Predicate = (icmp_ln369)> <Delay = 0.00>
+
+State 7 <SV = 5> <Delay = 1.75>
+ST_7 : Operation 51 [1/1] (0.00ns)   --->   "%zext_ln370_1 = zext i11 %add_ln370 to i64" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 51 'zext' 'zext_ln370_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 52 [1/1] (0.00ns)   --->   "%O_addr = getelementptr [1500 x float]* %O, i64 0, i64 %zext_ln370_1" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 52 'getelementptr' 'O_addr' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 53 [1/2] (0.59ns)   --->   "%O_col_load = load float* %O_col_addr, align 4" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 53 'load' 'O_col_load' <Predicate = true> <Delay = 0.59> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_7 : Operation 54 [1/1] (1.15ns)   --->   "store float %O_col_load, float* %O_addr, align 4" [../../nnet_utils/nnet_jedi.h:370]   --->   Operation 54 'store' <Predicate = true> <Delay = 1.15> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.15> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 1500> <RAM>
+ST_7 : Operation 55 [1/1] (0.00ns)   --->   "br label %3" [../../nnet_utils/nnet_jedi.h:369]   --->   Operation 55 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 0.603ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('cols') with incoming values : ('cols', ../../nnet_utils/nnet_jedi.h:360) [11]  (0.603 ns)
+
+ <State 2>: 0.603ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('rows') with incoming values : ('rows', ../../nnet_utils/nnet_jedi.h:361) [21]  (0.603 ns)
+
+ <State 3>: 1.68ns
+The critical path consists of the following:
+	'phi' operation ('phi_mul', ../../nnet_utils/nnet_jedi.h:362) with incoming values : ('add_ln362_1', ../../nnet_utils/nnet_jedi.h:362) [22]  (0 ns)
+	'add' operation ('add_ln362', ../../nnet_utils/nnet_jedi.h:362) [30]  (0.526 ns)
+	'getelementptr' operation ('C_addr', ../../nnet_utils/nnet_jedi.h:362) [32]  (0 ns)
+	'load' operation ('C_load', ../../nnet_utils/nnet_jedi.h:362) on array 'C' [33]  (1.16 ns)
+
+ <State 4>: 1.75ns
+The critical path consists of the following:
+	'load' operation ('C_load', ../../nnet_utils/nnet_jedi.h:362) on array 'C' [33]  (1.16 ns)
+	'store' operation ('store_ln362', ../../nnet_utils/nnet_jedi.h:362) of variable 'C_load', ../../nnet_utils/nnet_jedi.h:362 on array 'cache2', ../../nnet_utils/nnet_jedi.h:357 [35]  (0.594 ns)
+
+ <State 5>: 0.603ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('rows') with incoming values : ('rows', ../../nnet_utils/nnet_jedi.h:369) [41]  (0.603 ns)
+
+ <State 6>: 0.656ns
+The critical path consists of the following:
+	'phi' operation ('rows') with incoming values : ('rows', ../../nnet_utils/nnet_jedi.h:369) [41]  (0 ns)
+	'icmp' operation ('icmp_ln369', ../../nnet_utils/nnet_jedi.h:369) [43]  (0.656 ns)
+
+ <State 7>: 1.75ns
+The critical path consists of the following:
+	'load' operation ('O_col_load', ../../nnet_utils/nnet_jedi.h:370) on array 'O_col' [54]  (0.594 ns)
+	'store' operation ('store_ln370', ../../nnet_utils/nnet_jedi.h:370) of variable 'O_col_load', ../../nnet_utils/nnet_jedi.h:370 on array 'O' [55]  (1.16 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
