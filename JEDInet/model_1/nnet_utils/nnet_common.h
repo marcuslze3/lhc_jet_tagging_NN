@@ -20,6 +20,7 @@
 #ifndef NNET_COMMON_H_
 #define NNET_COMMON_H_
 
+#include "nnet_helpers.h"
 #include "../firmware/ap_types/ap_fixed.h"
 
 // This is a substitute for "ceil(n/(float)d)".
