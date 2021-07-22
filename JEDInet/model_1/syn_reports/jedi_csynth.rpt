@@ -1,0 +1,208 @@
+
+
+================================================================
+== Vivado HLS Report for 'jedi'
+================================================================
+* Date:           Wed Jul 21 21:20:06 2021
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: virtexuplus
+* Target device:  xcu250-figd2104-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 6.883 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |  717018064|  717018064| 4.935 sec | 4.935 sec |  717018064|  717018064|   none  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------------------------------------+-------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |                                                            |                                                 |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+        |                          Instance                          |                      Module                     |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+        +------------------------------------------------------------+-------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |grp_jedi_dnn1_ap_fixed_ap_fixed_dense1_config_s_fu_80       |jedi_dnn1_ap_fixed_ap_fixed_dense1_config_s      |   10057501|   10057501| 69.222 ms | 69.222 ms |   10057501|   10057501|   none  |
+        |grp_jedi_dnn2_ap_fixed_ap_fixed_dense2_config_s_fu_92       |jedi_dnn2_ap_fixed_ap_fixed_dense2_config_s      |      60451|      60451|  0.416 ms |  0.416 ms |      60451|      60451|   none  |
+        |grp_jedi_dnn3_ap_fixed_ap_fixed_dense3_config_s_fu_104      |jedi_dnn3_ap_fixed_ap_fixed_dense3_config_s      |       3290|       3290| 22.644 us | 22.644 us |       3290|       3290|   none  |
+        |grp_jedi_multiply_ap_fixed_ap_fixed_mult_1_struct_s_fu_117  |jedi_multiply_ap_fixed_ap_fixed_mult_1_struct_s  |  268915233|  268915233| 1.851 sec | 1.851 sec |  268915233|  268915233|   none  |
+        |grp_jedi_multiply_ap_fixed_ap_fixed_mult_2_struct_s_fu_127  |jedi_multiply_ap_fixed_ap_fixed_mult_2_struct_s  |  268915233|  268915233| 1.851 sec | 1.851 sec |  268915233|  268915233|   none  |
+        |grp_jedi_multiply_ap_fixed_ap_fixed_mult_3_struct_s_fu_136  |jedi_multiply_ap_fixed_ap_fixed_mult_3_struct_s  |  167628021|  167628021| 1.154 sec | 1.154 sec |  167628021|  167628021|   none  |
+        |grp_jedi_concat_ap_fixed_ap_fixed_concat_1_struct_s_fu_144  |jedi_concat_ap_fixed_ap_fixed_concat_1_struct_s  |    1430466|    1430466|  9.845 ms |  9.845 ms |    1430466|    1430466|   none  |
+        |grp_jedi_concat_ap_fixed_ap_fixed_concat_2_struct_s_fu_151  |jedi_concat_ap_fixed_ap_fixed_concat_2_struct_s  |       7854|       7854| 54.056 us | 54.056 us |       7854|       7854|   none  |
+        +------------------------------------------------------------+-------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+------+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM |
++---------------------+---------+-------+---------+---------+------+
+|DSP                  |        -|      -|        -|        -|     -|
+|Expression           |        -|      -|        -|        -|     -|
+|FIFO                 |        -|      -|        -|        -|     -|
+|Instance             |      148|   7449|  1605869|  4842551|     0|
+|Memory               |     2342|      -|        0|        0|     0|
+|Multiplexer          |        -|      -|        -|      400|     -|
+|Register             |        -|      -|       24|        -|     -|
++---------------------+---------+-------+---------+---------+------+
+|Total                |     2490|   7449|  1605893|  4842951|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available SLR        |     1344|   3072|   864000|   432000|   320|
++---------------------+---------+-------+---------+---------+------+
+|Utilization SLR (%)  |      185|    242|      185|     1121|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available            |     5376|  12288|  3456000|  1728000|  1280|
++---------------------+---------+-------+---------+---------+------+
+|Utilization (%)      |       46|     60|       46|      280|     0|
++---------------------+---------+-------+---------+---------+------+
+
++ Detail: 
+    * Instance: 
+    +------------------------------------------------------------+-------------------------------------------------+---------+-------+--------+---------+-----+
+    |                          Instance                          |                      Module                     | BRAM_18K| DSP48E|   FF   |   LUT   | URAM|
+    +------------------------------------------------------------+-------------------------------------------------+---------+-------+--------+---------+-----+
+    |grp_jedi_concat_ap_fixed_ap_fixed_concat_1_struct_s_fu_144  |jedi_concat_ap_fixed_ap_fixed_concat_1_struct_s  |        0|      1|     222|      317|    0|
+    |grp_jedi_concat_ap_fixed_ap_fixed_concat_2_struct_s_fu_151  |jedi_concat_ap_fixed_ap_fixed_concat_2_struct_s  |        0|      0|     140|      294|    0|
+    |grp_jedi_dnn1_ap_fixed_ap_fixed_dense1_config_s_fu_80       |jedi_dnn1_ap_fixed_ap_fixed_dense1_config_s      |       50|   2802|  626073|  1963251|    0|
+    |grp_jedi_dnn2_ap_fixed_ap_fixed_dense2_config_s_fu_92       |jedi_dnn2_ap_fixed_ap_fixed_dense2_config_s      |       50|   2649|  575948|  1760932|    0|
+    |grp_jedi_dnn3_ap_fixed_ap_fixed_dense3_config_s_fu_104      |jedi_dnn3_ap_fixed_ap_fixed_dense3_config_s      |       48|   1991|  402664|  1116662|    0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_1_struct_s_fu_117  |jedi_multiply_ap_fixed_ap_fixed_mult_1_struct_s  |        0|      2|     279|      367|    0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_2_struct_s_fu_127  |jedi_multiply_ap_fixed_ap_fixed_mult_2_struct_s  |        0|      2|     279|      367|    0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_3_struct_s_fu_136  |jedi_multiply_ap_fixed_ap_fixed_mult_3_struct_s  |        0|      2|     264|      361|    0|
+    +------------------------------------------------------------+-------------------------------------------------+---------+-------+--------+---------+-----+
+    |Total                                                       |                                                 |      148|   7449| 1605869|  4842551|    0|
+    +------------------------------------------------------------+-------------------------------------------------+---------+-------+--------+---------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +-----------+--------------+---------+---+----+-----+--------+-----+------+-------------+
+    |   Memory  |    Module    | BRAM_18K| FF| LUT| URAM|  Words | Bits| Banks| W*Bits*Banks|
+    +-----------+--------------+---------+---+----+-----+--------+-----+------+-------------+
+    |B_V_U      |jedi_B_V      |     1006|  0|   0|    0|  715200|   25|     1|     17880000|
+    |B_top_V_U  |jedi_B_top_V  |      504|  0|   0|    0|  357600|   25|     1|      8940000|
+    |B_bot_V_U  |jedi_B_top_V  |      504|  0|   0|    0|  357600|   25|     1|      8940000|
+    |C_V_U      |jedi_C_V      |        6|  0|   0|    0|    3900|   25|     1|        97500|
+    |E_V_U      |jedi_E_V      |      316|  0|   0|    0|  223500|   25|     1|      5587500|
+    |E_bar_V_U  |jedi_E_bar_V  |        3|  0|   0|    0|    1500|   25|     1|        37500|
+    |O_V_U      |jedi_E_bar_V  |        3|  0|   0|    0|    1500|   25|     1|        37500|
+    +-----------+--------------+---------+---+----+-----+--------+-----+------+-------------+
+    |Total      |              |     2342|  0|   0|    0| 1660800|  175|     7|     41520000|
+    +-----------+--------------+---------+---+----+-----+--------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +------------------+----+-----------+-----+-----------+
+    |       Name       | LUT| Input Size| Bits| Total Bits|
+    +------------------+----+-----------+-----+-----------+
+    |B_V_address0      |  15|          3|   20|         60|
+    |B_V_ce0           |  15|          3|    1|          3|
+    |B_V_we0           |   9|          2|    1|          2|
+    |B_bot_V_address0  |  15|          3|   19|         57|
+    |B_bot_V_ce0       |  15|          3|    1|          3|
+    |B_bot_V_we0       |   9|          2|    1|          2|
+    |B_top_V_address0  |  15|          3|   19|         57|
+    |B_top_V_ce0       |  15|          3|    1|          3|
+    |B_top_V_we0       |   9|          2|    1|          2|
+    |C_V_address0      |  15|          3|   12|         36|
+    |C_V_ce0           |  15|          3|    1|          3|
+    |C_V_we0           |   9|          2|    1|          2|
+    |E_V_address0      |  15|          3|   18|         54|
+    |E_V_ce0           |  15|          3|    1|          3|
+    |E_V_we0           |   9|          2|    1|          2|
+    |E_bar_V_address0  |  15|          3|   11|         33|
+    |E_bar_V_ce0       |  15|          3|    1|          3|
+    |E_bar_V_we0       |   9|          2|    1|          2|
+    |I_V_address0      |  21|          4|   15|         60|
+    |I_V_ce0           |  21|          4|    1|          4|
+    |O_V_address0      |  15|          3|   11|         33|
+    |O_V_ce0           |  15|          3|    1|          3|
+    |O_V_we0           |   9|          2|    1|          2|
+    |ap_NS_fsm         |  85|         17|    1|         17|
+    +------------------+----+-----------+-----+-----------+
+    |Total             | 400|         81|  141|        446|
+    +------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------------------------------------+----+----+-----+-----------+
+    |                                   Name                                  | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                                |  16|   0|   16|          0|
+    |grp_jedi_concat_ap_fixed_ap_fixed_concat_1_struct_s_fu_144_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_concat_ap_fixed_ap_fixed_concat_2_struct_s_fu_151_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_dnn1_ap_fixed_ap_fixed_dense1_config_s_fu_80_ap_start_reg       |   1|   0|    1|          0|
+    |grp_jedi_dnn2_ap_fixed_ap_fixed_dense2_config_s_fu_92_ap_start_reg       |   1|   0|    1|          0|
+    |grp_jedi_dnn3_ap_fixed_ap_fixed_dense3_config_s_fu_104_ap_start_reg      |   1|   0|    1|          0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_1_struct_s_fu_117_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_2_struct_s_fu_127_ap_start_reg  |   1|   0|    1|          0|
+    |grp_jedi_multiply_ap_fixed_ap_fixed_mult_3_struct_s_fu_136_ap_start_reg  |   1|   0|    1|          0|
+    +-------------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                    |  24|   0|   24|          0|
+    +-------------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+--------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------------+-----+-----+------------+--------------+--------------+
+|ap_clk             |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_rst             |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_start           |  in |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_done            | out |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_idle            | out |    1| ap_ctrl_hs |     jedi     | return value |
+|ap_ready           | out |    1| ap_ctrl_hs |     jedi     | return value |
+|I_V_address0       | out |   15|  ap_memory |      I_V     |     array    |
+|I_V_ce0            | out |    1|  ap_memory |      I_V     |     array    |
+|I_V_q0             |  in |   25|  ap_memory |      I_V     |     array    |
+|Rr_V_address0      | out |   22|  ap_memory |     Rr_V     |     array    |
+|Rr_V_ce0           | out |    1|  ap_memory |     Rr_V     |     array    |
+|Rr_V_q0            |  in |   25|  ap_memory |     Rr_V     |     array    |
+|Rr_T_V_address0    | out |   22|  ap_memory |    Rr_T_V    |     array    |
+|Rr_T_V_ce0         | out |    1|  ap_memory |    Rr_T_V    |     array    |
+|Rr_T_V_q0          |  in |   25|  ap_memory |    Rr_T_V    |     array    |
+|Rs_V_address0      | out |   22|  ap_memory |     Rs_V     |     array    |
+|Rs_V_ce0           | out |    1|  ap_memory |     Rs_V     |     array    |
+|Rs_V_q0            |  in |   25|  ap_memory |     Rs_V     |     array    |
+|result_V_address0  | out |    3|  ap_memory |   result_V   |     array    |
+|result_V_ce0       | out |    1|  ap_memory |   result_V   |     array    |
+|result_V_we0       | out |    1|  ap_memory |   result_V   |     array    |
+|result_V_d0        | out |   25|  ap_memory |   result_V   |     array    |
+|result_V_address1  | out |    3|  ap_memory |   result_V   |     array    |
+|result_V_ce1       | out |    1|  ap_memory |   result_V   |     array    |
+|result_V_we1       | out |    1|  ap_memory |   result_V   |     array    |
+|result_V_d1        | out |   25|  ap_memory |   result_V   |     array    |
++-------------------+-----+-----+------------+--------------+--------------+
+
