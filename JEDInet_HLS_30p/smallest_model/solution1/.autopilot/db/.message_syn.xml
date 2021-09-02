@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_631" tag="SCHEDULE" content="Option &apos;relax_ii_for_timing&apos; is enabled, will increase II to preserve clock frequency constraints."/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;model_1/firmware/jedi.cpp&apos; ..."/>
+	<Message severity="WARNING" prefix="[HLS 200-40]" key="HLS_40_1378" tag="" content="In file included from model_1/firmware/jedi.cpp:22:
+model_1/firmware/../nnet_utils/nnet_jedi.h:418:5: warning: &apos;/*&apos; within block comment [-Wcomment]
+    /* parameters, think it will be specified in CONFIG
+    ^
+1 warning generated."/>
+	<Message severity="ERROR" prefix="[HLS 200-70]" key="HLS_70_1454" tag="" content="Compilation errors found: In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:7:
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:1: error: unknown type name &apos;constexpr&apos;
+constexpr int ceillog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:11: error: expected unqualified-id
+constexpr int ceillog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:1: error: unknown type name &apos;constexpr&apos;
+constexpr int floorlog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:11: error: expected unqualified-id
+constexpr int floorlog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:1: error: unknown type name &apos;constexpr&apos;
+constexpr int pow2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:11: error: expected unqualified-id
+constexpr int pow2(int x){
+          ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+In file included from model_1/firmware/../nnet_utils/nnet_activation.h:25:
+model_1/firmware/../nnet_utils/nnet_common.h:46:13: error: unknown type name &apos;constexpr&apos;
+     static constexpr int leftN = pow2(floorlog2(N - 1)) &gt; 0 ? pow2(floorlog2(N - 1)) : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:46:23: error: expected unqualified-id
+     static constexpr int leftN = pow2(floorlog2(N - 1)) &gt; 0 ? pow2(floorlog2(N - 1)) : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:13: error: unknown type name &apos;constexpr&apos;
+     static constexpr int rightN = N - leftN &gt; 0 ? N - leftN : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:23: error: expected unqualified-id
+     static constexpr int rightN = N - leftN &gt; 0 ? N - leftN : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:54:25: error: use of undeclared identifier &apos;leftN&apos;
+     return op(reduce&lt;T,leftN,Op&gt;(x, op), reduce&lt;T,rightN,Op&gt;(x+leftN, op));
+                        ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+model_1/firmware/../nnet_utils/nnet_activation.h:178:6: error: expected identifier or &apos;{&apos;
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:178:1: warning: declaration does not declare anything [-Wmissing-declarations]
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+^~~~
+model_1/firmware/../nnet_utils/nnet_activation.h:187:12: error: unknown type name &apos;constexpr&apos;
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:187:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:189:26: error: use of undeclared identifier &apos;N&apos;
+    x(x.width-1, x.width-N) = i;
+                         ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:12: error: unknown type name &apos;constexpr&apos;
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:197:13: error: use of undeclared identifier &apos;N&apos;
+    ap_uint&lt;N&gt; y = x(x.width-1, x.width-N);
+            ^
+model_1/firmware/../nnet_utils/nnet_activation.h:198:25: error: use of undeclared identifier &apos;N&apos;
+    return (unsigned) y(N-1, 0);
+                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated."/>
+</Messages>

@@ -1,0 +1,337 @@
+INFO-FLOW: Workspace /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1 opened at Sun Jul 18 11:22:12 BST 2021
+Execute     config_clock -quiet -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+WARNING: [HLS 200-40] Cannot find library '/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/Virtex-7/Virtex-7.lib'.
+WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'.
+Execute     open_platform DefaultPlatform 
+Execute     import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.lib 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/dsp48e1.hlp 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute     source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7.gen 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/util.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.gen 
+Command       ap_source done; 0.14 sec.
+Command     ap_source done; 0.15 sec.
+Execute     open_platform DefaultPlatform 
+Execute     import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.lib 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute     source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.gen 
+Execute     set_part xc7vx485t-ffg1157-1 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data single -quiet 
+Command       ap_part_info done; 3.1 sec.
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       add_library xilinx/virtex7/virtex7:xc7vx485t:-ffg1157:-1 
+Execute         get_default_platform 
+Execute         open_platform DefaultPlatform 
+Execute         import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.lib 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.lib 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.lib 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.lib 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.lib 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/dsp48e1.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.gen 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/util.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.gen 
+Command           ap_source done; 0.16 sec.
+Command         ap_source done; 0.16 sec.
+Execute         ap_part_info -data single -name xc7vx485t-ffg1157-1 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         config_chip_info -quiet -speed slow 
+Command       add_library done; 0.32 sec.
+Execute       add_library xilinx/virtex7/virtex7_fpv6 
+Execute         get_default_platform 
+Execute         open_platform DefaultPlatform 
+Execute         import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute                 source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute                 source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.gen 
+INFO: [HLS 200-10] Setting target device to 'xc7vx485t-ffg1157-1'
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       get_default_platform 
+Command     set_part done; 3.58 sec.
+Execute     ap_part_info -data single -name xc7vx485t-ffg1157-1 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     config_chip_info -quiet -speed slow 
+Command   open_solution done; 3.91 sec.
+Execute   set_part xc7vx485tffg1157-1 
+Execute     ap_part_info -name xc7vx485tffg1157-1 -data single -quiet 
+Execute     ap_part_info -name xc7vx485tffg1157-1 -data info 
+Execute     add_library xilinx/virtex7/virtex7:xc7vx485t:-ffg1157:-1 
+Execute       get_default_platform 
+Execute       open_platform DefaultPlatform 
+Execute       import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.lib 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.lib 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/dsp48e1.hlp 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/plb46.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/fsl.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/axi4.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.gen 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/util.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfft.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/ip/xfir.gen 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.gen 
+Command         ap_source done; 0.14 sec.
+Command       ap_source done; 0.15 sec.
+Execute       ap_part_info -data single -name xc7vx485t-ffg1157-1 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       config_chip_info -quiet -speed slow 
+Command     add_library done; 0.28 sec.
+Execute     add_library xilinx/virtex7/virtex7_fpv6 
+Execute       get_default_platform 
+Execute       open_platform DefaultPlatform 
+Execute       import_lib /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.lib 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.hlp 
+Execute           source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute               source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute             source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute       source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+Execute         source /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.gen 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     get_default_platform 
+Command   set_part done; 0.41 sec.
+Execute   create_clock -period 10 -name default 
+Execute     config_clock -quiet -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute   csynth_design 
+Execute     get_config_compile -dump_cfg 
+Execute     get_config_compile -effort 
+Execute     get_config_compile -enable_clang39 
+Execute     get_config_compile -g 
+Execute     get_config_compile -ng 
+Execute     get_config_compile -opt_fp 
+Execute     get_config_compile -skip_cdt 
+Execute     get_config_compile -skip_syncheck 
+Execute     get_config_compile -skip_transform 
+Execute     get_config_compile -keep_printf 
+Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
+Execute       get_config_schedule -relax_ii_for_timing 
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+Execute       get_config_schedule -suppress_dependence_error_break 
+INFO: [HLS 200-10] Analyzing design file 'model_1/firmware/jedi.cpp' ... 
+INFO-FLOW: Compiling one TU...
+Execute       is_m_axi_addr64 
+INFO-FLOW: Handling model_1/firmware/jedi.cpp as C++
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       is_encrypted model_1/firmware/jedi.cpp 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+INFO-FLOW: Running: GCC PP
+INFO-FLOW: Source preprocessing
+Execute       clang  -fno-limit-debug-info -gcc-toolchain "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/gcc" -hls  -fno-exceptions  -D__llvm__  -E "model_1/firmware/jedi.cpp"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot" -I "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__  -o "/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp" 
+INFO-FLOW: exec /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -E model_1/firmware/jedi.cpp -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot -I /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -o /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp
+WARNING: [HLS 200-40] In file included from model_1/firmware/jedi.cpp:22:
+model_1/firmware/../nnet_utils/nnet_jedi.h:418:5: warning: '/*' within block comment [-Wcomment]
+    /* parameters, think it will be specified in CONFIG
+    ^
+1 warning generated.
+Command       clang done; 2.48 sec.
+Execute       tidy_31 xilinx-xfmat-array-geometry /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp std=gnu++98 
+INFO-FLOW: exec /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-xfmat-array-geometry -quiet -fix /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp -- -std=gnu++98 -fhls -ferror-limit=0
+Command       tidy_31 done; 0.88 sec.
+INFO-FLOW: Syntax Checking before pre-processing...
+Execute       clang -syntaxcheck -src /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp  -fno-limit-debug-info -gcc-toolchain "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/gcc" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot" -I "/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__  "/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp"  -o "/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/useless.bc"  
+INFO-FLOW: exec /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/lnx64/tools/gcc -hls -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot -I /vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/jedi.pp.0.cpp -o /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/.autopilot/db/useless.bc
+ERROR: [HLS 200-70] Compilation errors found: In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:7:
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:1: error: unknown type name 'constexpr'
+constexpr int ceillog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:11: error: expected unqualified-id
+constexpr int ceillog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:1: error: unknown type name 'constexpr'
+constexpr int floorlog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:11: error: expected unqualified-id
+constexpr int floorlog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:1: error: unknown type name 'constexpr'
+constexpr int pow2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:11: error: expected unqualified-id
+constexpr int pow2(int x){
+          ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+In file included from model_1/firmware/../nnet_utils/nnet_activation.h:25:
+model_1/firmware/../nnet_utils/nnet_common.h:46:13: error: unknown type name 'constexpr'
+     static constexpr int leftN = pow2(floorlog2(N - 1)) > 0 ? pow2(floorlog2(N - 1)) : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:46:23: error: expected unqualified-id
+     static constexpr int leftN = pow2(floorlog2(N - 1)) > 0 ? pow2(floorlog2(N - 1)) : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:13: error: unknown type name 'constexpr'
+     static constexpr int rightN = N - leftN > 0 ? N - leftN : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:23: error: expected unqualified-id
+     static constexpr int rightN = N - leftN > 0 ? N - leftN : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:54:25: error: use of undeclared identifier 'leftN'
+     return op(reduce<T,leftN,Op>(x, op), reduce<T,rightN,Op>(x+leftN, op));
+                        ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+model_1/firmware/../nnet_utils/nnet_activation.h:178:6: error: expected identifier or '{'
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:178:1: warning: declaration does not declare anything [-Wmissing-declarations]
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+^~~~
+model_1/firmware/../nnet_utils/nnet_activation.h:187:12: error: unknown type name 'constexpr'
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:187:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:189:26: error: use of undeclared identifier 'N'
+    x(x.width-1, x.width-N) = i;
+                         ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:12: error: unknown type name 'constexpr'
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:197:13: error: use of undeclared identifier 'N'
+    ap_uint<N> y = x(x.width-1, x.width-N);
+            ^
+model_1/firmware/../nnet_utils/nnet_activation.h:198:25: error: use of undeclared identifier 'N'
+    return (unsigned) y(N-1, 0);
+                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated.
+Command       clang done; error code: 2; 2.13 sec.
+Command     elaborate done; error code: 2; 5.53 sec.
+Command   csynth_design done; error code: 2; 5.54 sec.
+Command ap_source done; error code: 1; 9.89 sec.
+Execute cleanup_all 

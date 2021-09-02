@@ -1,0 +1,110 @@
+INFO: [HLS 200-10] Running '/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'mzl20' on host 'cccad5.doc.ic.ac.uk' (Linux_x86_64 version 3.10.0-957.1.3.el7.x86_64) on Sun Jul 18 11:22:12 BST 2021
+INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
+INFO: [HLS 200-10] In directory '/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test'
+Sourcing Tcl script '/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/csynth.tcl'
+INFO: [HLS 200-10] Opening project '/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model'.
+INFO: [HLS 200-10] Adding design file 'model_1/firmware/defines.h' to the project
+INFO: [HLS 200-10] Adding design file 'model_1/firmware/jedi.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'model_1/firmware/jedi.h' to the project
+INFO: [HLS 200-10] Adding design file 'model_1/firmware/parameters.h' to the project
+INFO: [HLS 200-10] Adding test bench file 'model_1/firmware/tb_jedi.cpp' to the project
+INFO: [HLS 200-10] Opening solution '/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+WARNING: [HLS 200-40] Cannot find library '/vol/cc/opt/Xilinx/2019.2/Vivado/2019.2/common/technology/xilinx/Virtex-7/Virtex-7.lib'.
+WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'.
+INFO: [HLS 200-10] Setting target device to 'xc7vx485t-ffg1157-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'model_1/firmware/jedi.cpp' ... 
+WARNING: [HLS 200-40] In file included from model_1/firmware/jedi.cpp:22:
+model_1/firmware/../nnet_utils/nnet_jedi.h:418:5: warning: '/*' within block comment [-Wcomment]
+    /* parameters, think it will be specified in CONFIG
+    ^
+1 warning generated.
+ERROR: [HLS 200-70] Compilation errors found: In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:7:
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:1: error: unknown type name 'constexpr'
+constexpr int ceillog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:413:11: error: expected unqualified-id
+constexpr int ceillog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:1: error: unknown type name 'constexpr'
+constexpr int floorlog2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:417:11: error: expected unqualified-id
+constexpr int floorlog2(int x){
+          ^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:1: error: unknown type name 'constexpr'
+constexpr int pow2(int x){
+^
+model_1/firmware/../nnet_utils/nnet_helpers.h:421:11: error: expected unqualified-id
+constexpr int pow2(int x){
+          ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+In file included from model_1/firmware/../nnet_utils/nnet_activation.h:25:
+model_1/firmware/../nnet_utils/nnet_common.h:46:13: error: unknown type name 'constexpr'
+     static constexpr int leftN = pow2(floorlog2(N - 1)) > 0 ? pow2(floorlog2(N - 1)) : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:46:23: error: expected unqualified-id
+     static constexpr int leftN = pow2(floorlog2(N - 1)) > 0 ? pow2(floorlog2(N - 1)) : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:13: error: unknown type name 'constexpr'
+     static constexpr int rightN = N - leftN > 0 ? N - leftN : 0;
+            ^
+model_1/firmware/../nnet_utils/nnet_common.h:47:23: error: expected unqualified-id
+     static constexpr int rightN = N - leftN > 0 ? N - leftN : 0;
+                      ^
+model_1/firmware/../nnet_utils/nnet_common.h:54:25: error: use of undeclared identifier 'leftN'
+     return op(reduce<T,leftN,Op>(x, op), reduce<T,rightN,Op>(x+leftN, op));
+                        ^
+In file included from model_1/firmware/jedi.cpp:1:
+In file included from model_1/firmware/jedi.cpp:21:
+In file included from model_1/firmware/jedi.h:28:
+In file included from model_1/firmware/parameters.h:9:
+model_1/firmware/../nnet_utils/nnet_activation.h:178:6: error: expected identifier or '{'
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:178:1: warning: declaration does not declare anything [-Wmissing-declarations]
+enum class softmax_implementation {latency=0, legacy=1, stable=2};
+^~~~
+model_1/firmware/../nnet_utils/nnet_activation.h:187:12: error: unknown type name 'constexpr'
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:187:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:189:26: error: use of undeclared identifier 'N'
+    x(x.width-1, x.width-N) = i;
+                         ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:12: error: unknown type name 'constexpr'
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+           ^
+model_1/firmware/../nnet_utils/nnet_activation.h:196:22: error: expected unqualified-id
+    static constexpr int N = ceillog2(CONFIG_T::table_size);
+                     ^
+model_1/firmware/../nnet_utils/nnet_activation.h:197:13: error: use of undeclared identifier 'N'
+    ap_uint<N> y = x(x.width-1, x.width-N);
+            ^
+model_1/firmware/../nnet_utils/nnet_activation.h:198:25: error: use of undeclared identifier 'N'
+    return (unsigned) y(N-1, 0);
+                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated.
+Failed during preprocessing.
+    while executing
+"source /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/csynth.tcl"
+    invoked from within
+"hls::main /mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/smallest_model/solution1/csynth.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$args"
+    (procedure "hls_proc" line 5)
+    invoked from within
+"hls_proc $argv"

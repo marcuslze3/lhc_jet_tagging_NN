@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="defines.h" path="/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/model_1/firmware/defines.h"/>
+    <originFiles name="jedi.cpp" path="/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/model_1/firmware/jedi.cpp"/>
+    <originFiles name="jedi.h" path="/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/model_1/firmware/jedi.h"/>
+    <originFiles name="parameters.h" path="/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/model_1/firmware/parameters.h"/>
+  </source>
+  <testbench>
+    <originFiles name="tb_jedi.cpp" path="/mnt/ccnas2/bdp/mzl20/proj_venv_ccgpu3/lhc_jet_tagging_NN/JEDInet_HLS_test/model_1/firmware/tb_jedi.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
