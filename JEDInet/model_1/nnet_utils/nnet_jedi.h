@@ -27,13 +27,14 @@
 #include "nnet_helpers.h"
 #include "../firmware/ap_types/hls_stream.h"
 #include <math.h>
+/*
 #include "../firmware/weights/w1_1.h"
 #include "../firmware/weights/b1_1.h"
 #include "../firmware/weights/w2_1.h"
 #include "../firmware/weights/b2_1.h"
 #include "../firmware/weights/w3_1.h"
 #include "../firmware/weights/b3_1.h"
-
+*/
 namespace nnet {
 
     // jedi struct here?
@@ -44,18 +45,13 @@ namespace nnet {
             data_T    data2[CONFIG_T::n_row2][CONFIG_T::n_col2],
             res_T     res[CONFIG_T::n_row1][CONFIG_T::n_col2]) // n_col1 = n_row2
     {
-		std::cout << "C++ PRINTING X: \n";
-		for(int i= 0; i < 10; i++)
-			std::cout << data1[0][i];
 
         // Do the matrix-multiply
         Product1: for (int i = 0; i < CONFIG_T::n_row1; i++) {
-        /*
-            if (CONFIG_T::io_type == io_serial){
-                #pragma HLS PIPELINE
-            }*/
-
+        
             for (int j = 0; j < CONFIG_T::n_col2; j++) {
+			#pragma HLS PIPELINE
+				
                res[i][j] = 0;
 
                 for (int k = 0; k < CONFIG_T::n_col1; k++)
@@ -79,6 +75,7 @@ namespace nnet {
         // of data1
         for (int i = 0; i < CONFIG_T::n_row1; i++) {
             for (int j = 0; j < CONFIG_T::n_col1; j++) {
+				#pragma HLS PIPELINE
                 res[i][j] = data1[i][j];
             }
         }
@@ -88,6 +85,7 @@ namespace nnet {
 
         for (int i = 0; i < CONFIG_T::n_row2; i++) {
             for (int j = 0; j < CONFIG_T::n_col2; j++) {
+				#pragma HLS PIPELINE
                 res[i + CONFIG_T::n_row1][j] = data2[i][j];
             }
         }
@@ -99,6 +97,7 @@ namespace nnet {
 
         for(int i = 0; i < CONFIG_T::N_o_p; i++) {
             for(int j= 0; j < CONFIG_T::N_e_p; j++) {
+				#pragma HLS PIPELINE
                 RrT[j][i] = Rr[i][j];
             }
         }
@@ -292,6 +291,7 @@ namespace nnet {
 			//for (int cols = 0; cols < 1; cols++) {
 
             for (int rows = 0; rows < 2 * CONFIG_T::P_p; rows++) {
+				#pragma HLS UNROLL
                 cache1[rows] = B[rows][cols]; // add to an array of size 2P
             }
             /*
@@ -317,8 +317,10 @@ namespace nnet {
 			}*/
 
             // copy E_col into cols of E
-            for(int rows = 0; rows < CONFIG_T::D_e_p; rows++)
+            for(int rows = 0; rows < CONFIG_T::D_e_p; rows++) {
+				#pragma HLS UNROLL
                 E[rows][cols] = E_col[rows];
+			}
 
         }
 
@@ -360,16 +362,20 @@ namespace nnet {
         data_T O_col[CONFIG_T::D_o_p];
 
         for (int cols = 0; cols < CONFIG_T::N_o_p; cols++) {
-            for (int rows = 0; rows < CONFIG_T::P_p + CONFIG_T::D_e_p; rows++)
+            for (int rows = 0; rows < CONFIG_T::P_p + CONFIG_T::D_e_p; rows++){
+				#pragma HLS PIPELINE
                 cache2[rows] = C[rows][cols]; // add to an array of size P+D_e
+			}
 
             // this dense layer needs a specific config that has n_in = P+D_e, n_out = D_o
             // pass in the weights somehow, probably in jedi() as parameter
             nnet::dnn2<data_T, data_T, CONFIG_T>(cache2, O_col, w1, w2, w3, b1, b2, b3);
 
             // copy O_col into cols of O
-            for(int rows = 0; rows < CONFIG_T::D_o_p; rows++)
+            for(int rows = 0; rows < CONFIG_T::D_o_p; rows++) {
+				#pragma HLS UNROLL
                 O[rows][cols] = O_col[rows];
+			}
 
         }
 
@@ -389,13 +395,16 @@ namespace nnet {
 
         // initialise O_sum with 0s
         data_T O_sum[CONFIG_T::D_o_p];
-        for(int i = 0; i < CONFIG_T::D_o_p; i++)
+        for(int i = 0; i < CONFIG_T::D_o_p; i++) {
+			#pragma HLS UNROLL
             O_sum[i] = 0;
+		}
 
         // sum every element in each col of O
         // CHANGE THIS, SUM HORIZONTALLY NOT VERTICALLY.
         for(int rows = 0; rows < CONFIG_T::D_o_p; rows++)
-            for(int cols = 0; cols < CONFIG_T::N_o_p; cols++)
+            for(int cols = 0; cols < CONFIG_T::N_o_p; cols++) {
+				#pragma HLS PIPELINE
                 O_sum[rows] += O[rows][cols];
 
         // run sigma_c final neural network on O -> output
@@ -405,6 +414,8 @@ namespace nnet {
     }
 
 }
+}
+
 
 
 

@@ -119,11 +119,12 @@ void myproject_float(
     //std::cout << "ENTERED MYPROJECT_FLOAT \n"; //debugging
     input_t fc1_input_ap[P][N_o];
     
-    /*std::cout << "PRE-CONVERTED DATA \n"; //debugging
+    /*
+    std::cout << "PRE-CONVERTED DATA \n"; //debugging
     for(int i = 0; i < 10; i++)
 		std::cout << fc1_input[0][i] << " ";
-	std::cout << std::endl;*/
-    
+	std::cout << std::endl;
+    */
     auto Rr_ap = new input_t [N_o][N_e];
     auto Rr_T_ap = new input_t [N_e][N_o];
     auto Rs_ap = new input_t [N_o][N_e];
@@ -132,11 +133,12 @@ void myproject_float(
     nnet::convert_data<float, input_t, N_o, N_e>(R_r, Rr_ap);
     nnet::convert_data<float, input_t, N_e, N_o>(R_r_T, Rr_T_ap);
     nnet::convert_data<float, input_t, N_o, N_e>(R_s, Rs_ap);
-    /*std::cout << "CONVERTED DATA \n"; //debugging
-	
+    
+    /*
+    std::cout << "CONVERTED DATA \n"; //debugging	
 	for(int i = 0; i < 10; i++)
-		std::cout << fc1_input_ap[0][i] << " ";*/
-	
+		std::cout << fc1_input_ap[0][i] << " ";
+	*/
     result_t result_out_ap[N_OUTPUT_3];
 	
 	//std::cout << "RUNNING JEDINET \n"; //debugging
@@ -144,18 +146,27 @@ void myproject_float(
     //std::cout << "JEDINET RAN \n"; //debugging
 
     nnet::convert_data<result_t, float, N_OUTPUT_3>(result_out_ap, result_out);
+    
+    delete[] Rs_ap;
+    delete[] Rr_ap;
+    delete[] Rr_T_ap;
+    
     /*
-    for(int i = 0; i < N_o; i++) {
+    for(int i = 0; i < 1; i++) {
+		delete[] Rr_ap[i];
+	}
+    /*
+    for(int i = 0; i < N_o/2; i++) {
 		delete[] Rr_ap[i];
 		delete[] Rs_ap[i];
 	}
-	//delete[] Rr_ap;
-	//delete[] Rs_ap;
+	delete[] Rr_ap;
+	delete[] Rs_ap;
 	
-	for(int i = 0; i < N_e; i++) {
+	for(int i = 0; i < N_e/2; i++) {
 		delete[] Rr_T_ap[i];
-	}*/
-	//delete[] Rr_T_ap;
+	}
+	delete[] Rr_T_ap;*/
 }
 
 void myproject_double(

@@ -3,8 +3,6 @@
 #ifndef B1_H_
 #define B1_H_
 
-#ifndef R_S_H_
-#define R_S_H_
 // numpy array shape [30]
 
 /*

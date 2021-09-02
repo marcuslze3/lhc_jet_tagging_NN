@@ -14,9 +14,15 @@ class InEventLoader(Dataset):
         boundaries between adjacent indices coming from 2 different files'''
         num_data = 0
         thresholds = [0]
+        count = 0
         for in_file_name in file_names:
             # hardcoded !!!!
             f = h5py.File(in_file_name, 'r')
+            #print(count+1)
+            #print(in_file_name)
+            count+=1
+            #print(f.keys())
+            #print(f.get('jetConstituentList'))
             num_data += len(f.get(self.feature_name))
             f.close()
             thresholds.append(num_data)

@@ -44,10 +44,10 @@
 
 
 void jedi(
-        input_t I[][N_o],
-        input_t Rr[][N_e],
-        input_t Rr_T[][N_o], // R_r transposed
-        input_t Rs[][N_e],
+	  input_t I[150][N_o], // change to number of particles
+        receiver_t Rr[N_o][N_e],
+        receiver_t Rr_T[N_e][N_o], // R_r transposed
+        receiver_t Rs[N_o][N_e],
         result_t result[N_OUTPUT_3]) {
         
 /*void jedi(
@@ -143,5 +143,5 @@ void jedi(
 		delete[] Rr;
 		delete[] Rr_T;
 		delete[] Rs;*/
-        
-}
+	}
+

@@ -1,8 +1,8 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
-#include "ap_types/ap_int.h"
-#include "ap_types/ap_fixed.h"
+#include "ap_int.h"
+#include "ap_fixed.h"
 #include "../nnet_utils/nnet_types.h"
 
 //hls-fpga-machine-learning insert numbers
@@ -24,74 +24,76 @@
 #define N_OUTPUT_2 10
 #define N_OUTPUT_3 5 // number of jet classes
 
-// change float back to ap_fixed<16,10>
+// change ap_fixed<27,12> back to ap_fixed<27,12>
 
-// add types e.g typedef ap_fixed<16,6> input_t
+// add types e.g typedef ap_fixed<27,12> input_t
 //hls-fpga-machine-learning insert layer-precision
-typedef float model_default_t;
-typedef float input_t; // default <16,6>, changed to <16,10>
-typedef float jedi2_t;
-typedef float jedi4_t;
-typedef float jedi6_t;
-typedef float result_t;
+typedef ap_fixed<27,12> model_default_t;
+typedef ap_fixed<27,12> input_t; // default <16,6>, changed to <16,10>
+typedef ap_fixed<27,12> jedi2_t;
+typedef ap_fixed<27,12> jedi4_t;
+typedef ap_fixed<27,12> jedi6_t;
+typedef ap_fixed<27,12> result_t;
 
-typedef float layer2_t; // dense
-typedef float fc1_weight_t;
-typedef float fc1_bias_t;
-typedef float fc1_relu_default_t;
-typedef float layer3_t; // relu
-typedef float layer4_t; // dense
-typedef float fc2_weight_t;
-typedef float fc2_bias_t;
-typedef float fc2_relu_default_t;
-typedef float layer5_t; // relu
-typedef float output1_weight_t;
-typedef float output1_bias_t;
-typedef float output1_softmax_default_t;
-typedef float layer7_t; // softmax
+typedef ap_fixed<27,12> receiver_t; // receiver either 1 or 0
 
-//typedef ap_fixed<16,6> jedi8_t;
-//typedef ap_fixed<16,6> jedi10_t;
+typedef ap_fixed<27,12> layer2_t; // dense
+typedef ap_fixed<27,12> fc1_weight_t;
+typedef ap_fixed<27,12> fc1_bias_t;
+typedef ap_fixed<27,12> fc1_relu_default_t;
+typedef ap_fixed<27,12> layer3_t; // relu
+typedef ap_fixed<27,12> layer4_t; // dense
+typedef ap_fixed<27,12> fc2_weight_t;
+typedef ap_fixed<27,12> fc2_bias_t;
+typedef ap_fixed<27,12> fc2_relu_default_t;
+typedef ap_fixed<27,12> layer5_t; // relu
+typedef ap_fixed<27,12> output1_weight_t;
+typedef ap_fixed<27,12> output1_bias_t;
+typedef ap_fixed<27,12> output1_softmax_default_t;
+typedef ap_fixed<27,12> layer7_t; // softmax
 
-typedef float layer8_t; // dense
-typedef float fc3_weight_t;
-typedef float fc3_bias_t;
-typedef float fc3_relu_default_t;
-typedef float layer9_t; // relu
-typedef float layer10_t; // dense
-typedef float fc4_weight_t;
-typedef float fc4_bias_t;
-typedef float fc4_relu_default_t;
-typedef float layer11_t; // relu
-typedef float layer12_t; // dense
-typedef float output2_weight_t;
-typedef float output2_bias_t;
-typedef float output2_softmax_default_t;
-typedef float layer13_t; // softmax
+//typedef ap_fixed<27,12> jedi8_t;
+//typedef ap_fixed<27,12> jedi10_t;
 
-typedef float layer14_t; // dense
-typedef float fc5_weight_t;
-typedef float fc5_bias_t;
-typedef float fc5_relu_default_t;
-typedef float layer15_t; // relu
-typedef float layer16_t; // dense
-typedef float fc6_weight_t;
-typedef float fc6_bias_t;
-typedef float layer17_t; // relu
-typedef float layer18_t; // dense
-typedef float output3_weight_t;
-typedef float output3_bias_t;
-typedef float output3_softmax_default_t;
-typedef float layer19_t; // softmax
+typedef ap_fixed<27,12> layer8_t; // dense
+typedef ap_fixed<27,12> fc3_weight_t;
+typedef ap_fixed<27,12> fc3_bias_t;
+typedef ap_fixed<27,12> fc3_relu_default_t;
+typedef ap_fixed<27,12> layer9_t; // relu
+typedef ap_fixed<27,12> layer10_t; // dense
+typedef ap_fixed<27,12> fc4_weight_t;
+typedef ap_fixed<27,12> fc4_bias_t;
+typedef ap_fixed<27,12> fc4_relu_default_t;
+typedef ap_fixed<27,12> layer11_t; // relu
+typedef ap_fixed<27,12> layer12_t; // dense
+typedef ap_fixed<27,12> output2_weight_t;
+typedef ap_fixed<27,12> output2_bias_t;
+typedef ap_fixed<27,12> output2_softmax_default_t;
+typedef ap_fixed<27,12> layer13_t; // softmax
 
-typedef float fc7_weight_t;
-typedef float fc7_bias_t;
+typedef ap_fixed<27,12> layer14_t; // dense
+typedef ap_fixed<27,12> fc5_weight_t;
+typedef ap_fixed<27,12> fc5_bias_t;
+typedef ap_fixed<27,12> fc5_relu_default_t;
+typedef ap_fixed<27,12> layer15_t; // relu
+typedef ap_fixed<27,12> layer16_t; // dense
+typedef ap_fixed<27,12> fc6_weight_t;
+typedef ap_fixed<27,12> fc6_bias_t;
+typedef ap_fixed<27,12> layer17_t; // relu
+typedef ap_fixed<27,12> layer18_t; // dense
+typedef ap_fixed<27,12> output3_weight_t;
+typedef ap_fixed<27,12> output3_bias_t;
+typedef ap_fixed<27,12> output3_softmax_default_t;
+typedef ap_fixed<27,12> layer19_t; // softmax
 
-typedef float fc8_weight_t;
-typedef float fc8_bias_t;
+typedef ap_fixed<27,12> fc7_weight_t;
+typedef ap_fixed<27,12> fc7_bias_t;
 
-typedef float fc9_weight_t;
-typedef float fc9_bias_t;
+typedef ap_fixed<27,12> fc8_weight_t;
+typedef ap_fixed<27,12> fc8_bias_t;
+
+typedef ap_fixed<27,12> fc9_weight_t;
+typedef ap_fixed<27,12> fc9_bias_t;
 
 
 #endif

@@ -4,9 +4,9 @@
 #include "math.h"
 #include "jedi.h"
 #include "weights/input.h" // this file should contain input
-#include "weights/Rr.h"
-#include "weights/Rr_T.h"
-#include "weights/Rs.h"
+#include "weights/R_r.h"
+#include "weights/R_r_T.h"
+#include "weights/R_s.h"
 
 int main() {
 
@@ -15,8 +15,8 @@ int main() {
     for(int i = 0; i < N_OUTPUT_3; i++)
         result[i] = 0;
 
-    jedi(input[0], Rr, Rr_T, Rs, result);
-	
+    jedi(input, R_r, R_r_T, R_s, result);
+
     std::cout << "the final selu output for n = " << N_OUTPUT_3 << " is: ";
 
     for(int i = 0; i < N_OUTPUT_3; i++) {

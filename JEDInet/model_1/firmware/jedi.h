@@ -20,8 +20,9 @@
 #ifndef MYPROJECT_H_
 #define MYPROJECT_H_
 
-#include "ap_types/ap_int.h"
-#include "ap_types/ap_fixed.h"
+#include <ap_fixed.h>
+#include "ap_int.h"
+#include "ap_fixed.h"
 #include "ap_types/hls_stream.h"
 
 #include "defines.h"
@@ -30,9 +31,9 @@
 
 void jedi(
         input_t I[][N_o],
-        input_t Rr[][N_e],
-        input_t Rr_T[][N_o], // R_r transposed
-        input_t Rs[][N_e],
+        receiver_t Rr[][N_e],
+        receiver_t Rr_T[][N_o], // R_r transposed
+        receiver_t Rs[][N_e],
         result_t result[N_OUTPUT_3]
         );
 
